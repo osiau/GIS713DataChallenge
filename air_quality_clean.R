@@ -11,6 +11,8 @@ wd <- getwd()
 air_qual2019 <- read.csv(file.path(wd,"Datasources/air_quaity_annual_aqi_by_county_2019.csv"),stringsAsFactors=TRUE, header=TRUE)
 air_qual2020 <- read.csv(file.path(wd,"Datasources/air_quality_annual_aqi_by_county_2020.csv"),stringsAsFactors=TRUE, header=TRUE)
 data_states <- read.csv(file.path(wd,"Datasources/all_names_FIPS.csv"),stringsAsFactors=TRUE)
+data_states <- as.data.table(data_states)
+data_states <- data_states[,.(stateFIPS = as.factor(formatC(stateFIPS,width=2,flag="0")), countyFIPS=as.factor(formatC(countyFIPS,width=3,flag="0")), geoID=as.factor(formatC(geoID,width=5,flag="0")),county,state)]
 
 # convert to data.table
 
