@@ -1,0 +1,53 @@
+﻿STATE,Total,Total,Senate,Senate,Senate,Total,House,House,House,Legis.,Gov.,State
+,Seats,Senate,Dem.,Rep.,other,House,Dem.,Rep.,other,Control,Party,Control
+Alabama,138,35,8,27,,103,28,75,,Rep,Rep,Rep
+Alaska,59,20,7,13,,39,14,22,3,Rep,Rep,Rep
+Arizona,90,30,13,17,,60,29,31,,Rep,Rep,Rep
+Arkansas,133,35,9,26,,98,23,75,,Rep,Rep,Rep
+California,119,40,29,11,,79,61,17,1,Dem,Dem,Dem
+Colorado,100,35,19,16,,65,41,24,,Dem,Dem,Dem
+Connecticut,187,36,22,14,,151,91,60,,Dem,Dem,Dem
+Delaware,62,21,12,9,,41,26,15,,Dem,Dem,Dem
+Florida,160,40,17,23,,119,46,73,,Rep,Rep,Rep
+Georgia,236,56,21,35,,180,75,105,,Rep,Rep,Rep
+Hawaii,76,25,24,1,,51,46,5,,Dem,Dem,Dem
+Idaho,105,35,7,28,,70,14,56,,Rep,Rep,Rep
+Illinois,176,59,40,19,,117,73,44,,Dem,Dem,Dem
+Indiana,150,50,10,40,,100,33,67,,Rep,Rep,Rep
+Iowa,150,50,18,32,,100,47,53,,Rep,Rep,Rep
+Kansas,165,40,11,29,,125,41,84,,Rep,Dem,Divided
+Kentucky,138,38,10,28,,100,38,62,,Rep,Dem,Divided
+Louisiana,144,39,12,27,,105,35,68,2,Rep,Dem,Divided
+Maine,186,35,21,14,,151,88,57,6,Dem,Dem,Dem
+Maryland,187,46,32,14,,141,99,42,,Dem,Rep,Divided
+Massachusetts,199,40,36,4,,159,127,31,1,Dem,Rep,Divided
+Michigan,147,38,16,22,,109,51,58,,Rep,Dem,Divided
+Minnesota,201,67,32,35,,134,75,59,,Divided,Dem,Divided
+Mississippi,174,52,16,36,,122,45,76,1,Rep,Rep,Rep
+Missouri,192,31,8,23,,161,48,113,,Rep,Rep,Rep
+Montana,150,50,20,30,,100,43,57,,Rep,Dem,Divided
+Nebraska,49,49,,,49,Unicameral,,nonpartisan,,N/A,Rep,N/A
+Nevada,63,21,13,8,,42,29,13,,Dem,Dem,Dem
+New Hampshire,414,24,14,10,,390,231,158,1,Dem,Rep,Divided
+New Jersey,120,40,25,15,,80,52,28,,Dem,Dem,Dem
+New Mexico,111,42,26,16,,69,45,24,,Dem,Dem,Dem
+New York,206,60,40,20,,146,103,42,1,Dem,Dem,Dem
+North Carolina,168,49,21,28,,119,55,64,,Rep,Dem,Divided
+North Dakota,141,47,10,37,,94,15,79,,Rep,Rep,Rep
+Ohio,132,33,9,24,,99,38,61,,Rep,Rep,Rep
+Oklahoma,148,47,9,38,,100,23,77,,Rep,Rep,Rep
+Oregon,90,30,18,12,,60,38,22,,Dem,Dem,Dem
+Pennsylvania,252,50,21,28,1,202,93,109,,Rep,Dem,Divided
+Rhode Island,113,38,33,5,,75,66,9,,Dem,Dem,Dem
+South Carolina,168,46,19,27,,122,44,78,,Rep,Rep,Rep
+South Dakota,105,35,5,30,,70,11,59,,Rep,Rep,Rep
+Tennessee,132,33,5,28,,99,26,73,,Rep,Rep,Rep
+Texas,180,30,11,19,,150,66,84,,Rep,Rep,Rep
+Utah,104,29,6,23,,75,16,59,,Rep,Rep,Rep
+Vermont,180,30,22,6,2,150,94,44,12,Dem,Rep,Divided
+Virginia,140,40,21,19,,100,55,45,,Dem,Dem,Dem
+Washington,147,49,29,20,,98,57,41,,Dem,Dem,Dem
+West Virginia,134,34,14,20,,100,41,58,1,Rep,Rep,Rep
+Wisconsin,129,31,13,18,,98,35,63,,Rep,Dem,Divided
+Wyoming,90,30,3,27,,60,9,50,1,Rep,Rep,Rep
+District of Columbia,13,13,12,1,,,,,,Dem,N/A,N/A
