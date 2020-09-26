@@ -1,0 +1,28 @@
+<!-- to knit:
+knitr::knit(input="map_viz.Rmd",output="map_viz.md")
+ -->
+
+
+---
+layout: post
+title: Test Map
+subtitle: Hopefully there's a map here!
+linktormd: true
+leafletmap: true
+always_allow_html: yes
+output: index
+---
+
+
+```r
+library(leaflet)
+
+m <- leaflet() %>%
+  addTiles() %>%  # Add default OpenStreetMap map tiles
+  addMarkers(lng=174.768, lat=-36.852, popup="The birthplace of R")
+m  # Print the map
+```
+
+```
+## Error in loadNamespace(name): there is no package called 'webshot'
+```
