@@ -1,0 +1,93 @@
+--------------------------------------------------------------------------------
+Codebook for Social Explorer report ID: R12627909
+--------------------------------------------------------------------------------
+
+Contents
+    - Table Summary
+    - Data Dictionary
+    - Citation and Use
+
+
+--------------------------------------------------------------------------------
+Table Summary
+--------------------------------------------------------------------------------
+ 
+Survey:           Community Resilience Estimates
+Dataset:          Social Explorer Tables
+Tables:
+
+      1. Estimated Number of Residents with Risk Factors
+         Universe:  Number of Residents
+         Name:      T001
+         Variables:
+            T001_001:   Number of Residents:
+            T001_002:      Low Risk Factors
+            T001_003:      Medium Risk Factors
+            T001_004:      High Risk Factors
+
+
+      2. Margin of Error: Number of Residents with Risk Factors
+         Universe:  Number of Residents
+         Name:      T002
+         Variables:
+            T002_001:   Number of Residents:
+            T002_002:      Margin of Error: Low Risk Factors
+            T002_003:      Margin of Error: Medium Risk Factors
+            T002_004:      Margin of Error: High Risk Factors
+
+
+
+
+
+ 
+ 
+ 
+--------------------------------------------------------------------------------
+Data Dictionary
+--------------------------------------------------------------------------------
+ 
+Variables 
+      QNAME:          Qualifying Name
+      NAME:           Name of Area
+      FIPS:           FIPS
+      NATION:         Nation
+      STATE:          State
+      COUNTY:         County
+      CT:             Census Tract
+      T001_001:       Number of Residents
+      T001_002:       Number of Residents: Low Risk Factors
+      T001_003:       Number of Residents: Medium Risk Factors
+      T001_004:       Number of Residents: High Risk Factors
+      PCT_T001_002:   % Number of Residents: Low Risk Factors
+      PCT_T001_003:   % Number of Residents: Medium Risk Factors
+      PCT_T001_004:   % Number of Residents: High Risk Factors
+      T002_001:       Number of Residents
+      T002_002:       Margin of Error: Number of Residents with Low Risk Factors (based on a 90 percent confidence level)
+      T002_003:       Margin of Error: Number of Residents with Medium Risk Factors (based on a 90 percent confidence level)
+      T002_004:       Margin of Error: Number of Residents with High Risk Factors (based on a 90 percent confidence level)
+      PCT_T002_002:   % Margin of Error: Number of Residents with Low Risk Factors (based on a 90 percent confidence level)
+      PCT_T002_003:   % Margin of Error: Number of Residents with Medium Risk Factors (based on a 90 percent confidence level)
+      PCT_T002_004:   % Margin of Error: Number of Residents with High Risk Factors (based on a 90 percent confidence level)
+
+
+
+
+--------------------------------------------------------------------------------
+Citation and Use of Data
+--------------------------------------------------------------------------------
+ 
+All persons are granted a limited license to use this documentation and the
+accompanying data, subject to the following conditions:
+
+* Publications and research reports employing the data
+  must cite it appropriately. The citation should include the following:
+
+	  www.socialexplorer.com
+	  New York City, NY: Social Explorer 2020
+
+
+* Citations should also include the URL for this report:
+
+    http://www.socialexplorer.com/pub/reportdata/HtmlResults.aspx?reportid=R12627909
+
+If you have any questions contact info@socialexplorer.com
