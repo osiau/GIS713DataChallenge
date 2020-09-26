@@ -10,7 +10,7 @@ subtitle: Hopefully there's a map here!
 linktormd: true
 leafletmap: true
 always_allow_html: yes
-output: index
+output: github_document
 ---
 
 
