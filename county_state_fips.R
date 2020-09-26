@@ -21,3 +21,12 @@ data_states$county <- tolower(data_states$county)
 data_states$state <- tolower(data_states$state)
 
 # write.csv(data_states,file.path(wd,"Datasources/all_names_FIPS.csv")) 
+
+# unfortunately this removes leading 0's! :'( 
+# so you need the following when reading in the data:
+
+data_states <- read.csv(file.path(wd,"Datasources/all_names_FIPS.csv"),stringsAsFactors=TRUE)
+data_states <- as.data.table(data_states)
+data_states <- data_states[,.(stateFIPS = as.factor(formatC(stateFIPS,width=2,flag="0")), 
+                              countyFIPS=as.factor(formatC(countyFIPS,width=3,flag="0")), 
+                              geoID=as.factor(formatC(geoID,width=5,flag="0")),county,state)]
