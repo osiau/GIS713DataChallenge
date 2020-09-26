@@ -1,4 +1,4 @@
-﻿STATE,Total,Total,Senate,Senate,Senate,Total,House,House,House,Legis.,Gov.,State
+﻿STATE,TotalSeats,TotalSenate,SenateDem.,SenateRep.,Senateother,TotalHouse,HouseDem.,HouseRep.,Houseother,Legis.Control,Gov.Party,StateControl
 ,Seats,Senate,Dem.,Rep.,other,House,Dem.,Rep.,other,Control,Party,Control
 Alabama,138,35,8,27,,103,28,75,,Rep,Rep,Rep
 Alaska,59,20,7,13,,39,14,22,3,Rep,Rep,Rep
