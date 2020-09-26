@@ -1,5 +1,6 @@
 library(data.table)
 library(sp)
+library(raster)
 library(tidycensus)
 
 
@@ -42,4 +43,4 @@ tmp <- lapply(csvtables, fread)
 csvtables #all csvs
 confirmedcovid <- tmp[[7]] #access one datatable
 
-county_data <- shapefile("cb_2015_us_county_20m/cb_2015_us_county_20m.prj") 
+county_data <- shapefile("cb_2015_us_county_20m/cb_2015_us_county_20m") 
