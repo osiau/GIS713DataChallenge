@@ -1,0 +1,43 @@
+## Prelims.
+
+```{r prelims, cache=FALSE, message=FALSE, warnings=FALSE, results='hide'}
+library(data.table)
+library(knitr)
+library(lubridate)
+library(dplyr)
+library(raster)
+library(tidyr)
+
+# read the county-level COVID19 case, death and population data, and a county shapefile
+data_dir <- "/Users/cyborginhas/Desktop/Datasources/"
+county_shp <- shapefile(file.path(data_dir, "cb_2015_us_county_20m", "cb_2015_us_county_20m.shp"))
+# data from "USA FACTS" website: https://usafacts.org/visualizations/coronavirus-covid-19-spread-map/
+covid_countypop <- fread(file.path(data_dir, "covid_county_population_usafacts.csv"))
+covid_deaths <- fread(file.path(data_dir, "covid_deaths_usafacts.csv"))
+```
+
+## Preprocessing - deaths daily counts, deaths daily cumulative counts
+
+```{r data_prep, tidy=TRUE, cache=TRUE, message=FALSE, warning=FALSE, results='hide'}
+    # join the county population data
+    covid_deaths <- merge(covid_countypop[, .(countyFIPS, population)], covid_deaths,
+                         by="countyFIPS")
+    # fix the column name
+    names(covid_deaths)[3] <- "county" # get rid of space in var name
+    names(covid_deaths)[4] <- "state"
+    # change case count variable names to dates
+    covid_dates <- as.Date(names(covid_deaths)[6:ncol(covid_deaths)],
+                           format="%m-%d-%y")
+    #transpose covid deaths to calculate daily totals
+    covid_deaths_l<-gather(covid_deaths,dates,clm_d_deaths,6:250)
+    covid_deaths_l$dates<-mdy(covid_deaths_l$dates)
+    #calculate daily counts per county
+    covid_deaths_l<-as.data.table(covid_deaths_l)
+    covid_deaths_l<-covid_deaths_l[order(county,state,dates),]
+    covid_deaths_l[1:50]
+    covid_deaths_l = covid_deaths_l %>% group_by(countyFIPS) %>% 
+        mutate(d_deaths = clm_d_deaths-lag(clm_d_deaths))
+    covid_deaths_l$county<-tolower(covid_deaths_l$county)
+    covid_deaths_l$state<-tolower(covid_deaths_l$state)
+    write.csv(covid_deaths_l,"covid_deaths_clean.csv")
+```
