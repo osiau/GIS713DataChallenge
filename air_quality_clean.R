@@ -1,6 +1,6 @@
 
 # THIS SCRIPT gives you clean air quality data (not clean air quality though, unfortunately)
-# The final clean data objects are: air_qual2019fp and air_qual2020_fp
+# The final clean data objects are: air_qual2019 and air_qual2020
 # No calculation has been done on the air quality fields
 
 library(data.table)
