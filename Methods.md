@@ -1,0 +1,3 @@
+
+# This will be a detailed methods page
+Such smart methods....
