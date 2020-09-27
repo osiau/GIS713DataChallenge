@@ -12,7 +12,7 @@ data_dependent <- data_dependent <- readRDS(file.path(wd,"Datasources/county_dep
 dataset <- merge(data_independent, data_dependent, by="geoID", all.x=TRUE) # for county
 # dataset <- merge(data_independent, data_dependent, by="stateFIPS", all.x=TRUE) # for state
 
-y <- datatset$dependent # change to variable name
+y <- dataset$dependent # change to variable name: vote_pct, total_cases_pc, total_deaths_pc, unemploy
 x <- dataset$independent # change to variable name
 
 do_stuff <- function(x,y){
