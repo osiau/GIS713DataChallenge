@@ -1,0 +1,346 @@
+"","year","state","state_po","stateFIPS","state_cen","state_ic","office","candidate","party","writein","candidatevotes","totalvotes","version","notes","vote_pct","democrat"
+"1",2016,"Alabama","AL",1,63,41,"US President","Trump, Donald J.","republican",FALSE,1318255,2123372,20171015,NA,0.620830923644091,0
+"2",2016,"Alabama","AL",1,63,41,"US President","Clinton, Hillary","democrat",FALSE,729547,2123372,20171015,NA,0.343579457579736,1
+"3",2016,"Alabama","AL",1,63,41,"US President","Johnson, Gary","libertarian",FALSE,44467,2123372,20171015,NA,0.0209416908577489,0
+"4",2016,"Alabama","AL",1,63,41,"US President","","",TRUE,21712,2123372,20171015,NA,0.0102252455057333,0
+"5",2016,"Alabama","AL",1,63,41,"US President","Stein, Jill","green",FALSE,9391,2123372,20171015,NA,0.00442268241269076,0
+"6",2016,"Alaska","AK",2,94,81,"US President","Trump, Donald J.","republican",FALSE,163387,318608,20171015,NA,0.512815120775373,0
+"7",2016,"Alaska","AK",2,94,81,"US President","Clinton, Hillary","democrat",FALSE,116454,318608,20171015,NA,0.36550871290112,1
+"8",2016,"Alaska","AK",2,94,81,"US President","Johnson, Gary","libertarian",FALSE,18725,318608,20171015,NA,0.0587712800682971,0
+"9",2016,"Alaska","AK",2,94,81,"US President","","",TRUE,9201,318608,20171015,NA,0.0288787475518506,0
+"10",2016,"Alaska","AK",2,94,81,"US President","Stein, Jill","green",FALSE,5735,318608,20171015,NA,0.0180001757645759,0
+"11",2016,"Alaska","AK",2,94,81,"US President","Castle, Darrell L.","constitution party",FALSE,3866,318608,20171015,NA,0.0121340330437403,0
+"12",2016,"Alaska","AK",2,94,81,"US President","De La Fuente, Roque """"""""Rocky""""""""","no party affiliation",FALSE,1240,318608,20171015,NA,0.00389192989504344,0
+"13",2016,"Arizona","AZ",4,86,61,"US President","Trump, Donald J.","republican",FALSE,1252401,2573165,20171015,NA,0.48671616472321,0
+"14",2016,"Arizona","AZ",4,86,61,"US President","Clinton, Hillary","democrat",FALSE,1161167,2573165,20171015,NA,0.451260218446932,1
+"15",2016,"Arizona","AZ",4,86,61,"US President","Johnson, Gary","libertarian",FALSE,106327,2573165,20171015,NA,0.0413214854080481,0
+"16",2016,"Arizona","AZ",4,86,61,"US President","Stein, Jill","green",FALSE,34345,2573165,20171015,NA,0.0133473757026852,0
+"17",2016,"Arizona","AZ",4,86,61,"US President","","independent",TRUE,17473,2573165,20171015,NA,0.00679047010199501,0
+"18",2016,"Arizona","AZ",4,86,61,"US President","Castle, Darrell L.","constitution party",TRUE,1058,2573165,20171015,NA,0.00041116679264641,0
+"19",2016,"Arizona","AZ",4,86,61,"US President","","no party affiliation",TRUE,311,2573165,20171015,NA,0.000120862828462225,0
+"20",2016,"Arizona","AZ",4,86,61,"US President","","democrat",TRUE,42,2573165,20171015,NA,1.63223112392715e-05,1
+"21",2016,"Arizona","AZ",4,86,61,"US President","De La Fuente, Roque """"""""Rocky""""""""","american delta party",TRUE,29,2573165,20171015,NA,1.12701672842589e-05,0
+"22",2016,"Arizona","AZ",4,86,61,"US President","Tittle, Sheila """"""""Samm""""""""","we the people",TRUE,12,2573165,20171015,NA,4.66351749693471e-06,0
+"23",2016,"Arkansas","AR",5,71,42,"US President","Trump, Donald J.","republican",FALSE,684872,1130635,20171015,NA,0.605741021638283,0
+"24",2016,"Arkansas","AR",5,71,42,"US President","Clinton, Hillary","democrat",FALSE,380494,1130635,20171015,NA,0.336531241293609,1
+"25",2016,"Arkansas","AR",5,71,42,"US President","Johnson, Gary","libertarian",FALSE,29829,1130635,20171015,NA,0.0263825195575937,0
+"26",2016,"Arkansas","AR",5,71,42,"US President","McMullin, Evan","better for america",FALSE,13255,1130635,20171015,NA,0.0117235005107749,0
+"27",2016,"Arkansas","AR",5,71,42,"US President","Stein, Jill","green",FALSE,9473,1130635,20171015,NA,0.00837847758118226,0
+"28",2016,"Arkansas","AR",5,71,42,"US President","Hedges, Jim","prohibition",FALSE,4709,1130635,20171015,NA,0.00416491617542354,0
+"29",2016,"Arkansas","AR",5,71,42,"US President","Castle, Darrell L.","constitution party",FALSE,4613,1130635,20171015,NA,0.00408000813702035,0
+"30",2016,"Arkansas","AR",5,71,42,"US President","Kahn, Lynn S.","independent",FALSE,3390,1130635,20171015,NA,0.00299831510611294,0
+"31",2016,"California","CA",6,93,71,"US President","Clinton, Hillary","democrat",FALSE,8753788,14181595,20171015,NA,0.617263996045579,1
+"32",2016,"California","CA",6,93,71,"US President","Trump, Donald J.","republican",FALSE,4483810,14181595,20171015,NA,0.316171065384394,0
+"33",2016,"California","CA",6,93,71,"US President","Johnson, Gary","libertarian",FALSE,478500,14181595,20171015,NA,0.0337409156022295,0
+"34",2016,"California","CA",6,93,71,"US President","Stein, Jill","green",FALSE,278657,14181595,20171015,NA,0.0196492002486321,0
+"35",2016,"California","CA",6,93,71,"US President","","",TRUE,120739,14181595,20171015,NA,0.00851378141880374,0
+"36",2016,"California","CA",6,93,71,"US President","La Riva, Gloria Estella","peace & freedom",FALSE,66101,14181595,20171015,NA,0.00466104130036149,0
+"37",2016,"Colorado","CO",8,84,62,"US President","Clinton, Hillary","democrat",FALSE,1338870,2780220,20171015,NA,0.481569803828474,1
+"38",2016,"Colorado","CO",8,84,62,"US President","Trump, Donald J.","republican",FALSE,1202484,2780220,20171015,NA,0.43251397371431,0
+"39",2016,"Colorado","CO",8,84,62,"US President","Johnson, Gary","libertarian",FALSE,144121,2780220,20171015,NA,0.0518379840444281,0
+"40",2016,"Colorado","CO",8,84,62,"US President","Stein, Jill","green",FALSE,38437,2780220,20171015,NA,0.0138251649150067,0
+"41",2016,"Colorado","CO",8,84,62,"US President","Scattering","unaffiliated",FALSE,31485,2780220,20171015,NA,0.011324643373546,0
+"42",2016,"Colorado","CO",8,84,62,"US President","Castle, Darrell L.","american constitution party",FALSE,11699,2780220,20171015,NA,0.00420794037881894,0
+"43",2016,"Colorado","CO",8,84,62,"US President","Keniston, Chris","veterans party of america",FALSE,5028,2780220,20171015,NA,0.00180848997561344,0
+"44",2016,"Colorado","CO",8,84,62,"US President","De La Fuente, Roque """"""""Rocky""""""""","american delta party",FALSE,1255,2780220,20171015,NA,0.000451403126371294,0
+"45",2016,"Colorado","CO",8,84,62,"US President","Kopitke, Kyle Kenley","independent american",FALSE,1096,2780220,20171015,NA,0.000394213407572063,0
+"46",2016,"Colorado","CO",8,84,62,"US President","Maldonado, Joseph Allen","independent people of colorado",FALSE,872,2780220,20171015,NA,0.000313644243980692,0
+"47",2016,"Colorado","CO",8,84,62,"US President","Maturen, Michael A.","american solidarity party",FALSE,862,2780220,20171015,NA,0.000310047406320363,0
+"48",2016,"Colorado","CO",8,84,62,"US President","Silva, Rod","nutrition party",FALSE,751,2780220,20171015,NA,0.000270122508290711,0
+"49",2016,"Colorado","CO",8,84,62,"US President","Hoefling, Tom","america's party",FALSE,710,2780220,20171015,NA,0.000255375473883362,0
+"50",2016,"Colorado","CO",8,84,62,"US President","La Riva, Gloria Estella","socialism and liberation party",FALSE,531,2780220,20171015,NA,0.000190992079763472,0
+"51",2016,"Colorado","CO",8,84,62,"US President","Kennedy, Alyson","socialist workers",FALSE,452,2780220,20171015,NA,0.000162577062246873,0
+"52",2016,"Colorado","CO",8,84,62,"US President","Kotlikoff, Laurence","kotlikoff for president",FALSE,392,2780220,20171015,NA,0.000140996036284898,0
+"53",2016,"Colorado","CO",8,84,62,"US President","Lyttle, Bradford","nonviolent resistance/pacifist",FALSE,382,2780220,20171015,NA,0.000137399198624569,0
+"54",2016,"Colorado","CO",8,84,62,"US President","Atwood, Frank","approval voting party",FALSE,337,2780220,20171015,NA,0.000121213429153089,0
+"55",2016,"Colorado","CO",8,84,62,"US President","Emidio """"""""Mimi"""""""", Soltysik","socialist party usa",FALSE,271,2780220,20171015,NA,9.7474300594917e-05,0
+"56",2016,"Colorado","CO",8,84,62,"US President","Hedges, James","prohibition",FALSE,185,2780220,20171015,NA,6.65414967160872e-05,0
+"57",2016,"Connecticut","CT",9,16,1,"US President","Clinton, Hillary","democrat",FALSE,897572,1644920,20171015,NA,0.545663010967099,1
+"58",2016,"Connecticut","CT",9,16,1,"US President","Trump, Donald J.","republican",FALSE,673215,1644920,20171015,NA,0.409269143788148,0
+"59",2016,"Connecticut","CT",9,16,1,"US President","Johnson, Gary","libertarian",FALSE,48676,1644920,20171015,NA,0.0295917126668774,0
+"60",2016,"Connecticut","CT",9,16,1,"US President","Stein, Jill","green",FALSE,22841,1644920,20171015,NA,0.0138857816793522,0
+"61",2016,"Connecticut","CT",9,16,1,"US President","","",TRUE,2616,1644920,20171015,NA,0.00159035089852394,0
+"62",2016,"Delaware","DE",10,51,11,"US President","Clinton, Hillary","democrat",FALSE,235603,441590,20171015,NA,0.533533368056342,1
+"63",2016,"Delaware","DE",10,51,11,"US President","Trump, Donald J.","republican",FALSE,185127,441590,20171015,NA,0.419228243393193,0
+"64",2016,"Delaware","DE",10,51,11,"US President","Johnson, Gary","libertarian",FALSE,14757,441590,20171015,NA,0.0334178763106049,0
+"65",2016,"Delaware","DE",10,51,11,"US President","Stein, Jill","green",FALSE,6103,441590,20171015,NA,0.0138205122398605,0
+"66",2016,"District of Columbia","DC",11,53,55,"US President","Clinton, Hillary","democrat",FALSE,282830,312575,20171015,NA,0.904838838678717,1
+"67",2016,"District of Columbia","DC",11,53,55,"US President","Trump, Donald J.","republican",FALSE,12723,312575,20171015,NA,0.0407038310805407,0
+"68",2016,"District of Columbia","DC",11,53,55,"US President","","",TRUE,6551,312575,20171015,NA,0.0209581700391906,0
+"69",2016,"District of Columbia","DC",11,53,55,"US President","Johnson, Gary","libertarian",FALSE,4906,312575,20171015,NA,0.0156954330960569,0
+"70",2016,"District of Columbia","DC",11,53,55,"US President","Stein, Jill","green",FALSE,4258,312575,20171015,NA,0.0136223306406462,0
+"71",2016,"District of Columbia","DC",11,53,55,"US President","Blank Vote","",FALSE,1064,312575,20171015,NA,0.00340398304406942,0
+"72",2016,"District of Columbia","DC",11,53,55,"US President","Over Vote","",FALSE,243,312575,20171015,NA,0.000777413420779013,0
+"73",2016,"Florida","FL",12,59,43,"US President","Trump, Donald J.","republican",FALSE,4617886,9420039,20171015,NA,0.490219414165907,0
+"74",2016,"Florida","FL",12,59,43,"US President","Clinton, Hillary","democrat",FALSE,4504975,9420039,20171015,NA,0.478233158058051,1
+"75",2016,"Florida","FL",12,59,43,"US President","Johnson, Gary","libertarian",FALSE,207043,9420039,20171015,NA,0.0219789960529887,0
+"76",2016,"Florida","FL",12,59,43,"US President","Stein, Jill","green",FALSE,64399,9420039,20171015,NA,0.00683638358609768,0
+"77",2016,"Florida","FL",12,59,43,"US President","Castle, Darrell L.","constitution party",FALSE,16475,9420039,20171015,NA,0.00174893118807682,0
+"78",2016,"Florida","FL",12,59,43,"US President","De La Fuente, Roque """"""""Rocky""""""""","reform party",FALSE,9108,9420039,20171015,NA,0.000966874977906142,0
+"79",2016,"Florida","FL",12,59,43,"US President","","",TRUE,153,9420039,20171015,NA,1.62419709727316e-05,0
+"80",2016,"Georgia","GA",13,58,44,"US President","Trump, Donald J.","republican",FALSE,2089104,4114732,20171015,NA,0.50771326054771,0
+"81",2016,"Georgia","GA",13,58,44,"US President","Clinton, Hillary","democrat",FALSE,1877963,4114732,20171015,NA,0.456399833573608,1
+"82",2016,"Georgia","GA",13,58,44,"US President","Johnson, Gary","libertarian",FALSE,125306,4114732,20171015,NA,0.0304530161381106,0
+"83",2016,"Georgia","GA",13,58,44,"US President","","",TRUE,22359,4114732,20171015,NA,0.0054338897405712,0
+"84",2016,"Hawaii","HI",15,95,82,"US President","Clinton, Hillary","democrat",FALSE,266891,437664,20171015,NA,0.60980798055129,1
+"85",2016,"Hawaii","HI",15,95,82,"US President","Trump, Donald J.","republican",FALSE,128847,437664,20171015,NA,0.294397071726256,0
+"86",2016,"Hawaii","HI",15,95,82,"US President","Johnson, Gary","libertarian",FALSE,15954,437664,20171015,NA,0.0364526211888572,0
+"87",2016,"Hawaii","HI",15,95,82,"US President","Stein, Jill","green",FALSE,12737,437664,20171015,NA,0.0291022336769759,0
+"88",2016,"Hawaii","HI",15,95,82,"US President","Blank Vote","",FALSE,8289,437664,20171015,NA,0.0189391862250494,0
+"89",2016,"Hawaii","HI",15,95,82,"US President","Castle, Darrell L.","constitution party",FALSE,4508,437664,20171015,NA,0.0103001389193537,0
+"90",2016,"Hawaii","HI",15,95,82,"US President","Over Vote","",FALSE,438,437664,20171015,NA,0.00100076771221759,0
+"91",2016,"Idaho","ID",16,82,63,"US President","Trump, Donald J.","republican",FALSE,409055,690255,20171015,NA,0.592614323691969,0
+"92",2016,"Idaho","ID",16,82,63,"US President","Clinton, Hillary","democrat",FALSE,189765,690255,20171015,NA,0.274920138209792,1
+"93",2016,"Idaho","ID",16,82,63,"US President","McMullin, Evan","independent",FALSE,60748,690255,20171015,NA,0.0880080549941688,0
+"94",2016,"Idaho","ID",16,82,63,"US President","Johnson, Gary","libertarian",FALSE,28331,690255,20171015,NA,0.04104425176203,0
+"95",2016,"Idaho","ID",16,82,63,"US President","Castle, Darrell L.","constitution party",FALSE,2356,690255,20171015,NA,0.00341323134204026,0
+"96",2016,"Illinois","IL",17,33,21,"US President","Clinton, Hillary","democrat",FALSE,3090729,5536424,20171015,NA,0.558253666987933,1
+"97",2016,"Illinois","IL",17,33,21,"US President","Trump, Donald J.","republican",FALSE,2146015,5536424,20171015,NA,0.387617530738253,0
+"98",2016,"Illinois","IL",17,33,21,"US President","Johnson, Gary","libertarian",FALSE,209596,5536424,20171015,NA,0.0378576496308809,0
+"99",2016,"Illinois","IL",17,33,21,"US President","Stein, Jill","green",FALSE,76802,5536424,20171015,NA,0.0138721311807044,0
+"100",2016,"Illinois","IL",17,33,21,"US President","","",TRUE,13282,5536424,20171015,NA,0.00239902146222905,0
+"101",2016,"Indiana","IN",18,32,22,"US President","Trump, Donald J.","republican",FALSE,1557286,2734958,20171015,NA,0.569400334484113,0
+"102",2016,"Indiana","IN",18,32,22,"US President","Clinton, Hillary","democrat",FALSE,1033126,2734958,20171015,NA,0.37774839686752,1
+"103",2016,"Indiana","IN",18,32,22,"US President","Johnson, Gary","libertarian",FALSE,133993,2734958,20171015,NA,0.0489927084803496,0
+"104",2016,"Indiana","IN",18,32,22,"US President","","green",TRUE,7841,2734958,20171015,NA,0.00286695444683246,0
+"105",2016,"Indiana","IN",18,32,22,"US President","Castle, Darrell L.","constitution party",TRUE,1937,2734958,20171015,NA,0.000708237567085125,0
+"106",2016,"Indiana","IN",18,32,22,"US President","","independent",TRUE,718,2734958,20171015,NA,0.000262526883411007,0
+"107",2016,"Indiana","IN",18,32,22,"US President","Emidio """"""""Mimi"""""""", Soltysik","socialist party usa",TRUE,57,2734958,20171015,NA,2.08412706886175e-05,0
+"108",2016,"Iowa","IA",19,42,31,"US President","Trump, Donald J.","republican",FALSE,800983,1565580,20171015,NA,0.511620613446774,0
+"109",2016,"Iowa","IA",19,42,31,"US President","Clinton, Hillary","democrat",FALSE,653669,1565580,20171015,NA,0.417525134454962,1
+"110",2016,"Iowa","IA",19,42,31,"US President","Johnson, Gary","libertarian",FALSE,59186,1565580,20171015,NA,0.0378045197307068,0
+"111",2016,"Iowa","IA",19,42,31,"US President","","",TRUE,17746,1565580,20171015,NA,0.0113350962582557,0
+"112",2016,"Iowa","IA",19,42,31,"US President","McMullin, Evan","nominated by petition",FALSE,12366,1565580,20171015,NA,0.00789867014141724,0
+"113",2016,"Iowa","IA",19,42,31,"US President","Stein, Jill","green",FALSE,11479,1565580,20171015,NA,0.00733210695077862,0
+"114",2016,"Iowa","IA",19,42,31,"US President","Castle, Darrell L.","constitution party",FALSE,5335,1565580,20171015,NA,0.00340768277571252,0
+"115",2016,"Iowa","IA",19,42,31,"US President","Kahn, Lynn S.","new independent party iowa",FALSE,2247,1565580,20171015,NA,0.00143525083355689,0
+"116",2016,"Iowa","IA",19,42,31,"US President","Vacek, Dan","legal marijuana now",FALSE,2246,1565580,20171015,NA,0.00143461209264298,0
+"117",2016,"Iowa","IA",19,42,31,"US President","La Riva, Gloria Estella","socialism and liberation party",FALSE,323,1565580,20171015,NA,0.000206313315193091,0
+"118",2016,"Kansas","KS",20,47,32,"US President","Trump, Donald J.","republican",FALSE,671018,1184402,20171015,NA,0.566545818058396,0
+"119",2016,"Kansas","KS",20,47,32,"US President","Clinton, Hillary","democrat",FALSE,427005,1184402,20171015,NA,0.360523707322345,1
+"120",2016,"Kansas","KS",20,47,32,"US President","Johnson, Gary","libertarian",FALSE,55406,1184402,20171015,NA,0.0467797251271106,0
+"121",2016,"Kansas","KS",20,47,32,"US President","Stein, Jill","independent",FALSE,23506,1184402,20171015,NA,0.0198463021845623,0
+"122",2016,"Kansas","KS",20,47,32,"US President","","",TRUE,7467,1184402,20171015,NA,0.00630444730758644,0
+"123",2016,"Kentucky","KY",21,61,51,"US President","Trump, Donald J.","republican",FALSE,1202971,1924149,20171015,NA,0.625196385519001,0
+"124",2016,"Kentucky","KY",21,61,51,"US President","Clinton, Hillary","democrat",FALSE,628854,1924149,20171015,NA,0.326821883336478,1
+"125",2016,"Kentucky","KY",21,61,51,"US President","Johnson, Gary","libertarian",FALSE,53752,1924149,20171015,NA,0.0279354665361154,0
+"126",2016,"Kentucky","KY",21,61,51,"US President","McMullin, Evan","independent",FALSE,22780,1924149,20171015,NA,0.0118389999942832,0
+"127",2016,"Kentucky","KY",21,61,51,"US President","Stein, Jill","green",FALSE,13913,1924149,20171015,NA,0.00723072901318973,0
+"128",2016,"Kentucky","KY",21,61,51,"US President","De La Fuente, Roque """"""""Rocky""""""""","american delta party",FALSE,1128,1924149,20171015,NA,0.000586233186723066,0
+"129",2016,"Kentucky","KY",21,61,51,"US President","","",TRUE,751,1924149,20171015,NA,0.000390302414210126,0
+"130",2016,"Louisiana","LA",22,72,45,"US President","Trump, Donald J.","republican",FALSE,1178638,2029032,20171015,NA,0.580886846535688,0
+"131",2016,"Louisiana","LA",22,72,45,"US President","Clinton, Hillary","democrat",FALSE,780154,2029032,20171015,NA,0.38449566098514,1
+"132",2016,"Louisiana","LA",22,72,45,"US President","Johnson, Gary","libertarian",FALSE,37978,2029032,20171015,NA,0.018717299677876,0
+"133",2016,"Louisiana","LA",22,72,45,"US President","Other","",FALSE,18231,2029032,20171015,NA,0.00898507268490591,0
+"134",2016,"Louisiana","LA",22,72,45,"US President","Stein, Jill","green",FALSE,14031,2029032,20171015,NA,0.00691512011639048,0
+"135",2016,"Maine","ME",23,11,2,"US President","Clinton, Hillary","democrat",FALSE,357735,771892,20171015,NA,0.46345214097309,1
+"136",2016,"Maine","ME",23,11,2,"US President","Trump, Donald J.","republican",FALSE,335593,771892,20171015,NA,0.434766780844989,0
+"137",2016,"Maine","ME",23,11,2,"US President","Johnson, Gary","libertarian",FALSE,38105,771892,20171015,NA,0.0493657143745498,0
+"138",2016,"Maine","ME",23,11,2,"US President","Blank Vote","",FALSE,23965,771892,20171015,NA,0.0310470894892032,0
+"139",2016,"Maine","ME",23,11,2,"US President","Stein, Jill","green",FALSE,14251,771892,20171015,NA,0.0184624273862147,0
+"140",2016,"Maine","ME",23,11,2,"US President","","unenrolled",FALSE,2243,771892,20171015,NA,0.00290584693195421,0
+"141",2016,"Maryland","MD",24,52,52,"US President","Clinton, Hillary","democrat",FALSE,1677928,2781446,20171015,NA,0.603257442351928,1
+"142",2016,"Maryland","MD",24,52,52,"US President","Trump, Donald J.","republican",FALSE,943169,2781446,20171015,NA,0.339093047285477,0
+"143",2016,"Maryland","MD",24,52,52,"US President","Johnson, Gary","libertarian",FALSE,79605,2781446,20171015,NA,0.0286200055654505,0
+"144",2016,"Maryland","MD",24,52,52,"US President","Stein, Jill","green",FALSE,35945,2781446,20171015,NA,0.0129231342258667,0
+"145",2016,"Maryland","MD",24,52,52,"US President","","",TRUE,33263,2781446,20171015,NA,0.0119588875714287,0
+"146",2016,"Maryland","MD",24,52,52,"US President","Other","",TRUE,10921,2781446,20171015,NA,0.00392637498624816,0
+"147",2016,"Maryland","MD",24,52,52,"US President","","no party affiliation",TRUE,278,2781446,20171015,NA,9.99480126524117e-05,0
+"148",2016,"Maryland","MD",24,52,52,"US President","Trump, Donald J.","republican",TRUE,259,2781446,20171015,NA,9.31170333704124e-05,0
+"149",2016,"Maryland","MD",24,52,52,"US President","Clinton, Hillary","democrat",TRUE,78,2781446,20171015,NA,2.80429675787342e-05,1
+"150",2016,"Massachusetts","MA",25,14,3,"US President","Clinton, Hillary","democrat",FALSE,1995196,3378821,20171015,NA,0.590500650966713,1
+"151",2016,"Massachusetts","MA",25,14,3,"US President","Trump, Donald J.","republican",FALSE,1090893,3378821,20171015,NA,0.322862027908552,0
+"152",2016,"Massachusetts","MA",25,14,3,"US President","Johnson, Gary","libertarian",FALSE,138018,3378821,20171015,NA,0.0408479762615421,0
+"153",2016,"Massachusetts","MA",25,14,3,"US President","Blank Vote","",FALSE,53775,3378821,20171015,NA,0.015915314839111,0
+"154",2016,"Massachusetts","MA",25,14,3,"US President","Other","",FALSE,50488,3378821,20171015,NA,0.0149424902946915,0
+"155",2016,"Massachusetts","MA",25,14,3,"US President","Stein, Jill","green",FALSE,47661,3378821,20171015,NA,0.0141058079134704,0
+"156",2016,"Massachusetts","MA",25,14,3,"US President","","",TRUE,2790,3378821,20171015,NA,0.000825731815920405,0
+"157",2016,"Michigan","MI",26,34,23,"US President","Trump, Donald J.","republican",FALSE,2279543,4799284,20171015,NA,0.474975642199961,0
+"158",2016,"Michigan","MI",26,34,23,"US President","Clinton, Hillary","democrat",FALSE,2268839,4799284,20171015,NA,0.472745309508668,1
+"159",2016,"Michigan","MI",26,34,23,"US President","Johnson, Gary","libertarian",FALSE,172136,4799284,20171015,NA,0.0358670168300105,0
+"160",2016,"Michigan","MI",26,34,23,"US President","Stein, Jill","green",FALSE,51463,4799284,20171015,NA,0.0107230578561302,0
+"161",2016,"Michigan","MI",26,34,23,"US President","Castle, Darrell L.","u.s. taxpayers party",FALSE,16139,4799284,20171015,NA,0.00336279328333143,0
+"162",2016,"Michigan","MI",26,34,23,"US President","","",TRUE,8955,4799284,20171015,NA,0.00186590333058014,0
+"163",2016,"Michigan","MI",26,34,23,"US President","Emidio """"""""Mimi"""""""", Soltysik","natural law",FALSE,2209,4799284,20171015,NA,0.000460276991317872,0
+"164",2016,"Minnesota","MN",27,41,33,"US President","Clinton, Hillary","democrat",FALSE,1367705,2944782,20171015,NA,0.46445033961767,1
+"165",2016,"Minnesota","MN",27,41,33,"US President","Trump, Donald J.","republican",FALSE,1322949,2944782,20171015,NA,0.449251931042773,0
+"166",2016,"Minnesota","MN",27,41,33,"US President","Johnson, Gary","libertarian",FALSE,112972,2944782,20171015,NA,0.0383634510126726,0
+"167",2016,"Minnesota","MN",27,41,33,"US President","McMullin, Evan","independence",FALSE,53075,2944782,20171015,NA,0.0180234054677052,0
+"168",2016,"Minnesota","MN",27,41,33,"US President","Stein, Jill","green",FALSE,36986,2944782,20171015,NA,0.0125598431394922,0
+"169",2016,"Minnesota","MN",27,41,33,"US President","","",TRUE,27247,2944782,20171015,NA,0.00925263737689242,0
+"170",2016,"Minnesota","MN",27,41,33,"US President","Vacek, Dan","legal marijuana now",FALSE,11291,2944782,20171015,NA,0.00383423968225831,0
+"171",2016,"Minnesota","MN",27,41,33,"US President","Castle, Darrell L.","constitution party",FALSE,9456,2944782,20171015,NA,0.00321110357235272,0
+"172",2016,"Minnesota","MN",27,41,33,"US President","Kennedy, Alyson","socialist workers",FALSE,1671,2944782,20171015,NA,0.000567444381281874,0
+"173",2016,"Minnesota","MN",27,41,33,"US President","De La Fuente, Roque """"""""Rocky""""""""","american delta party",FALSE,1430,2944782,20171015,NA,0.000485604706901903,0
+"174",2016,"Mississippi","MS",28,64,46,"US President","Trump, Donald J.","republican",FALSE,700714,1209357,20171015,NA,0.579410380888356,0
+"175",2016,"Mississippi","MS",28,64,46,"US President","Clinton, Hillary","democrat",FALSE,485131,1209357,20171015,NA,0.401147882717841,1
+"176",2016,"Mississippi","MS",28,64,46,"US President","Johnson, Gary","libertarian",FALSE,14435,1209357,20171015,NA,0.011936094966168,0
+"177",2016,"Mississippi","MS",28,64,46,"US President","Castle, Darrell L.","constitution party",FALSE,3987,1209357,20171015,NA,0.00329679325459728,0
+"178",2016,"Mississippi","MS",28,64,46,"US President","Stein, Jill","green",FALSE,3731,1209357,20171015,NA,0.00308511051740718,0
+"179",2016,"Mississippi","MS",28,64,46,"US President","Hedges, James","prohibition",FALSE,715,1209357,20171015,NA,0.000591223269886394,0
+"180",2016,"Mississippi","MS",28,64,46,"US President","De La Fuente, Roque """"""""Rocky""""""""","american delta party",FALSE,644,1209357,20171015,NA,0.000532514385743829,0
+"181",2016,"Missouri","MO",29,43,34,"US President","Trump, Donald J.","republican",FALSE,1594511,2808605,20171015,NA,0.567723478381617,0
+"182",2016,"Missouri","MO",29,43,34,"US President","Clinton, Hillary","democrat",FALSE,1071068,2808605,20171015,NA,0.381352308352367,1
+"183",2016,"Missouri","MO",29,43,34,"US President","Johnson, Gary","libertarian",FALSE,97359,2808605,20171015,NA,0.034664539869437,0
+"184",2016,"Missouri","MO",29,43,34,"US President","Stein, Jill","green",FALSE,25419,2808605,20171015,NA,0.00905040046571163,0
+"185",2016,"Missouri","MO",29,43,34,"US President","Castle, Darrell L.","constitution party",FALSE,13092,2808605,20171015,NA,0.00466138883894318,0
+"186",2016,"Missouri","MO",29,43,34,"US President","","",TRUE,7156,2808605,20171015,NA,0.00254788409192464,0
+"187",2016,"Montana","MT",30,81,64,"US President","Trump, Donald J.","republican",FALSE,279240,494526,20171015,NA,0.564661918685772,0
+"188",2016,"Montana","MT",30,81,64,"US President","Clinton, Hillary","democrat",FALSE,177709,494526,20171015,NA,0.359352187751503,1
+"189",2016,"Montana","MT",30,81,64,"US President","Johnson, Gary","libertarian",FALSE,28037,494526,20171015,NA,0.0566946935044871,0
+"190",2016,"Montana","MT",30,81,64,"US President","Stein, Jill","green",FALSE,7970,494526,20171015,NA,0.016116442815949,0
+"191",2016,"Montana","MT",30,81,64,"US President","De La Fuente, Roque """"""""Rocky""""""""","american delta party",FALSE,1570,494526,20171015,NA,0.00317475724228858,0
+"192",2016,"Nebraska","NE",31,46,35,"US President","Trump, Donald J.","republican",FALSE,495961,844227,20171015,NA,0.587473511271258,0
+"193",2016,"Nebraska","NE",31,46,35,"US President","Clinton, Hillary","democrat",FALSE,284494,844227,20171015,NA,0.336987563771355,1
+"194",2016,"Nebraska","NE",31,46,35,"US President","Johnson, Gary","libertarian",FALSE,38946,844227,20171015,NA,0.0461321421845073,0
+"195",2016,"Nebraska","NE",31,46,35,"US President","","",TRUE,16051,844227,20171015,NA,0.019012658917566,0
+"196",2016,"Nebraska","NE",31,46,35,"US President","Stein, Jill","nominated by petition",FALSE,8775,844227,20171015,NA,0.0103941238553138,0
+"197",2016,"Nevada","NV",32,88,65,"US President","Clinton, Hillary","democrat",FALSE,539260,1125385,20171015,NA,0.47917823678119,1
+"198",2016,"Nevada","NV",32,88,65,"US President","Trump, Donald J.","republican",FALSE,512058,1125385,20171015,NA,0.455006953176024,0
+"199",2016,"Nevada","NV",32,88,65,"US President","Johnson, Gary","libertarian",FALSE,37384,1125385,20171015,NA,0.0332188539921893,0
+"200",2016,"Nevada","NV",32,88,65,"US President","None Of The Above","",FALSE,28863,1125385,20171015,NA,0.0256472229503681,0
+"201",2016,"Nevada","NV",32,88,65,"US President","Kopitke, Kyle Kenley","independent american",FALSE,5268,1125385,20171015,NA,0.00468106470230188,0
+"202",2016,"Nevada","NV",32,88,65,"US President","De La Fuente, Roque """"""""Rocky""""""""","no party affiliation",FALSE,2552,1125385,20171015,NA,0.00226766839792604,0
+"203",2016,"New Hampshire","NH",33,12,4,"US President","Clinton, Hillary","democrat",FALSE,348526,744296,20171015,NA,0.468262626696906,1
+"204",2016,"New Hampshire","NH",33,12,4,"US President","Trump, Donald J.","republican",FALSE,345790,744296,20171015,NA,0.464586669819534,0
+"205",2016,"New Hampshire","NH",33,12,4,"US President","Johnson, Gary","libertarian",FALSE,30777,744296,20171015,NA,0.0413504842159571,0
+"206",2016,"New Hampshire","NH",33,12,4,"US President","","",TRUE,9618,744296,20171015,NA,0.012922278233391,0
+"207",2016,"New Hampshire","NH",33,12,4,"US President","Stein, Jill","green",FALSE,6496,744296,20171015,NA,0.00872771048077647,0
+"208",2016,"New Hampshire","NH",33,12,4,"US President","Scattering","",TRUE,2411,744296,20171015,NA,0.00323930264303449,0
+"209",2016,"New Hampshire","NH",33,12,4,"US President","De La Fuente, Roque """"""""Rocky""""""""","american delta party",FALSE,678,744296,20171015,NA,0.000910927910401238,0
+"210",2016,"New Jersey","NJ",34,22,12,"US President","Clinton, Hillary","democrat",FALSE,2148278,3874046,20171015,NA,0.554530844496942,1
+"211",2016,"New Jersey","NJ",34,22,12,"US President","Trump, Donald J.","republican",FALSE,1601933,3874046,20171015,NA,0.413503866500295,0
+"212",2016,"New Jersey","NJ",34,22,12,"US President","Johnson, Gary","libertarian",FALSE,72477,3874046,20171015,NA,0.0187083478100157,0
+"213",2016,"New Jersey","NJ",34,22,12,"US President","Stein, Jill","green",FALSE,37772,3874046,20171015,NA,0.00975001329359538,0
+"214",2016,"New Jersey","NJ",34,22,12,"US President","Castle, Darrell L.","constitution party",FALSE,6161,3874046,20171015,NA,0.00159032701212118,0
+"215",2016,"New Jersey","NJ",34,22,12,"US President","Kennedy, Alyson","socialist workers",FALSE,2156,3874046,20171015,NA,0.000556524109419454,0
+"216",2016,"New Jersey","NJ",34,22,12,"US President","De La Fuente, Roque """"""""Rocky""""""""","american delta party",FALSE,1838,3874046,20171015,NA,0.000474439384560741,0
+"217",2016,"New Jersey","NJ",34,22,12,"US President","Moorehead, Monica","workers world party",FALSE,1749,3874046,20171015,NA,0.000451465986722925,0
+"218",2016,"New Jersey","NJ",34,22,12,"US President","La Riva, Gloria Estella","socialism and liberation party",FALSE,1682,3874046,20171015,NA,0.000434171406328164,0
+"219",2016,"New Mexico","NM",35,85,66,"US President","Clinton, Hillary","democrat",FALSE,385234,798319,20171015,NA,0.482556471786341,1
+"220",2016,"New Mexico","NM",35,85,66,"US President","Trump, Donald J.","republican",FALSE,319667,798319,20171015,NA,0.400425143332427,0
+"221",2016,"New Mexico","NM",35,85,66,"US President","Johnson, Gary","libertarian",FALSE,74541,798319,20171015,NA,0.0933724488581632,0
+"222",2016,"New Mexico","NM",35,85,66,"US President","Stein, Jill","green",FALSE,9879,798319,20171015,NA,0.0123747524485826,0
+"223",2016,"New Mexico","NM",35,85,66,"US President","McMullin, Evan","better for america",FALSE,5825,798319,20171015,NA,0.00729658194280732,0
+"224",2016,"New Mexico","NM",35,85,66,"US President","Castle, Darrell L.","constitution party",FALSE,1514,798319,20171015,NA,0.00189648498908331,0
+"225",2016,"New Mexico","NM",35,85,66,"US President","La Riva, Gloria Estella","socialism and liberation party",FALSE,1184,798319,20171015,NA,0.001483116398332,0
+"226",2016,"New Mexico","NM",35,85,66,"US President","De La Fuente, Roque """"""""Rocky""""""""","american delta party",FALSE,475,798319,20171015,NA,0.000595000244263258,0
+"227",2016,"New York","NY",36,21,13,"US President","Clinton, Hillary","democrat",FALSE,4379789,7802084,20171015,NA,0.56136142599849,1
+"228",2016,"New York","NY",36,21,13,"US President","Trump, Donald J.","republican",FALSE,2527142,7802084,20171015,NA,0.323906023057429,0
+"229",2016,"New York","NY",36,21,13,"US President","Trump, Donald J.","conservative",FALSE,292392,7802084,20171015,NA,0.0374761409900227,0
+"230",2016,"New York","NY",36,21,13,"US President","Clinton, Hillary","working families",FALSE,140041,7802084,20171015,NA,0.0179491787066122,0
+"231",2016,"New York","NY",36,21,13,"US President","Johnson, Gary","independence",FALSE,119156,7802084,20171015,NA,0.0152723298031654,0
+"232",2016,"New York","NY",36,21,13,"US President","Stein, Jill","green",FALSE,107934,7802084,20171015,NA,0.0138339961476959,0
+"233",2016,"New York","NY",36,21,13,"US President","Blank Vote","",FALSE,77179,7802084,20171015,NA,0.00989210062337191,0
+"234",2016,"New York","NY",36,21,13,"US President","Johnson, Gary","libertarian",FALSE,57442,7802084,20171015,NA,0.00736239189426825,0
+"235",2016,"New York","NY",36,21,13,"US President","Scattering","",FALSE,48447,7802084,20171015,NA,0.00620949479651847,0
+"236",2016,"New York","NY",36,21,13,"US President","Clinton, Hillary","women's equality",FALSE,36294,7802084,20171015,NA,0.00465183404844142,0
+"237",2016,"New York","NY",36,21,13,"US President","","",TRUE,12816,7802084,20171015,NA,0.00164263804388674,0
+"238",2016,"New York","NY",36,21,13,"US President","Void Vote","",FALSE,3452,7802084,20171015,NA,0.000442445890098081,0
+"239",2016,"North Carolina","NC",37,56,47,"US President","Trump, Donald J.","republican",FALSE,2362631,4741564,20171015,NA,0.498280946961804,0
+"240",2016,"North Carolina","NC",37,56,47,"US President","Clinton, Hillary","democrat",FALSE,2189316,4741564,20171015,NA,0.461728661682095,1
+"241",2016,"North Carolina","NC",37,56,47,"US President","Johnson, Gary","libertarian",FALSE,130126,4741564,20171015,NA,0.0274436873571674,0
+"242",2016,"North Carolina","NC",37,56,47,"US President","Scattering","",TRUE,47386,4741564,20171015,NA,0.00999374889804292,0
+"243",2016,"North Carolina","NC",37,56,47,"US President","","",TRUE,12105,4741564,20171015,NA,0.00255295510089076,0
+"244",2016,"North Dakota","ND",38,44,36,"US President","Trump, Donald J.","republican",FALSE,216794,344360,20171015,NA,0.629556278313393,0
+"245",2016,"North Dakota","ND",38,44,36,"US President","Clinton, Hillary","democrat",FALSE,93758,344360,20171015,NA,0.27226739458706,1
+"246",2016,"North Dakota","ND",38,44,36,"US President","Johnson, Gary","libertarian",FALSE,21434,344360,20171015,NA,0.0622430015100476,0
+"247",2016,"North Dakota","ND",38,44,36,"US President","","",TRUE,6397,344360,20171015,NA,0.0185764897200604,0
+"248",2016,"North Dakota","ND",38,44,36,"US President","Stein, Jill","green",FALSE,3780,344360,20171015,NA,0.010976884655593,0
+"249",2016,"North Dakota","ND",38,44,36,"US President","Castle, Darrell L.","constitution party",FALSE,1833,344360,20171015,NA,0.00532291787664073,0
+"250",2016,"North Dakota","ND",38,44,36,"US President","De La Fuente, Roque """"""""Rocky""""""""","american delta party",FALSE,364,344360,20171015,NA,0.00105703333720525,0
+"251",2016,"Ohio","OH",39,31,24,"US President","Trump, Donald J.","republican",FALSE,2841005,5496487,20171015,NA,0.516876506757862,0
+"252",2016,"Ohio","OH",39,31,24,"US President","Clinton, Hillary","democrat",FALSE,2394164,5496487,20171015,NA,0.4355807627672,1
+"253",2016,"Ohio","OH",39,31,24,"US President","","no party affiliation",FALSE,198733,5496487,20171015,NA,0.0361563667848209,0
+"254",2016,"Ohio","OH",39,31,24,"US President","Stein, Jill","green",FALSE,46271,5496487,20171015,NA,0.00841828607981789,0
+"255",2016,"Ohio","OH",39,31,24,"US President","","",TRUE,16314,5496487,20171015,NA,0.00296807761029909,0
+"256",2016,"Oklahoma","OK",40,73,53,"US President","Trump, Donald J.","republican",FALSE,949136,1452992,20171015,NA,0.653228648196274,0
+"257",2016,"Oklahoma","OK",40,73,53,"US President","Clinton, Hillary","democrat",FALSE,420375,1452992,20171015,NA,0.289316802845439,1
+"258",2016,"Oklahoma","OK",40,73,53,"US President","Johnson, Gary","libertarian",FALSE,83481,1452992,20171015,NA,0.0574545489582875,0
+"259",2016,"Oregon","OR",41,92,72,"US President","Clinton, Hillary","democrat",FALSE,1002106,2001336,20171015,NA,0.500718520028621,1
+"260",2016,"Oregon","OR",41,92,72,"US President","Trump, Donald J.","republican",FALSE,782403,2001336,20171015,NA,0.390940351844968,0
+"261",2016,"Oregon","OR",41,92,72,"US President","Johnson, Gary","libertarian",FALSE,94231,2001336,20171015,NA,0.0470840478560322,0
+"262",2016,"Oregon","OR",41,92,72,"US President","Other","",FALSE,72594,2001336,20171015,NA,0.0362727697897804,0
+"263",2016,"Oregon","OR",41,92,72,"US President","Stein, Jill","green",FALSE,50002,2001336,20171015,NA,0.024984310480599,0
+"264",2016,"Pennsylvania","PA",42,23,14,"US President","Trump, Donald J.","republican",FALSE,2970733,6115402,20171015,NA,0.48577885803746,0
+"265",2016,"Pennsylvania","PA",42,23,14,"US President","Clinton, Hillary","democrat",FALSE,2926441,6115402,20171015,NA,0.478536161645629,1
+"266",2016,"Pennsylvania","PA",42,23,14,"US President","Johnson, Gary","libertarian",FALSE,146715,6115402,20171015,NA,0.0239910638744599,0
+"267",2016,"Pennsylvania","PA",42,23,14,"US President","Stein, Jill","green",FALSE,49941,6115402,20171015,NA,0.00816642961492965,0
+"268",2016,"Pennsylvania","PA",42,23,14,"US President","Castle, Darrell L.","constitution party",FALSE,21572,6115402,20171015,NA,0.00352748682752172,0
+"269",2016,"Rhode Island","RI",44,15,5,"US President","Clinton, Hillary","democrat",FALSE,252525,464144,20171015,NA,0.544066065703747,1
+"270",2016,"Rhode Island","RI",44,15,5,"US President","Trump, Donald J.","republican",FALSE,180543,464144,20171015,NA,0.388980574993967,0
+"271",2016,"Rhode Island","RI",44,15,5,"US President","Johnson, Gary","libertarian",FALSE,14746,464144,20171015,NA,0.0317703126615878,0
+"272",2016,"Rhode Island","RI",44,15,5,"US President","","",TRUE,9439,464144,20171015,NA,0.0203363611293047,0
+"273",2016,"Rhode Island","RI",44,15,5,"US President","Stein, Jill","green",FALSE,6220,464144,20171015,NA,0.0134010134785756,0
+"274",2016,"Rhode Island","RI",44,15,5,"US President","De La Fuente, Roque """"""""Rocky""""""""","american delta party",FALSE,671,464144,20171015,NA,0.0014456720328174,0
+"275",2016,"South Carolina","SC",45,57,48,"US President","Trump, Donald J.","republican",FALSE,1155389,2103027,20171015,NA,0.549393326856954,0
+"276",2016,"South Carolina","SC",45,57,48,"US President","Clinton, Hillary","democrat",FALSE,855373,2103027,20171015,NA,0.406734197896651,1
+"277",2016,"South Carolina","SC",45,57,48,"US President","Johnson, Gary","libertarian",FALSE,49204,2103027,20171015,NA,0.0233967514444655,0
+"278",2016,"South Carolina","SC",45,57,48,"US President","McMullin, Evan","independence",FALSE,21016,2103027,20171015,NA,0.00999321454265685,0
+"279",2016,"South Carolina","SC",45,57,48,"US President","Stein, Jill","green",FALSE,13034,2103027,20171015,NA,0.0061977330771312,0
+"280",2016,"South Carolina","SC",45,57,48,"US President","Castle, Darrell L.","constitution party",FALSE,5765,2103027,20171015,NA,0.00274128672622843,0
+"281",2016,"South Carolina","SC",45,57,48,"US President","Skewes, Peter","american",FALSE,3246,2103027,20171015,NA,0.00154348945591283,0
+"282",2016,"South Dakota","SD",46,45,37,"US President","Trump, Donald J.","republican",FALSE,227721,370093,20171015,NA,0.615307503789588,0
+"283",2016,"South Dakota","SD",46,45,37,"US President","Clinton, Hillary","democrat",FALSE,117458,370093,20171015,NA,0.31737428159949,1
+"284",2016,"South Dakota","SD",46,45,37,"US President","Johnson, Gary","libertarian",FALSE,20850,370093,20171015,NA,0.0563371909222817,0
+"285",2016,"South Dakota","SD",46,45,37,"US President","Castle, Darrell L.","constitution party",FALSE,4064,370093,20171015,NA,0.0109810236886404,0
+"286",2016,"Tennessee","TN",47,62,54,"US President","Trump, Donald J.","republican",FALSE,1522925,2508027,20171015,NA,0.607220336942146,0
+"287",2016,"Tennessee","TN",47,62,54,"US President","Clinton, Hillary","democrat",FALSE,870695,2508027,20171015,NA,0.347163327986501,1
+"288",2016,"Tennessee","TN",47,62,54,"US President","","independent",FALSE,100618,2508027,20171015,NA,0.0401183878801943,0
+"289",2016,"Tennessee","TN",47,62,54,"US President","","",TRUE,13789,2508027,20171015,NA,0.00549794719115863,0
+"290",2016,"Texas","TX",48,74,49,"US President","Trump, Donald J.","republican",FALSE,4685047,8969226,20171015,NA,0.522346855793354,0
+"291",2016,"Texas","TX",48,74,49,"US President","Clinton, Hillary","democrat",FALSE,3877868,8969226,20171015,NA,0.43235257981012,1
+"292",2016,"Texas","TX",48,74,49,"US President","Johnson, Gary","libertarian",FALSE,283492,8969226,20171015,NA,0.0316071866178865,0
+"293",2016,"Texas","TX",48,74,49,"US President","Stein, Jill","green",FALSE,71558,8969226,20171015,NA,0.00797816890777421,0
+"294",2016,"Texas","TX",48,74,49,"US President","","",TRUE,51261,8969226,20171015,NA,0.00571520887086578,0
+"295",2016,"Utah","UT",49,87,67,"US President","Trump, Donald J.","republican",FALSE,515211,1131317,20171015,NA,0.455408165881004,0
+"296",2016,"Utah","UT",49,87,67,"US President","Clinton, Hillary","democrat",FALSE,310674,1131317,20171015,NA,0.27461268592269,1
+"297",2016,"Utah","UT",49,87,67,"US President","McMullin, Evan","no party affiliation",FALSE,255060,1131317,20171015,NA,0.225454050456238,0
+"298",2016,"Utah","UT",49,87,67,"US President","Johnson, Gary","libertarian",FALSE,39608,1131317,20171015,NA,0.0350105231336575,0
+"299",2016,"Utah","UT",49,87,67,"US President","Castle, Darrell L.","constitution party",FALSE,8032,1131317,20171015,NA,0.00709969000731006,0
+"300",2016,"Utah","UT",49,87,67,"US President","Kopitke, Kyle Kenley","independent american",FALSE,2732,1131317,20171015,NA,0.00241488459909999,0
+"301",2016,"Vermont","VT",50,13,6,"US President","Clinton, Hillary","democrat",FALSE,178573,320467,20171015,NA,0.557227421232139,1
+"302",2016,"Vermont","VT",50,13,6,"US President","Trump, Donald J.","republican",FALSE,95369,320467,20171015,NA,0.297593824013081,0
+"303",2016,"Vermont","VT",50,13,6,"US President","","",TRUE,22899,320467,20171015,NA,0.0714550952204127,0
+"304",2016,"Vermont","VT",50,13,6,"US President","Johnson, Gary","libertarian",FALSE,10078,320467,20171015,NA,0.0314478557854631,0
+"305",2016,"Vermont","VT",50,13,6,"US President","Stein, Jill","green",FALSE,6758,320467,20171015,NA,0.0210879747368684,0
+"306",2016,"Vermont","VT",50,13,6,"US President","Blank Vote","",FALSE,4574,320467,20171015,NA,0.0142729204567085,0
+"307",2016,"Vermont","VT",50,13,6,"US President","De La Fuente, Roque """"""""Rocky""""""""","independent",FALSE,1063,320467,20171015,NA,0.00331703420320969,0
+"308",2016,"Vermont","VT",50,13,6,"US President","Void Vote","",FALSE,826,320467,20171015,NA,0.00257748847775278,0
+"309",2016,"Vermont","VT",50,13,6,"US President","La Riva, Gloria Estella","liberty union party",FALSE,327,320467,20171015,NA,0.0010203858743646,0
+"310",2016,"Virginia","VA",51,54,40,"US President","Clinton, Hillary","democrat",FALSE,1981473,3982752,20171015,NA,0.497513528334177,1
+"311",2016,"Virginia","VA",51,54,40,"US President","Trump, Donald J.","republican",FALSE,1769443,3982752,20171015,NA,0.44427647013924,0
+"312",2016,"Virginia","VA",51,54,40,"US President","Johnson, Gary","libertarian",FALSE,118274,3982752,20171015,NA,0.0296965515301982,0
+"313",2016,"Virginia","VA",51,54,40,"US President","McMullin, Evan","independent",FALSE,54054,3982752,20171015,NA,0.0135720225612843,0
+"314",2016,"Virginia","VA",51,54,40,"US President","","",TRUE,31870,3982752,20171015,NA,0.00800200464402504,0
+"315",2016,"Virginia","VA",51,54,40,"US President","Stein, Jill","green",FALSE,27638,3982752,20171015,NA,0.00693942279107512,0
+"316",2016,"Washington","WA",53,91,73,"US President","Clinton, Hillary","democrat",FALSE,1742718,3317019,20171015,NA,0.525386800618266,1
+"317",2016,"Washington","WA",53,91,73,"US President","Trump, Donald J.","republican",FALSE,1221747,3317019,20171015,NA,0.368326801866375,0
+"318",2016,"Washington","WA",53,91,73,"US President","Johnson, Gary","libertarian",FALSE,160879,3317019,20171015,NA,0.0485010788301182,0
+"319",2016,"Washington","WA",53,91,73,"US President","","",TRUE,107805,3317019,20171015,NA,0.0325005675276506,0
+"320",2016,"Washington","WA",53,91,73,"US President","Stein, Jill","green",FALSE,58417,3317019,20171015,NA,0.0176112949609273,0
+"321",2016,"Washington","WA",53,91,73,"US President","Castle, Darrell L.","constitution party",FALSE,17623,3317019,20171015,NA,0.00531290294086347,0
+"322",2016,"Washington","WA",53,91,73,"US President","Kennedy, Alyson","socialist workers",FALSE,4307,3317019,20171015,NA,0.00129845502844572,0
+"323",2016,"Washington","WA",53,91,73,"US President","La Riva, Gloria Estella","socialism and liberation party",FALSE,3523,3317019,20171015,NA,0.00106209822735414,0
+"324",2016,"West Virginia","WV",54,55,56,"US President","Trump, Donald J.","republican",FALSE,489371,713051,20171015,NA,0.686305748116194,0
+"325",2016,"West Virginia","WV",54,55,56,"US President","Clinton, Hillary","democrat",FALSE,188794,713051,20171015,NA,0.264769280177715,1
+"326",2016,"West Virginia","WV",54,55,56,"US President","Johnson, Gary","libertarian",FALSE,23004,713051,20171015,NA,0.0322613669989945,0
+"327",2016,"West Virginia","WV",54,55,56,"US President","Stein, Jill","green",FALSE,8075,713051,20171015,NA,0.0113245756614884,0
+"328",2016,"West Virginia","WV",54,55,56,"US President","Castle, Darrell L.","constitution party",FALSE,3807,713051,20171015,NA,0.00533902904560824,0
+"329",2016,"Wisconsin","WI",55,35,25,"US President","Trump, Donald J.","republican",FALSE,1405284,2976150,20171015,NA,0.472181845673101,0
+"330",2016,"Wisconsin","WI",55,35,25,"US President","Clinton, Hillary","democrat",FALSE,1382536,2976150,20171015,NA,0.464538413722427,1
+"331",2016,"Wisconsin","WI",55,35,25,"US President","Johnson, Gary","libertarian",FALSE,106674,2976150,20171015,NA,0.0358429514641399,0
+"332",2016,"Wisconsin","WI",55,35,25,"US President","Stein, Jill","green",FALSE,31072,2976150,20171015,NA,0.0104403339885422,0
+"333",2016,"Wisconsin","WI",55,35,25,"US President","Scattering","",FALSE,22764,2976150,20171015,NA,0.00764880802378912,0
+"334",2016,"Wisconsin","WI",55,35,25,"US President","","",TRUE,12386,2976150,20171015,NA,0.00416175259983536,0
+"335",2016,"Wisconsin","WI",55,35,25,"US President","Castle, Darrell L.","constitution party",FALSE,12162,2976150,20171015,NA,0.00408648757623104,0
+"336",2016,"Wisconsin","WI",55,35,25,"US President","Moorehead, Monica","workers world party",FALSE,1770,2976150,20171015,NA,0.000594728088302001,0
+"337",2016,"Wisconsin","WI",55,35,25,"US President","De La Fuente, Roque """"""""Rocky""""""""","american delta party",FALSE,1502,2976150,20171015,NA,0.000504678863632545,0
+"338",2016,"Wyoming","WY",56,83,68,"US President","Trump, Donald J.","republican",FALSE,174419,258788,20171015,NA,0.673984110546084,0
+"339",2016,"Wyoming","WY",56,83,68,"US President","Clinton, Hillary","democrat",FALSE,55973,258788,20171015,NA,0.21628900876393,1
+"340",2016,"Wyoming","WY",56,83,68,"US President","Johnson, Gary","libertarian",FALSE,13287,258788,20171015,NA,0.0513431843825834,0
+"341",2016,"Wyoming","WY",56,83,68,"US President","","",TRUE,6904,258788,20171015,NA,0.0266782076448676,0
+"342",2016,"Wyoming","WY",56,83,68,"US President","","independent",FALSE,3224,258788,20171015,NA,0.0124580737901294,0
+"343",2016,"Wyoming","WY",56,83,68,"US President","Blank Vote","",FALSE,2661,258788,20171015,NA,0.0102825478770268,0
+"344",2016,"Wyoming","WY",56,83,68,"US President","Castle, Darrell L.","constitution party",FALSE,2042,258788,20171015,NA,0.00789062862265638,0
+"345",2016,"Wyoming","WY",56,83,68,"US President","Over Vote","",FALSE,278,258788,20171015,NA,0.00107423837272207,0
