@@ -75,12 +75,5 @@ tm_shape(ak_map_votes) + tm_fill("percent_dem")
 #Drop Alaska from SPDF
 pres_2016_co_map_ma <- pres_2016_co_map[pres_2016_co_map$STATEFP != "02",]
 
-#Wanted the U.S. minus map AK joined with AK map. Exported both of the shapefiles, so I drop them in QGIS, where the merge is far esier.
-writeOGR(ak_vote_map, ".", "ak_vote_map", driver="ESRI Shapefile" )
-writeOGR(pres_2016_co_map_ma, ".", "all_county_votes", driver="ESRI Shapefile")
-
-#Perform merge in QGIS of polygons. Import merged file back to R.
-
-vote_counts_2016_all <- readOGR(".", "nation_county_vote")
-
-                  
+#Combine U.S. minus AK map with AK map
+vote_counts_by_county_2016 <- bind(pres_2016_co_map_ma, ak_vote_map)
