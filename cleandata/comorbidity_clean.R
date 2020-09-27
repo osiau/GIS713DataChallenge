@@ -32,6 +32,17 @@ comorbidity_clean <- comorbidity_table[State %in% states_to_exclude == 0,
                                          deaths_with_comorbidity=`Number of COVID-19 Deaths`)]
 comorbidity_clean$deaths_with_comorbidity[is.na(comorbidity_clean$deaths_with_comorbidity)] = 0
 
+# Also make columns with percentages of COVID deaths associated with each comorbidity
+comorbidity_covidtotals <- comorbidity_clean[condition == "COVID-19"]
+comorbidity_clean$deaths <- 0 # create a new column for these totals
+for (n in 1:nrow(comorbidity_covidtotals)) {
+  comorbidity_clean$deaths[comorbidity_clean$state == comorbidity_covidtotals$state[n] &
+                             comorbidity_clean$age_group == comorbidity_covidtotals$age_group[n]] = 
+    comorbidity_covidtotals$deaths_with_comorbidity[n]
+}
+comorbidity_clean <- comorbidity_clean[,pct_with_comorbidity:=deaths_with_comorbidity/deaths]
+# lots of dividing by 0 happens here
+
 # and this makes another table, without the COVID total deaths
 # might be useful for quickly comparing comorbidities themselves
 comorbidity_clean_nocovidtotals <- comorbidity_clean[condition != "COVID-19"]
