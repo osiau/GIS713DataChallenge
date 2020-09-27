@@ -6,16 +6,17 @@ library(tidycensus)
 library(leaflet)
 library(RColorBrewer)
 library(mapview)
+library(shiny)
 
-setwd("Datasources")
+setwd("cleandata")
+#getwd()
 usashp <- shapefile("cb_2018_us_state_20m/cb_2018_us_state_20m.prj") 
 
-LC <- fread("legislative_control.csv", header = TRUE, drop=c("Senateother","Houseother","V14","V15","V16"))
-LC <- LC[-c(51:57,59,60,62,63),]
-#LC$StateControl <- gsub("N/A","",LC$StateControl)
+LC <- fread("legislative_control.csv", header = TRUE, drop=c("Senateother","Houseother"))
 LC[LC == "N/A"] <- NA
 setnames(LC, "STATE", "NAME")
 control <- merge(usashp,LC,by="NAME") #merged file
+
 #overlay parties
 red <-subset(control, StateControl == "Rep")
 blue <-subset(control, StateControl == "Dem")
@@ -25,13 +26,30 @@ other <- subset(control, StateControl == "NPP")
 collist <- c('blue','yellow','green','red')
 controlpal <- colorFactor(collist, control$StateControl)
 
+#UI stuff using fluidPage() for now TO DO: figure out how to make width of panel the whole page :)
+ui <- navbarPage(title = "What did the blue do?", #there's also a fixed page! #there's also navbarpage!! and navbar menu!!! AND SHINYDASHBOARD!!!!
+    #tabsetPanel(id='my_tabsetPanel', #since im using navbarPage() don't need this, reenable if using fluid or fixed
+    tabPanel('Health Outcomes',
+             leafletOutput('mymap', height = "90vh")
+    ) 
+    ,tabPanel('Economic Outcomes', 
+             leafletOutput('mymap2'))
+     
+  #), style='width: 1000px; height: 1000px' #end tabsetpanel()
+    #leafletOutput("mymap"), #for just one map no tabs
+  #p()
+  #actionButton("recalc", "New points") #action buttons if you need to recalculate 
+)
 
 labels <- sprintf(
   "<strong>%s</strong><br/> Governor: %s",
   control$NAME, control$Gov.Party
 ) %>% lapply(htmltools::HTML)
 
-m <- leaflet(control) %>%
+server <- function(input, output, session) {
+
+  output$mymap <- renderLeaflet({
+    m <- leaflet(control) %>% #begin leaflet map
     #all states
     addPolygons(stroke = FALSE, smoothFactor = 0.2, fillOpacity = 1, 
         fillColor = ~controlpal(StateControl), color = "white", opacity = 1, dashArray = "3", group = "all", 
@@ -55,6 +73,12 @@ m <- leaflet(control) %>%
         title = "Party Control") %>%
     addTiles(group = "OSM") %>%
     addLayersControl(baseGroups = c("OSM"), 
-                   overlayGroups = c("all","red","blue","divided","other"))
-mapshot(m, url = paste0(getwd(), "/map.html"))
+                   overlayGroups = c("all","red","blue","divided","other")) #endleaflet
+}) #end renderleaflet
+} #end server
+
+shinyApp(ui, server)
+
+
+#mapshot(m, url = paste0(getwd(), "/map.html")) #for exporting
 
