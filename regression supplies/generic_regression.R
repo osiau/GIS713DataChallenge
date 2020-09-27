@@ -1,7 +1,7 @@
 # Generic regressions script
 
 data_independent <- fread(file.path(wd,"Datasources/file.csv"),stringsAsFactors=TRUE) # change to csv/rds name
-data_dependent <- fread(file.path(wd,"Datasources/file.csv"),stringsAsFactors=TRUE) # change to csv/rds name
+data_dependent <- data_dependent <- readRDS(file.path(wd,"Datasources/dependent_vars.RDS"))
 
 ## if your data is not named properly, you may need to rename something to geoID:
 # setnames(data, "oldname", "geoID")
