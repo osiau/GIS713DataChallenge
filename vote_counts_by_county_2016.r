@@ -12,13 +12,13 @@ sp1 <- readOGR(".../datachallenge/Datasources/cb_2015_us_county_20m", "cb_2015_u
 sp2 <- sp1[sp1$STATEFP!="72",]
 
 #Read in county vote counts
-co_pres <- fread("G:/.../datachallenge/Datasources/countypres_2000-2016.csv")
+co_pres16 <- fread("https://github.ncsu.edu/chaedri/Data-Challenge-GIS713/blob/master/cleandata/county_pres_2016.csv")
 
 #Fix FIPS part I
 co_pres$FIPS <- as.character(co_pres$FIPS)
 
 #Subset for 2016
-co_pres16 <- co_pres[ year == "2016" & (party == "democrat" | party == "republican"),]
+co_pres16 <- co_pres[ party == "democrat" | party == "republican"),]
 
 #Recast from long to wide to have candidate counts/percentages on one row. Can't merge with spatial object otherwise.				  
 co_pres16 <- dcast(co_pres16, year+state+state_po+county+FIPS+office+totalvotes~candidate, value.var="candidatevotes")
