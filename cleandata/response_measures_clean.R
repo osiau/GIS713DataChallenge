@@ -1,8 +1,6 @@
 # THIS SCRIPT gives you clean data about non-pharmaceutical response measures taken by state governments
 # it does nothing however to clean up government spending :(
-# The final clean data object is: covid_measures
-# You can use it to see how many measures were instated and on what timelines, but there is quite 
-# a mix of measures included (columns: Measure_L1, MeasureL2, Measure_L3, Measure_L4.
+# The final clean data object is: covid_measures OR covid_measures_long OR key_measures (a subset list of measures)
 
 # So far this is just cleaned to be interoperable with state/dates, next step will be to see how 
 # to classify the measure data
@@ -32,3 +30,23 @@ covid_measures <- merge(covid_measures,data_states,by="state", all.x=TRUE)
 covid_measures$date <- as.Date(covid_measures$date, format="%m/%d/%y")
 
 # that's it
+
+# long format
+
+measures <- c("Measure_L1","Measure_L2","Measure_L3","Measure_L4")
+covid_measures_long <- as.data.table(tidyr::gather(data=covid_measures,key="number",
+                                                 value="measure",measures,factor_key=TRUE))
+
+covid_measures_long[,month:=month(date)]
+covid_measures_long <- covid_measures_long[,.(state,stateFIPS,date,month,measure)]
+
+covid_measures_long[,.N,by=.(month,state)][order(-N)]
+cml <- covid_measures_long
+summary(as.factor(cml$measure))
+
+key_measures <- covid_measures_long[measure %in% c("Mass gathering cancellation","Small gathering cancellation","Closure of educational institutions","Travel restrictions",
+  "Declare state of emergency","Closure of restaurants/bars/cafes","Closure of non-essential shops","Complete closure of primary and secondary schools",
+  "Complete closure of kindergartens","Quarantine","National lockdown","Individual movement restrictions","Stay-at-home Order",
+  "Mandatory home office","Face masks"),]
+
+
