@@ -46,8 +46,9 @@ pres_2016_co_map <- merge(sp2, pres_2016_co, by.x="GEOID", by.y="FIPS", all.x = 
 
 tm_shape(pres_2016_co_map) + tm_fill("percent_dem")
 
-#Import Alaska map of voting districts, which are not the same as counties when it comes to vote counts.
-alp1 <- readOGR("D:/jwindoc/NCSU_classes/Datamining/DC/2013-HD-ProclamationPlan", "2013ProclamationPlan")
+#Import Alaska map of voting districts, which are not the same as counties when it comes to vote counts. "---"is a local directory 
+#for me, but this file will be added to Google or Github soone.
+alp1 <- readOGR("---/2013-HD-ProclamationPlan", "2013ProclamationPlan")
 
 mepg <- make_EPSG()
 
