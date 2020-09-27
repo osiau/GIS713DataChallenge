@@ -1,8 +1,3 @@
-<!-- to knit:
-knitr::knit(input="index.Rmd",output="index.md")
- -->
-
-
 ---
 layout: post
 title: Test Map
@@ -20,25 +15,7 @@ A brief description of our findings.
 ## Map
 Check back later for a slick map.
 
-
-```
-## PhantomJS not found. You can install it with webshot::install_phantomjs(). If it is installed, please make sure the phantomjs executable can be found via the PATH variable.
-```
-
-```
-## Warning in normalizePath(path.expand(path), winslash, mustWork):
-## path[1]="webshotab5c59fa38a9.png": The system cannot find the file specified
-```
-
-```
-## Warning in file(con, "rb"): cannot open file 'C:
-## \Users\caitl\AppData\Local\Temp\Rtmpu2rcOE\fileab5c690579bd\webshotab5c59fa38a9.png':
-## No such file or directory
-```
-
-```
-## Error in file(con, "rb"): cannot open the connection
-```
+![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1-1.png)
 
 ## Data References
 Citation for all of our data

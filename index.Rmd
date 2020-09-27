@@ -1,8 +1,3 @@
-<!-- to knit:
-knitr::knit(input="index.Rmd",output="index.md")
- -->
-
-
 ---
 layout: post
 title: Test Map
@@ -21,12 +16,31 @@ A brief description of our findings.
 Check back later for a slick map.
 
 ```{r echo=FALSE}
+#To Knit: knitr::knit(input="index.Rmd",output="index.html")
+library(raster)
+library(maptools)
+library(data.table)
+library(sp)
+library(tidycensus)
 library(leaflet)
+library(RColorBrewer)
+library(mapview)
+library(shiny)
 
-m <- leaflet() %>%
-  addTiles() %>%  # Add default OpenStreetMap map tiles
-  addMarkers(lng=174.768, lat=-36.852, popup="The birthplace of R")
-m  # Print the map
+control <- shapefile("mapdata\\cb_2015_us_county_20m.prj") 
+
+m <- leaflet(control) %>% #begin leaflet map
+  addPolygons(stroke = FALSE, smoothFactor = 0.2, fillOpacity = 1, 
+        fillColor = "black", opacity = 1, dashArray = "3", group = "all", 
+        highlight = highlightOptions( weight = 5, color = "#666", dashArray = "3", 
+        fillOpacity = 0.7, bringToFront = TRUE)) %>%
+
+  addTiles(group = "OSM") %>%
+  addLayersControl(baseGroups = c("OSM"), 
+                overlayGroups = c("all","red","blue","divided","other")) #endleaflet
+
+m
+
 ```
 
 ## Data References
