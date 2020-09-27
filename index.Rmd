@@ -29,18 +29,30 @@ library(shiny)
 
 control <- shapefile("mapdata\\cb_2015_us_county_20m.prj") 
 
-m <- leaflet(control) %>% #begin leaflet map
-  addPolygons(stroke = FALSE, smoothFactor = 0.2, fillOpacity = 1, 
+#UI stuff using fluidPage() for now TO DO: figure out how to make width of panel the whole page :)
+ui <- navbarPage(title = "What did the blue do?", #there's also a fixed page! #there's also navbarpage!! and navbar menu!!! AND SHINYDASHBOARD!!!!
+    #tabsetPanel(id='my_tabsetPanel', #since im using navbarPage() don't need this, reenable if using fluid or fixed
+    tabPanel('Health Outcomes',
+             leafletOutput('mymap', height = "90vh")
+    ) 
+)
+
+server <- function(input, output, session) {
+
+  output$mymap <- renderLeaflet({
+   m <- leaflet(control) %>% #begin leaflet map
+   addPolygons(stroke = FALSE, smoothFactor = 0.2, fillOpacity = 1, 
         fillColor = "black", opacity = 1, dashArray = "3", group = "all", 
         highlight = highlightOptions( weight = 5, color = "#666", dashArray = "3", 
         fillOpacity = 0.7, bringToFront = TRUE)) %>%
 
-  addTiles(group = "OSM") %>%
-  addLayersControl(baseGroups = c("OSM"), 
+   addTiles(group = "OSM") %>%
+   addLayersControl(baseGroups = c("OSM"), 
                 overlayGroups = c("all","red","blue","divided","other")) #endleaflet
+}) #end renderleaflet
+} #end server
 
-m
-
+shinyApp(ui, server)
 ```
 
 ## Data References
