@@ -15,13 +15,13 @@ library(mapview)
 wd <- getwd()
 
 #Import shapefile. "..." is the shortcut on my computer via Googel Stream Drive or whatever it's called.
-sp1 <- readOGR(file.path(wd, "cb_2015_us_county_20m"), "cb_2015_us_county_20m")
+sp1 <- readOGR(file.path(wd, "cleandata/cb_2015_us_county_20m"), "cb_2015_us_county_20m")
 
 #Drop Puerto Rico
 sp2 <- sp1[sp1$STATEFP!="72",]
 
 #Read in county vote counts
-co_pres16 <- fread(file.path(wd, "county_pres_2016.csv"))
+co_pres16 <- fread(file.path(wd, "cleandata/county_pres_2016.csv"))
 
 co_pres16[, countyFIPS := as.factor(formatC(countyFIPS,width=5,flag="0"))]
 
@@ -45,11 +45,12 @@ co_pres16[, percent_rep := 1 - percent_dem]
 
 #Binary value of democrat win
 co_pres16[, dem_win := ifelse(percent_dem > .50, 1, 0)]
+co_pres16[, winning_party := ifelse(percent_dem > .50, "Democrat", "Republican")]
 
 #Merge county votes DT with SPDF
 pres_2016_co_map <- merge(sp2, co_pres16, by.x="GEOID", by.y="countyFIPS", all.x = T)
 
-setwd("..")
+
 #Import Alaska map of voting districts, which are not the same as counties when it comes to vote counts. "---"is a local directory 
 #for me, but this file will be added to Google or Github soone.
 alp1 <- readOGR("Datasources", "2013ProclamationPlan")
@@ -82,22 +83,17 @@ vote_counts_by_county_2016 <- bind(pres_2016_co_map_ma, ak_vote_map)
 
 
 #overlay parties
-red <-subset(control, StateControl == "Rep")
-blue <-subset(control, StateControl == "Dem")
-divide <-subset(control, StateControl == "Divided")
-other <- subset(control, StateControl == "NPP")
-
-red <- subset(vote_counts_by_county_2016, dem_win == "0")
-blue <- subset(vote_counts_by_county_2016, dem_win == "1")
+red <- subset(vote_counts_by_county_2016, winning_party == "Republican")
+blue <- subset(vote_counts_by_county_2016, winning_party == "Democrat")
 
 #party colors
-collist <- c('blue','red')
-vote_pal <- colorFactor(collist, vote_counts_by_county_2016$dem_win)
+collist <- c('red','blue')
+controlpal <- colorFactor(collist, vote_counts_by_county_2016$winning_party)
 
 
 labels <- sprintf(
   "<strong>%s</strong><br/> Party: %s",
-  vote_counts_by_county_2016$party
+  vote_counts_by_county_2016$state, vote_counts_by_county_2016$winning_party
 ) %>% lapply(htmltools::HTML)
 
 
@@ -107,28 +103,22 @@ labels <- sprintf(
 m <- leaflet(vote_counts_by_county_2016) %>% #begin leaflet map
 #all states
 addPolygons(stroke = FALSE, smoothFactor = 0.2, fillOpacity = 1, 
-    fillColor = ~vote_pal(dem_win), color = "white", opacity = 1, dashArray = "3", group = "all", 
+    fillColor = ~controlpal(winning_party), color = "white", opacity = 1, dashArray = "2", group = "all", 
 highlight = highlightOptions( weight = 5, color = "#666", dashArray = "3", fillOpacity = 0.7, bringToFront = TRUE),
 label = labels,
 labelOptions = labelOptions(style = list("font-weight" = "normal", padding = "3px 8px"),textsize = "15px",direction = "auto")) %>%
 #red states
 addPolygons(data = red, stroke = FALSE, smoothFactor = 0.2, fillOpacity = 1, 
-    color = ~vote_pal(dem_win), group = "red") %>%
+    color = ~controlpal(winning_party), group = "red") %>%
 #blue states
 addPolygons(data = blue, stroke = FALSE, smoothFactor = 0.2, fillOpacity = 1,
-    color = ~vote_pal(dem_win), group = "blue") %>%
-#divided
-addPolygons(data = divide, stroke = FALSE, smoothFactor = 0.2, fillOpacity = 1,
-    color = ~vote_pal(dem_win),  group = "divided") %>%
-#other
-addPolygons(data = other, stroke = FALSE, smoothFactor = 0.2, fillOpacity = 1,
-    color = ~vote_pal(dem_win),  group = "other") %>%
+    color = ~controlpal(winning_party), group = "blue") %>%
 
-addLegend("bottomright", pal = vote_pal, values = ~dem_win, 
+addLegend("bottomright", pal = controlpal, values = ~winning_party, 
     title = "Winning Party") %>%
 addTiles(group = "OSM") %>%
 addLayersControl(baseGroups = c("OSM"), 
-                overlayGroups = c("all","red","blue","divided","other")) #endleaflet
+                overlayGroups = c("red","blue")) #endleaflet
 leafletSizingPolicy(width = "1000px", height= "300px", view.fill = FALSE, browser.fill = FALSE)
 
 
