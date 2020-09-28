@@ -8,6 +8,8 @@ library(tigris)
 library(leaps)
 library(car)
 library(MASS)
+library(raster)
+library(spdep)
 
 
 data_dir <- "/Users/martineelisabethmathieu/Documents/NCSU /FALL 2020/GIS 713/DATA CHALLENGE"
@@ -21,6 +23,10 @@ setwd(data_dir)
 # Dependent var
 county_var <- readRDS("county_dependent_vars.RDS")
 
+# Dem only
+dem_vote_pct <- county_var[, .(dem_vote_pct = vote_pct), by="geoID"]
+dem_vote_pct$geoID <- as.factor(as.character(dem_vote_pct$geoID))
+county_var <- merge(county_var, dem_vote_pct, by="geoID")
 
 ###############
 
@@ -238,7 +244,7 @@ county_var_AQS_Resilience_Hospital_Census$popn_high_risk <- as.numeric(county_va
 
 # All variables
 
-county_var_AQS_Resilience_Hospital_Census_metrics <- county_var_AQS_Resilience_Hospital_Census[,.(vote_pct, total_cases_pc, max.aqi, median.aqi, popn_low_risk, popn_med_risk, 
+county_var_AQS_Resilience_Hospital_Census_metrics <- county_var_AQS_Resilience_Hospital_Census[,.(dem_vote_pct, total_cases_pc, max.aqi, median.aqi, popn_low_risk, popn_med_risk, 
                                                                                                   popn_high_risk, beds_county, hospitals_county, median_age, med_income, frac_white, frac_black, 
                                                                                                   frac_asian, frac_pacislander, frac_otherrace, frac_under18, frac_over65, frac_insured, 
                                                                                                   frac_pubtransport)]
@@ -246,21 +252,20 @@ county_var_AQS_Resilience_Hospital_Census_metrics <- county_var_AQS_Resilience_H
 round(cor(county_var_AQS_Resilience_Hospital_Census_metrics, method="pearson", use = "complete.obs"), 3)
 pairs(county_var_AQS_Resilience_Hospital_Census_metrics)
 
-# Test statistic for the strongest correlations
-#cor.test(county_var_AQS_Resilience_Hospital2$total_cases_pc, county_var_AQS_Resilience_Hospital2$vote_pct, method = "spearman")
-#cor.test(county_var_AQS_Resilience_Hospital2$total_cases_pc, county_var_AQS_Resilience_Hospital2$beds_county, method = "spearman")
 
 
 # Model with all predictors
 
+######## 1- Covid cases
 
-lm_model_covid_cases <- lm(total_cases_pc ~ vote_pct + max.aqi + median.aqi+ popn_low_risk+ popn_med_risk+ 
+lm_model_covid_cases <- lm(total_cases_pc ~ dem_vote_pct + max.aqi + median.aqi+ popn_low_risk+ popn_med_risk+ 
                           popn_high_risk+ beds_county+ hospitals_county+ median_age+ med_income+ frac_white+ frac_black+ 
                           frac_asian+ frac_pacislander+ frac_otherrace+ frac_under18+ frac_over65+ frac_insured+ 
                           frac_pubtransport, data=county_var_AQS_Resilience_Hospital_Census)
  summary(lm_model_covid_cases) 
  
- # NOTE: Log transformation on total_cases_pc better
+ # NOTE: Log transformation on total_cases_pc looks better
+ 
  
  
  # VIF test for multicollinearity
@@ -269,13 +274,14 @@ lm_model_covid_cases <- lm(total_cases_pc ~ vote_pct + max.aqi + median.aqi+ pop
  vif(lm_model_covid_cases)  # variance inflation factors
  sqrt(vif(lm_model_covid_cases)) > 2  # problem?
  
- # NOTE: median_age, frac_white and frac_black > 5 - Let's remove them
+ # NOTE: median_age, frac_white, frac_black and frac_over65 > 5 - Let's remove them
  
  
- # Model 2 without median_age, frac_white and frac_black
- lm_model_covid_cases_v2 <- lm(total_cases_pc ~ vote_pct + max.aqi + median.aqi+ popn_low_risk+ popn_med_risk+ 
+ 
+ # Model 2 without median_age, frac_white, frac_black and frac_over65
+ lm_model_covid_cases_v2 <- lm(total_cases_pc ~ dem_vote_pct + max.aqi + median.aqi+ popn_low_risk+ popn_med_risk+ 
                               popn_high_risk+ beds_county+ hospitals_county+ med_income+   
-                              frac_asian+ frac_pacislander+ frac_otherrace+ frac_under18+ frac_over65+ frac_insured+ 
+                              frac_asian+ frac_pacislander+ frac_otherrace+ frac_under18+ frac_insured+ 
                               frac_pubtransport, data=county_var_AQS_Resilience_Hospital_Census)
  summary(lm_model_covid_cases_v2) 
  
@@ -285,9 +291,9 @@ lm_model_covid_cases <- lm(total_cases_pc ~ vote_pct + max.aqi + median.aqi+ pop
 # AIC test
 
 
-model_all_var<-regsubsets(total_cases_pc ~ vote_pct + max.aqi + median.aqi+ popn_low_risk+ popn_med_risk+ 
+model_all_var<-regsubsets(total_cases_pc ~ dem_vote_pct + max.aqi + median.aqi+ popn_low_risk+ popn_med_risk+ 
                           popn_high_risk+ beds_county+ hospitals_county+ med_income+   
-                          frac_asian+ frac_pacislander+ frac_otherrace+ frac_under18+ frac_over65+ frac_insured+ 
+                          frac_asian+ frac_pacislander+ frac_otherrace+ frac_under18+ frac_insured+ 
                           frac_pubtransport, data=county_var_AQS_Resilience_Hospital_Census, nbest=10, really.big=T, intercept=F)
 all.mods <- summary(model_all_var)[[1]]
 all.mods <- lapply(1:nrow(all.mods), function(x) as.formula(paste("total_cases_pc~", paste(names(which(all.mods[x,])), collapse="+"))))
@@ -297,13 +303,13 @@ all.mods
 all.lm<-lapply(all.mods, lm, county_var_AQS_Resilience_Hospital_Census)
 sapply(all.lm, extractAIC)[2,]
 
-# Model with lower AIC: 
-#total_cases_pc ~ vote_pct + hospitals_county + med_income + frac_pacislander + frac_otherrace + frac_under18 + frac_over65 + frac_insured
+# Model with lower AIC -72-: 
+#total_cases_pc ~ dem_vote_pct + hospitals_county + med_income + frac_pacislander + frac_otherrace + frac_under18 + frac_insured + frac_pubtransport
 
 # Test new model
-lm_model_covid_cases_v3 <- lm(total_cases_pc ~ vote_pct + hospitals_county + med_income + frac_pacislander + 
-                                frac_otherrace + frac_under18 + frac_over65 + frac_insured, 
-                              data= county_var_AQS_Resilience_Hospital_Census)
+lm_model_covid_cases_v3 <- lm(total_cases_pc ~ dem_vote_pct + hospitals_county + med_income + 
+                                frac_pacislander + frac_otherrace + frac_under18 + frac_insured + 
+                                frac_pubtransport, data= county_var_AQS_Resilience_Hospital_Census)
 
 summary(lm_model_covid_cases_v3)
 
@@ -323,7 +329,7 @@ leveragePlots(lm_model_covid_cases_v3)
 influence.measures(lm_model_covid_cases_v3)
 
 # NOTE: Cook's Dostance reveals 6 influencial observations: 60, 148, 156, 205, 208, 312. 
-# 156 and 312 are the most extreme values. We can try to remove them
+# 156, 312 and 504 are the most extreme values. We can try to remove them
 
 # (2) Evaluate Normality
 # qq plot for studentized residuals
@@ -350,29 +356,164 @@ durbinWatsonTest(lm_model_covid_cases_v3)
 
 
 # Check quadratic model :
-vote_pct2 <- county_var_AQS_Resilience_Hospital_Census$vote_pct^2
+dem_vote_pct2 <- county_var_AQS_Resilience_Hospital_Census$dem_vote_pct^2
 hospitals_county2 <- county_var_AQS_Resilience_Hospital_Census$hospitals_county^2
 med_income2 <- county_var_AQS_Resilience_Hospital_Census$med_income^2
 frac_pacislander2 <- county_var_AQS_Resilience_Hospital_Census$frac_pacislander^2
 frac_otherrace2 <- county_var_AQS_Resilience_Hospital_Census$frac_otherrace^2
 frac_under182 <- county_var_AQS_Resilience_Hospital_Census$frac_under18^2
-frac_over652 <- county_var_AQS_Resilience_Hospital_Census$frac_over65^2
 frac_insured2 <- county_var_AQS_Resilience_Hospital_Census$frac_insured^2
+frac_pubtransport2 <- county_var_AQS_Resilience_Hospital_Census$frac_pubtransport^2
   
 
 
-quadratic_covid_cases_v3 <- lm(total_cases_pc ~ vote_pct2 + hospitals_county2 + med_income2 + frac_pacislander2 + 
-                                 frac_otherrace2 + frac_under182 + frac_over652 + frac_insured2, 
+quadratic_covid_cases_v3 <- lm(total_cases_pc ~ dem_vote_pct2 + hospitals_county2 + med_income2 + frac_pacislander2 + 
+                                 frac_otherrace2 + frac_under182 + frac_insured2 +frac_pubtransport2,
                                data= county_var_AQS_Resilience_Hospital_Census)
 
 summary(quadratic_covid_cases_v3)
 
-# NOTE: R^2 dropped
+# NOTE: R^2 dropped with a quadratic model
 
 # Test glm
-glm_model_covid_cases_v3 <- glm(total_cases_pc ~ vote_pct + hospitals_county + med_income + frac_pacislander + 
-                                  frac_otherrace + frac_under18 + frac_over65 + frac_insured, 
-                                data= county_var_AQS_Resilience_Hospital_Census, family = binomial(link="logit"))
-summary(glm_model_covid_cases_v3)
+
+# glm_model_covid_cases_v3 <- glm(total_cases_pc ~ dem_vote_pct + hospitals_county + med_income + frac_pacislander + 
+#                                   frac_otherrace + frac_under18 + frac_insured +frac_pubtransport2,
+#                                 data= county_var_AQS_Resilience_Hospital_Census, family = binomial(link="logit"))
+# summary(glm_model_covid_cases_v3)
 
 
+############################
+
+# Spatial autocorrelation
+
+# Read the shapefile data
+county_shp <- shapefile(file.path(data_dir, "cb_2015_us_county_20m", "cb_2015_us_county_20m.shp"))
+
+# Merge 
+# let's make a quick map of the county-level, per capita cases
+county_shp$countyFIPS <- as.integer(paste(county_shp$STATEFP, county_shp$COUNTYFP, sep="")) # for merging
+
+# Harmonize geoID
+county_shp$geoID <- county_shp$GEOID
+
+
+county_covid_sp <- merge(county_shp, county_var_AQS_Resilience_Hospital_Census, by="geoID")
+
+county_covid_sp@data <- na.omit(county_covid_sp@data)
+
+# Run spatial autocorrelation function
+
+autoCorrelation <- function(shapeFile, depVariable, model)
+{
+  w <- 1/ as.matrix(dist(coordinates(shapeFile)))
+  diag(w) <- 0
+  print(moran.test(depVariable, mat2listw(w)))
+  print(moran.test(residuals.glm(model), mat2listw(w)))
+  print(moran.plot(residuals.glm(model), mat2listw(w)))
+  title(main="Moran's I Scatter Plot")
+}
+
+# library(dplyr)
+# 
+# county_covid_sp_df <- as.data.frame(county_covid_sp)
+# 
+# anti_join(county_covid_sp_dt, county_var_AQS_Resilience_Hospital_Census, by="geoID" )
+
+autoCorrelation(county_covid_sp, county_covid_sp$total_cases_pc, lm_model_covid_cases_v3)
+
+
+
+########################################################################################
+########################################################################################
+
+
+######## 2- Covid deaths
+lm_model_covid_deaths <- lm(total_deaths_pc ~ dem_vote_pct + max.aqi + median.aqi+ popn_low_risk+ popn_med_risk+ 
+                              popn_high_risk+ beds_county+ hospitals_county+ median_age+ med_income+ frac_white+ frac_black+ 
+                              frac_asian+ frac_pacislander+ frac_otherrace+ frac_under18+ frac_over65+ frac_insured+ 
+                              frac_pubtransport, data=county_var_AQS_Resilience_Hospital_Census)
+summary(lm_model_covid_deaths) 
+
+
+# VIF test for multicollinearity
+# Evaluate Collinearity
+
+vif(lm_model_covid_deaths)  # variance inflation factors
+sqrt(vif(lm_model_covid_deaths)) > 2  # problem?
+
+# SAME RESULT: median_age, frac_white, frac_black and frac_over65 >5
+
+# Model 2 without median_age, frac_white, frac_black and frac_over65
+lm_model_covid_deaths_v2 <- lm(total_deaths_pc ~ dem_vote_pct + max.aqi + median.aqi+ popn_low_risk+ popn_med_risk+ 
+                                popn_high_risk+ beds_county+ hospitals_county+ med_income+   
+                                frac_asian+ frac_pacislander+ frac_otherrace+ frac_under18+ frac_insured+ 
+                                frac_pubtransport, data=county_var_AQS_Resilience_Hospital_Census)
+summary(lm_model_covid_deaths_v2) 
+
+
+
+
+# AIC test
+
+
+model_all_var_deaths<-regsubsets(total_deaths_pc ~ dem_vote_pct + max.aqi + median.aqi+ popn_low_risk+ popn_med_risk+ 
+                            popn_high_risk+ beds_county+ hospitals_county+ med_income+   
+                            frac_asian+ frac_pacislander+ frac_otherrace+ frac_under18+ frac_insured+ 
+                            frac_pubtransport, data=county_var_AQS_Resilience_Hospital_Census, nbest=10, really.big=T, intercept=F)
+all.mods_deaths <- summary(model_all_var_deaths)[[1]]
+all.mods_deaths <- lapply(1:nrow(all.mods_deaths), function(x) as.formula(paste("total_deaths_pc~", paste(names(which(all.mods_deaths[x,])), collapse="+"))))
+all.mods_deaths
+
+# AIC analysis:
+all.lm_deaths <-lapply(all.mods_deaths, lm, county_var_AQS_Resilience_Hospital_Census)
+sapply(all.lm_deaths, extractAIC)[2,]
+
+# Model with lower AIC -71-: 
+#total_deaths_pc ~ dem_vote_pct + max.aqi + median.aqi + med_income + frac_asian + frac_pacislander + frac_under18 + frac_pubtransport
+
+# Test new model
+lm_model_covid_deaths_v3 <- lm(total_deaths_pc ~ dem_vote_pct + max.aqi + median.aqi + med_income + 
+                                frac_asian + frac_pacislander + frac_under18 + frac_pubtransport, 
+                              data= county_var_AQS_Resilience_Hospital_Census)
+
+summary(lm_model_covid_deaths_v3)
+
+plot(lm_model_covid_deaths_v3)
+
+
+# Diagnostic
+# (1) Influenctal Observations
+
+avPlots(lm_model_covid_deaths_v3)
+cutoff = 4/((nrow(county_var_AQS_Resilience_Hospital_Census)-length(lm_model_covid_deaths_v3$coefficients)-2))
+plot(lm_model_covid_deaths_v3,which=4,cook.levels = cutoff)
+influencePlot(lm_model_covid_deaths_v3,main="Influence Plot",sub="circle size proportional to Cook's Distance")
+
+outlierTest(lm_model_covid_deaths_v3)
+leveragePlots(lm_model_covid_deaths_v3)
+influence.measures(lm_model_covid_deaths_v3)
+
+# NOTE: Cook's Dostance reveals 6 influencial observations: 39, 166, 78, 205, 366. 
+#  39, 366 and 547 are the most extreme values. We can try to remove them
+
+# (2) Evaluate Normality
+# qq plot for studentized residuals
+qqPlot(lm_model_covid_deaths_v3,main="QQ Plot")
+
+
+sresid_deaths = studres(lm_model_covid_deaths_v3)
+hist(sresid_deaths, freq=FALSE, main="Distribution of Studentized Residuals")
+xfit_deaths = seq(min(sresid_deaths),max(sresid_deaths),length=40)
+yfit_deaths = dnorm(xfit_deaths)
+lines(xfit_deaths, yfit_deaths)
+
+# (3) Evaluate homoscedasticity
+ncvTest(lm_model_covid_deaths_v3)  
+# plot studentized residuals vs. fitted values
+spreadLevelPlot(lm_model_covid_deaths_v3)
+
+# NOTE: Suggested power transformation:  0.5334094 
+
+# (4) Evaluate Independence of errors
+durbinWatsonTest(lm_model_covid_deaths_v3)
