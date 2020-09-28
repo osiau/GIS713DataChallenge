@@ -26,7 +26,10 @@ Caption by Uchenna
 Caption by Uchenna
 {% include map/index.html %}
 
-#### Nicks Model: Random Forest
+#### Random Forest
+We tried several different autocorrelation models and found Random Forest worked best.
+
+
 
 Conclusion: yes we are sure!
 
