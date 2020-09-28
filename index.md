@@ -28,7 +28,7 @@ Caption by Uchenna
 
 #### Random Forest
 We tried several different autocorrelation models and found Random Forest worked best.
-
+![random](https://pages.github.ncsu.edu/chaedri/Data-Challenge-GIS713/images/randomforest.PNG)
 
 
 Conclusion: yes we are sure!
