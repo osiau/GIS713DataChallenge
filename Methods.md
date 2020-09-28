@@ -1,8 +1,10 @@
 
-# This will be a detailed methods page
-Such smart methods....
+# Methods
 
-Here's a test picture:
-![pic](https://pages.github.ncsu.edu/chaedri/Data-Challenge-GIS713/images/octocat-original.png)
+*"Did parts of the nation that voted for President Trump in 2016 have better outcomes regarding COVID-19 than areas which voted for Hilary Clinton?”*
 
-The geoviz team has been here!
+Such smart methods...
+
+
+### Find our analysis, data and methods on github: 
+![github](https://pages.github.ncsu.edu/chaedri/Data-Challenge-GIS713/images/octocat.svg) [GitHub](https://github.ncsu.edu/chaedri/Data-Challenge-GIS713),
