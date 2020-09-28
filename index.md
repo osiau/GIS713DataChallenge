@@ -7,13 +7,11 @@ A brief description of our findings; the twitter map and one sentence conclusion
 twitter-worthy map; Caption by Muyiwa
 ![github](https://pages.github.ncsu.edu/chaedri/Data-Challenge-GIS713/images/centroids.png)
 
+
+### Is this difference even statistically significant?
+Basic box plots; not sure significant...
+
 #### But could that be correlation, not causality?
-There could be some other co-variate that causes this pattern. Furthermore, is this difference even statistically significant?
-
-Basic box plots
-
-#### Core plots
-
 These are all the covariates we considered. Along with some images of these datasets (non-exhaustive)
 
 ##### Unemployment
