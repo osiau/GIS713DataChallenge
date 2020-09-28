@@ -6,8 +6,9 @@ A brief description of our findings.
 
 Map
 ---
+{% include legislative_widget.html %}
 
-Check back later for a slick map.
+Check back later for more slick figures.
 
 {% include streamgraphBasic.html %}
 
