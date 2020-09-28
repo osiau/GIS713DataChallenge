@@ -7,4 +7,7 @@ Such smart methods...
 
 
 ### Find our analysis, data and methods on github: 
-![github](https://pages.github.ncsu.edu/chaedri/Data-Challenge-GIS713/images/octocat.svg) [GitHub](https://github.ncsu.edu/chaedri/Data-Challenge-GIS713),
+![github](https://pages.github.ncsu.edu/chaedri/Data-Challenge-GIS713/images/octocat.svg) [GitHub](https://github.ncsu.edu/chaedri/Data-Challenge-GIS713)
+
+## Data References
+Citation for all of our data
