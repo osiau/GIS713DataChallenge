@@ -4,16 +4,16 @@
 
 A brief description of our findings.
 
-## Legislative Map
----
+## Unemployment
+{% include streamgraphBasic.html %}
 
+
+## Legislative Map
 
 {% include map/ %}
 
 Check back later for more slick figures.
 
-## Unemployment
-{% include streamgraphBasic.html %}
 
 
 Data References
