@@ -7,7 +7,7 @@ A brief description of our findings.
 Map
 ---
 
-<iframe src='/iframes/legislative_widget.html' height="600px" width="1000px" style="border:none;"></iframe>
+<iframe src='/legislative_widget.html' height="600px" width="1000px" style="border:none;"></iframe>
 
 Check back later for more slick figures.
 
