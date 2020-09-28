@@ -3,7 +3,7 @@
 
 *"Did parts of the nation that voted for President Trump in 2016 have better outcomes regarding COVID-19 than areas which voted for Hilary Clinton?”*
 
-Such smart methods...
+Such smart methods... practicing!
 
 
 ##### Find our analysis, data and methods on github: 
