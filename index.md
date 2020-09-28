@@ -6,7 +6,8 @@ A brief description of our findings.
 
 Map
 ---
-{% include legislative_widget.html %}
+
+<iframe src="/_includes/legislative_widget.html" height="600px" width="100%" style="border:none;"></iframe>
 
 Check back later for more slick figures.
 
