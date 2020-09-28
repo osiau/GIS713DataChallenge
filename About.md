@@ -9,4 +9,4 @@ As part of NC State's Geospatial Data Mining graduate course, We fact checked Pr
 
 
 ### Find our analysis, data and methods on github: 
-![github](https://pages.github.ncsu.edu/chaedri/Data-Challenge-GIS713/images/octocat.svg) [GitHub](https://github.ncsu.edu/chaedri/Data-Challenge-GIS713),
+![github](https://pages.github.ncsu.edu/chaedri/Data-Challenge-GIS713/images/octocat.svg) [GitHub](https://github.ncsu.edu/chaedri/Data-Challenge-GIS713)
