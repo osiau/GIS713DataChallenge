@@ -15,13 +15,18 @@ library(leaps)
 
 data_dir <- "/Users/ihinks/Documents/GIS713/DataChallenge"
 setwd(data_dir)
-county_covid_votes <- fread(file.path(data_dir, "county_dem_votes_and_cases.csv"))
-county_variables <- readRDS("county_dependent_vars.RDS")
+
+wd <- getwd()
+
+county_covid_votes <- fread(file.path(wd, "regression supplies/county_dem_votes_and_cases.csv"))
+county_variables <- readRDS("regression supplies/county_dependent_vars.RDS")
 #county_covid_votes$GEOID <- sprintf("%05d", county_covid_votes$countyFIPS)
 ```
+
+# Get hospital data
 ```{r}
-hospitals <- fread(file.path(data_dir, "total_hospital.csv"))
-data_states <- fread(file.path(data_dir,"all_names_FIPS.csv"))
+hospitals <- fread(file.path(wd, "Datasources/total_hospital.csv"))
+data_states <- fread(file.path(wd,"Datasources/all_names_FIPS.csv"))
 data_states <- data_states[,.(stateFIPS = as.factor(formatC(stateFIPS,width=2,flag="0")), 
                               countyFIPS=as.factor(formatC(countyFIPS,width=3,flag="0")), 
                               geoID=as.factor(formatC(geoID,width=5,flag="0")),county,state)]
@@ -41,9 +46,9 @@ hospitals <- merge(hospitals, data_states, by="stateFIPS", all.x=TRUE)
 ```
 
 ```{r}
-county_resilience <- fread(file.path(data_dir, "communityresilience_county.csv"), stringsAsFactors=TRUE, header=TRUE)
+county_resilience <- fread(file.path(wd, "Datasources/communityresilience_county.csv"), stringsAsFactors=TRUE, header=TRUE)
 
-data_states <- read.csv(file.path(data_dir,"all_names_FIPS.csv"),stringsAsFactors=TRUE)
+data_states <- read.csv(file.path(wd,"Datasources/all_names_FIPS.csv"),stringsAsFactors=TRUE)
 data_states <- as.data.table(data_states)
 data_states <- data_states[,.(stateFIPS = as.factor(formatC(stateFIPS,width=2,flag="0")), 
                               countyFIPS=as.factor(formatC(countyFIPS,width=3,flag="0")), 
@@ -75,9 +80,9 @@ county_resilience <- county_resilience[,.(geoID,state,county=county.y,
 ```
 
 ```{r}
-air_qual2019 <- read.csv(file.path(data_dir,"air_quaity_annual_aqi_by_county_2019.csv"),stringsAsFactors=TRUE, header=TRUE)
-air_qual2020 <- read.csv(file.path(data_dir,"air_quality_annual_aqi_by_county_2020.csv"),stringsAsFactors=TRUE, header=TRUE)
-data_states <- read.csv(file.path(data_dir,"all_names_FIPS.csv"),stringsAsFactors=TRUE)
+air_qual2019 <- read.csv(file.path(wd,"Datasources/air_quaity_annual_aqi_by_county_2019.csv"),stringsAsFactors=TRUE, header=TRUE)
+air_qual2020 <- read.csv(file.path(wd,"Datasources/air_quality_annual_aqi_by_county_2020.csv"),stringsAsFactors=TRUE, header=TRUE)
+data_states <- read.csv(file.path(wd,"Datasources/all_names_FIPS.csv"),stringsAsFactors=TRUE)
 data_states <- as.data.table(data_states)
 data_states <- data_states[,.(stateFIPS = as.factor(formatC(stateFIPS,width=2,flag="0")), countyFIPS=as.factor(formatC(countyFIPS,width=3,flag="0")), geoID=as.factor(formatC(geoID,width=5,flag="0")),county,state)]
 
@@ -156,19 +161,27 @@ none_deaths <- lm(total_deaths_pc~1, data=county_d_rem)
 #summary(step_deaths)
 ```
 
-# Finding best model to predict covid cases 
+# Finding best lm to predict covid cases 
 ```{r}
 cases_v3 <- lm(formula = total_cases_pc ~ (vote_pct) + (beds_county) + (beds_state), data=county_c_rem)
-summary(cases_v3)
+summary(cases_v3) # adj R^2 0.04092
 plot(cases_v3$residuals~cases_v3$fitted.values)
 abline(0,0)
 qqPlot(cases_v3$resid)
-hist(cases_v3$resid, breaks=14)
+hist(cases_v3$resid, breaks=14) 
+
+cases_v4 <- lm(formula = total_cases_pc ~ sqrt(vote_pct) + 1/(beds_county) + sqrt(beds_state), data=county_c_rem)
+summary(cases_v4) # adj R^2 0.1267
+plot(cases_v4$residuals~cases_v4$fitted.values)
+abline(0,0)
+qqPlot(cases_v4$resid)
+hist(cases_v4$resid, breaks=14)
 ```
 
-# Finding best model to predict covid deaths
+# Finding best lm to predict covid deaths
 ```{r}
-deaths_v3 <- lm(formula = total_deaths_pc ~ (unemploy) + (beds_county) + (beds_state), data=county_d_rem)
+hist(log(county_d_rem$total_deaths_pc))
+deaths_v3 <- lm(formula = sqrt(total_deaths_pc) ~ (unemploy) + (beds_county) + (beds_state), data=county_d_rem)
 summary(deaths_v3)
 plot(deaths_v3$residuals~deaths_v3$fitted.values)
 abline(0,0)
@@ -176,4 +189,54 @@ qqPlot(deaths_v3$resid)
 hist(deaths_v3$resid, breaks=14)
 ```
 
+# Other models 
+```{r}
+county_variables$democrat <- ifelse(county_variables$vote_pct > 0, 1, 0)
 
+# Quasi-binomial 
+deaths_bin <- glm(total_deaths_pc~vote_pct, family=quasibinomial(logit), data=county_covid_votes)
+summary(deaths_bin)
+cases_bin <- glm(total_cases_pc~vote_pct, family=quasibinomial(logit), data=county_covid_votes)
+summary(cases_bin)
+
+# Beta (logit)
+#deaths_beta <- betareg(total_deaths_pc ~ vote_pct, data=county_covid_votes)
+#summary(deaths_beta)
+#cases_beta <- betareg(total_cases_pc ~ vote_pct, data=county_covid_votes)
+#summary(cases_beta)
+
+# Beta loglog
+#deaths_beta_loglog <- update(deaths_beta, link="loglog")
+#summary(deaths_beta_loglog)
+#cases_beta_loglog <- update(cases_beta, link="loglog")
+#summary(cases_beta_loglog)
+```
+
+```{r}
+# Can we predict blue/non blue candidate winner based on deaths, cases, unemployment rate?
+demMod1 <- glm(democrat~total_deaths_pc+total_cases_pc+unemploy, data=county_variables, family = binomial)
+summary(demMod1)
+# G stat for effectiveness 
+G.1 = summary(demMod1)$null.deviance - summary(demMod1)$deviance
+1-pchisq(G.1,3)
+
+dem_no_deaths <- glm(democrat~total_cases_pc+unemploy, data=county_variables, family = binomial)
+summary(dem_no_deaths)
+
+dem_no_cases <- glm(democrat~total_deaths_pc+unemploy, data=county_variables, family = binomial)
+summary(dem_no_cases)
+
+dem_no_unemp <- glm(democrat~total_deaths_pc+total_cases_pc, data=county_variables, family = binomial)
+summary(dem_no_unemp)
+
+# Testing effectiveness of each predictor in model
+# P values < 0.5 suggest that predictor improves the model
+1 - pchisq(summary(dem_no_deaths)$deviance - summary(demMod1)$deviance, 1) # 0
+1 - pchisq(summary(dem_no_cases)$deviance - summary(demMod1)$deviance, 1) # 0.1208495
+1 - pchisq(summary(dem_no_unemp)$deviance - summary(demMod1)$deviance, 1) # 0.6038084
+
+dem_unemployment <- glm(democrat~unemploy, data=county_variables, family = binomial)
+summary(dem_unemployment)
+
+#bestglm(county_variables, family=binomial)
+```

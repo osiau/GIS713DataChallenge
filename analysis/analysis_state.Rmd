@@ -1,0 +1,175 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library(readr)
+library(mosaic)
+library(Stat2Data)
+library(dplyr)
+library(corrplot)
+library(car)
+library(leaps)
+library(knitr)
+library(betareg)
+library(broom)
+library(kableExtra)
+
+data_dir <- "/Users/ihinks/Documents/GIS713/DataChallenge"
+setwd(data_dir)
+wd <- getwd()
+
+state_variables <- readRDS("regression supplies/state_dependent_vars.RDS")
+state_dem_data <- fread(file.path(wd,"regression supplies/state_dem_votes_and_covid.csv"))
+state_winner <- fread(file.path(wd,"regression supplies/state_votes_and_covid.csv"))
+state_dem_data$stateFIPS <- as.factor(state_dem_data$stateFIPS)
+```
+
+# Gathering tourism data
+```{r}
+# read
+
+tourism <- fread(file.path(wd,"Datasources/Overseas arrivals.csv"),stringsAsFactors=TRUE, header=TRUE)
+data_states <- fread(file.path(wd,"Datasources/all_names_FIPS.csv"))
+data_states <- data_states[,.(stateFIPS = as.factor(formatC(stateFIPS,width=2,flag="0")), 
+                              countyFIPS=as.factor(formatC(countyFIPS,width=3,flag="0")), 
+                              geoID=as.factor(formatC(geoID,width=5,flag="0")),county,state)]
+state_abvr <- fread(file.path(wd,"Datasources/state_abvr.csv"),stringsAsFactors=TRUE)
+state_abvr <- state_abvr[,.(state=tolower(state),abvr=tolower(abvr))]
+
+data_states <- merge(data_states,state_abvr,by="state",all.x=TRUE)
+data_states <- unique(data_states[,.(abvr,state,stateFIPS)])
+
+# Como no! No mas comas
+
+comma_no <- function(x){
+  as.numeric(gsub(",","",x))
+}
+
+tourism <- tourism[,lapply(.SD, comma_no),by=Port,.SDcols=names(tourism)[2:9]]
+tourism <- separate(tourism,Port,into= c("county","state"),sep=", ")
+
+names(tourism) <- c(names(tourism)[1:2],c("jan","feb","mar","apr","may","jun","x","jul"))
+
+# compatibility with data states
+
+tourism <- tourism[,.(county=tolower(county),state=tolower(state),.SD),.SDcols=jan:jul]
+names(tourism) <- c("airport","abvr","jan","feb","mar","apr","may","jun","x","jul")
+
+tourism <- merge(tourism,data_states,by="abvr",all.x=TRUE)
+tourism <- tourism[,.(airport,state,stateFIPS,jan,feb,mar,apr,may,jun,jul)]
+
+# wide and long
+
+tourism_wide <- tourism
+months <- c("jan","feb","mar","apr","may","jun","jul")
+tourism_long <- as.data.table(tidyr::gather(data=tourism,key="month",
+                                value="intl_arrivals",months,factor_key=TRUE))
+
+# clean!
+# Aggregate tourism by state
+tourism_agg <- tourism_wide[, .(tourism = sum(jan, feb, mar, apr, may, jun, jul)), by=.(state, stateFIPS)]
+```
+
+# Gathering flights data
+```{r}
+flights <- fread(file.path(wd,"cleandata/flights_pairs_month.csv"),stringsAsFactors=TRUE, header=TRUE)
+# Num of arrivals by state
+flights_agg <- flights[, .(flight_arrivals = sum(N)), by=.(dest_state)]
+setnames(flights_agg, "dest_state", "state")
+```
+
+
+# Gathering government response data
+```{r}
+# read
+
+covid_measures <- read.csv(file.path(wd,"Datasources/COVID19_non-pharmaceutical-interventions_version2_utf8.csv"),stringsAsFactors=TRUE, header=TRUE)
+data_states <- read.csv(file.path(wd,"Datasources/all_names_FIPS.csv"),stringsAsFactors=TRUE)
+data_states <- as.data.table(data_states)
+data_states <- data_states[,.(stateFIPS = as.factor(formatC(stateFIPS,width=2,flag="0")), countyFIPS=as.factor(formatC(countyFIPS,width=3,flag="0")), geoID=as.factor(formatC(geoID,width=5,flag="0")),county,state)]
+
+# convert to data.table
+
+covid_measures <- as.data.table(covid_measures)
+
+# select columns
+
+data_states <-unique(data_states[,.(state,stateFIPS)])
+covid_measures <- covid_measures[,.(state=as.factor(tolower(State)),date=Date,Measure_L1,Measure_L2,Measure_L3,Measure_L4)]
+
+# add stateFIPS
+
+covid_measures <- merge(covid_measures,data_states,by="state", all.x=TRUE)
+covid_measures$date <- as.Date(covid_measures$date, format="%m/%d/%y")
+
+# that's it
+
+# long format
+
+measures <- c("Measure_L1","Measure_L2","Measure_L3","Measure_L4")
+covid_measures_long <- as.data.table(tidyr::gather(data=covid_measures,key="number",
+                                                 value="measure",measures,factor_key=TRUE))
+
+covid_measures_long[,month:=month(date)]
+covid_measures_long <- covid_measures_long[,.(state,stateFIPS,date,month,measure)]
+
+covid_measures_long[,.N,by=.(month,state)][order(-N)]
+cml <- covid_measures_long
+summary(as.factor(cml$measure))
+
+key_measures <- covid_measures_long[measure %in% c("Mass gathering cancellation","Small gathering cancellation","Closure of educational institutions","Travel restrictions",
+  "Declare state of emergency","Closure of restaurants/bars/cafes","Closure of non-essential shops","Complete closure of primary and secondary schools",
+  "Complete closure of kindergartens","Quarantine","National lockdown","Individual movement restrictions","Stay-at-home Order",
+  "Mandatory home office","Face masks"),]
+
+
+```
+
+# Merging data
+```{r}
+flights_tourism <- merge(flights_agg, tourism_agg, by="state")
+#all_state_data <- merge(state_variables, flights_tourism, by="stateFIPS")
+#all_state_data <- merge(all_state_data, covid_measures, by="stateFIPS")
+all_state_data <- merge(state_dem_data, flights_tourism, by="stateFIPS")
+
+scatter.smooth(all_state_data$total_cases_pc~all_state_data$vote_pct)
+scatter.smooth(all_state_data$total_deaths_pc~all_state_data$vote_pct)
+```
+
+# Running models
+```{r}
+# State data with deaths 
+all_state_d <- all_state_data[, -c("V1", "stateFIPS", "state_po", "party", "state", "total_cases_pc", "total_cases", "total_deaths", "democrat")]
+# State data with cases
+all_state_c <- all_state_data[, -c("V1", "stateFIPS", "state_po", "party", "state", "total_deaths_pc", "total_cases", "total_deaths", "democrat")]
+
+# Basic model to consider all possible inputs
+basic_cases_v1=lm(total_cases_pc~., data=all_state_c)
+summary(basic_cases_v1)
+
+basic_deaths_v1=lm(total_deaths_pc~., data=all_state_d)
+summary(basic_deaths_v1)
+
+# Trying binomial logit 
+state_dem_data$vote_pct <- abs(state_dem_data$vote_pct)
+
+# Quasi-binomial
+deaths_bin <- glm(total_deaths_pc~vote_pct, family=quasibinomial(logit), data=state_dem_data)
+summary(deaths)
+cases_bin <- glm(total_cases_pc~vote_pct, family=quasibinomial(logit), data=state_dem_data)
+summary(cases_bin)
+
+# Beta (logit)
+deaths_beta <- betareg(total_deaths_pc ~ vote_pct, data=state_dem_data)
+summary(deaths_beta)
+cases_beta <- betareg(total_cases_pc ~ vote_pct, data=state_dem_data)
+summary(cases_beta)
+
+deaths_beta_loglog <- update(deaths_beta, link="loglog")
+summary(deaths_beta_loglog)
+cases_beta_loglog <- update(cases_beta, link="loglog")
+summary(cases_beta_loglog)
+```
+
