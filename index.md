@@ -4,16 +4,16 @@
 
 A brief description of our findings.
 
-### Unemployment
+##### Unemployment
 {% include streamgraphBasic.html %}
 
 
-### Legislative Map
+##### Legislative Map
 
 {% include map/index.html %}
 
 Check back later for more slick figures.
 
 
-### Find our analysis, data and methods on github: 
+##### Find our analysis, data and methods on github: 
 ![github](https://pages.github.ncsu.edu/chaedri/Data-Challenge-GIS713/images/octocat.svg) [GitHub](https://github.ncsu.edu/chaedri/Data-Challenge-GIS713)
