@@ -49,4 +49,9 @@ key_measures <- covid_measures_long[measure %in% c("Mass gathering cancellation"
   "Complete closure of kindergartens","Quarantine","National lockdown","Individual movement restrictions","Stay-at-home Order",
   "Mandatory home office","Face masks"),]
 
-
+key_measures$type <- as.factor(ifelse(key_measures$measure %in% c("Mass gathering cancellation","Small gathering cancellation"),"Cancel gatherings",
+                              ifelse(key_measures$measure %in% c("Closure of educational institutions","Complete closure of primary and secondary schools","Complete closure of kindergartens"), "School closure",
+                              ifelse(key_measures$measure %in% c("Travel restrictions","Individual movement restrictions"),"Restrict mobility",
+                              ifelse(key_measures$measure %in% c("Declare state of emergency","Quarantine","National lockdown","Stay-at-home Order"),"Lockdown",
+                              ifelse(key_measures$measure %in% c("Mandatory home office","Closure of restaurants/bars/cafes","Closure of non-essential shops"), "Business closure",
+                              ifelse(key_measures$measure=="Face masks", "Masks","Other")))))))
