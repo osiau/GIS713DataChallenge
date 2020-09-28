@@ -22,6 +22,8 @@ county_covid_votes <- fread(file.path(wd, "regression supplies/county_dem_votes_
 county_variables <- readRDS("regression supplies/county_dependent_vars.RDS")
 #county_covid_votes$GEOID <- sprintf("%05d", county_covid_votes$countyFIPS)
 ```
+
+# Get hospital data
 ```{r}
 hospitals <- fread(file.path(wd, "Datasources/total_hospital.csv"))
 data_states <- fread(file.path(wd,"Datasources/all_names_FIPS.csv"))
@@ -187,4 +189,26 @@ qqPlot(deaths_v3$resid)
 hist(deaths_v3$resid, breaks=14)
 ```
 
+# Other models 
+```{r}
+county_variables$democrat <- ifelse(county_variables$vote_pct > 0, 1, 0)
+
+# Quasi-binomial 
+deaths_bin <- glm(total_deaths_pc~vote_pct, family=quasibinomial(logit), data=county_covid_votes)
+summary(deaths_bin)
+cases_bin <- glm(total_cases_pc~vote_pct, family=quasibinomial(logit), data=county_covid_votes)
+summary(cases_bin)
+
+# Beta (logit)
+#deaths_beta <- betareg(total_deaths_pc ~ vote_pct, data=county_covid_votes)
+#summary(deaths_beta)
+#cases_beta <- betareg(total_cases_pc ~ vote_pct, data=county_covid_votes)
+#summary(cases_beta)
+
+# Beta loglog
+#deaths_beta_loglog <- update(deaths_beta, link="loglog")
+#summary(deaths_beta_loglog)
+#cases_beta_loglog <- update(cases_beta, link="loglog")
+#summary(cases_beta_loglog)
+```
 
