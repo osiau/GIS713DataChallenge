@@ -1,0 +1,365 @@
+geoID,state,month,rate
+1,alabama,1/1/2020,3.25
+2,alaska,1/1/2020,6.57
+4,arizona,1/1/2020,4.64
+5,arkansas,1/1/2020,4.11
+6,california,1/1/2020,4.31
+8,colorado,1/1/2020,2.85
+9,connecticut,1/1/2020,4.43
+10,delaware,1/1/2020,4.24
+11,district of columbia,1/1/2020,5.09
+12,florida,1/1/2020,2.98
+13,georgia,1/1/2020,3.45
+15,hawaii,1/1/2020,2.89
+16,idaho,1/1/2020,3.5
+17,illinois,1/1/2020,4.01
+18,indiana,1/1/2020,3.6
+19,iowa,1/1/2020,3.69
+20,kansas,1/1/2020,3.4
+21,kentucky,1/1/2020,4.77
+22,louisiana,1/1/2020,5.7
+23,maine,1/1/2020,4.1
+24,maryland,1/1/2020,3.55
+25,massachusetts,1/1/2020,3.37
+26,michigan,1/1/2020,4.28
+27,minnesota,1/1/2020,3.66
+28,mississippi,1/1/2020,5.36
+29,missouri,1/1/2020,4.27
+30,montana,1/1/2020,4.42
+31,nebraska,1/1/2020,3.2
+32,nevada,1/1/2020,3.84
+33,new hampshire,1/1/2020,3.06
+34,new jersey,1/1/2020,4.39
+35,new mexico,1/1/2020,5
+36,new york,1/1/2020,4.11
+37,north carolina,1/1/2020,4.07
+38,north dakota,1/1/2020,2.83
+39,ohio,1/1/2020,5.05
+40,oklahoma,1/1/2020,3.27
+41,oregon,1/1/2020,3.8
+42,pennsylvania,1/1/2020,5.12
+44,rhode island,1/1/2020,4.06
+45,south carolina,1/1/2020,2.95
+46,south dakota,1/1/2020,3.8
+47,tennessee,1/1/2020,3.83
+48,texas,1/1/2020,3.75
+49,utah,1/1/2020,2.79
+50,vermont,1/1/2020,3.01
+51,virginia,1/1/2020,3.02
+53,washington,1/1/2020,4.42
+54,west virginia,1/1/2020,5.45
+55,wisconsin,1/1/2020,4.25
+56,wyoming,1/1/2020,4.29
+72,puerto rico,1/1/2020,9.56
+1,alabama,2/1/2020,2.88
+2,alaska,2/1/2020,5.87
+4,arizona,2/1/2020,4.36
+5,arkansas,2/1/2020,3.94
+6,california,2/1/2020,4.31
+8,colorado,2/1/2020,2.94
+9,connecticut,2/1/2020,4.4
+10,delaware,2/1/2020,4.05
+11,district of columbia,2/1/2020,5.17
+12,florida,2/1/2020,2.84
+13,georgia,2/1/2020,3.49
+15,hawaii,2/1/2020,2.65
+16,idaho,2/1/2020,3.08
+17,illinois,2/1/2020,3.53
+18,indiana,2/1/2020,3.36
+19,iowa,2/1/2020,3.15
+20,kansas,2/1/2020,3.32
+21,kentucky,2/1/2020,4.37
+22,louisiana,2/1/2020,4.28
+23,maine,2/1/2020,4.28
+24,maryland,2/1/2020,3.54
+25,massachusetts,2/1/2020,3.29
+26,michigan,2/1/2020,3.63
+27,minnesota,2/1/2020,3.58
+28,mississippi,2/1/2020,5.12
+29,missouri,2/1/2020,3.72
+30,montana,2/1/2020,4.2
+31,nebraska,2/1/2020,3.02
+32,nevada,2/1/2020,3.79
+33,new hampshire,2/1/2020,3.07
+34,new jersey,2/1/2020,4.18
+35,new mexico,2/1/2020,5.06
+36,new york,2/1/2020,3.93
+37,north carolina,2/1/2020,3.69
+38,north dakota,2/1/2020,2.78
+39,ohio,2/1/2020,4.74
+40,oklahoma,2/1/2020,3.01
+41,oregon,2/1/2020,3.75
+42,pennsylvania,2/1/2020,5.09
+44,rhode island,2/1/2020,3.98
+45,south carolina,2/1/2020,3.05
+46,south dakota,2/1/2020,3.61
+47,tennessee,2/1/2020,3.8
+48,texas,2/1/2020,3.56
+49,utah,2/1/2020,2.84
+50,vermont,2/1/2020,2.63
+51,virginia,2/1/2020,2.75
+53,washington,2/1/2020,4.19
+54,west virginia,2/1/2020,5.48
+55,wisconsin,2/1/2020,4.02
+56,wyoming,2/1/2020,4.28
+72,puerto rico,2/1/2020,7.78
+1,alabama,3/1/2020,3.01
+2,alaska,3/1/2020,5.86
+4,arizona,3/1/2020,6.14
+5,arkansas,3/1/2020,4.86
+6,california,3/1/2020,5.76
+8,colorado,3/1/2020,5.37
+9,connecticut,3/1/2020,3.59
+10,delaware,3/1/2020,5.05
+11,district of columbia,3/1/2020,5.89
+12,florida,3/1/2020,4.32
+13,georgia,3/1/2020,4.52
+15,hawaii,3/1/2020,2.25
+16,idaho,3/1/2020,3.04
+17,illinois,3/1/2020,4.19
+18,indiana,3/1/2020,3.21
+19,iowa,3/1/2020,3.61
+20,kansas,3/1/2020,2.9
+21,kentucky,3/1/2020,5.33
+22,louisiana,3/1/2020,6.35
+23,maine,3/1/2020,3.64
+24,maryland,3/1/2020,3.5
+25,massachusetts,3/1/2020,2.96
+26,michigan,3/1/2020,4.04
+27,minnesota,3/1/2020,3.49
+28,mississippi,3/1/2020,4.78
+29,missouri,3/1/2020,3.93
+30,montana,3/1/2020,4.23
+31,nebraska,3/1/2020,4.21
+32,nevada,3/1/2020,6.87
+33,new hampshire,3/1/2020,2.76
+34,new jersey,3/1/2020,3.7
+35,new mexico,3/1/2020,6.24
+36,new york,3/1/2020,4.25
+37,north carolina,3/1/2020,4.27
+38,north dakota,3/1/2020,2.68
+39,ohio,3/1/2020,5.43
+40,oklahoma,3/1/2020,2.95
+41,oregon,3/1/2020,3.9
+42,pennsylvania,3/1/2020,5.87
+44,rhode island,3/1/2020,4.98
+45,south carolina,3/1/2020,3.03
+46,south dakota,3/1/2020,3.38
+47,tennessee,3/1/2020,3.23
+48,texas,3/1/2020,5.12
+49,utah,3/1/2020,4.07
+50,vermont,3/1/2020,3.42
+51,virginia,3/1/2020,3.33
+53,washington,3/1/2020,5.37
+54,west virginia,3/1/2020,6.16
+55,wisconsin,3/1/2020,3.36
+56,wyoming,3/1/2020,4.34
+72,puerto rico,3/1/2020,
+1,alabama,4/1/2020,13.23
+2,alaska,4/1/2020,13.74
+4,arizona,4/1/2020,13.13
+5,arkansas,4/1/2020,10.29
+6,california,4/1/2020,16.17
+8,colorado,4/1/2020,12.16
+9,connecticut,4/1/2020,8.05
+10,delaware,4/1/2020,14.79
+11,district of columbia,4/1/2020,11.1
+12,florida,4/1/2020,13.49
+13,georgia,4/1/2020,12.18
+15,hawaii,4/1/2020,23.64
+16,idaho,4/1/2020,11.86
+17,illinois,4/1/2020,16.76
+18,indiana,4/1/2020,17.01
+19,iowa,4/1/2020,10.8
+20,kansas,4/1/2020,11.67
+21,kentucky,4/1/2020,16.24
+22,louisiana,4/1/2020,14.54
+23,maine,4/1/2020,10.8
+24,maryland,4/1/2020,9.79
+25,massachusetts,4/1/2020,16.03
+26,michigan,4/1/2020,23.64
+27,minnesota,4/1/2020,8.62
+28,mississippi,4/1/2020,15.73
+29,missouri,4/1/2020,9.82
+30,montana,4/1/2020,11.89
+31,nebraska,4/1/2020,8.62
+32,nevada,4/1/2020,30.07
+33,new hampshire,4/1/2020,17.21
+34,new jersey,4/1/2020,15.95
+35,new mexico,4/1/2020,11.42
+36,new york,4/1/2020,15.09
+37,north carolina,4/1/2020,12.49
+38,north dakota,4/1/2020,9.21
+39,ohio,4/1/2020,17.29
+40,oklahoma,4/1/2020,14.34
+41,oregon,4/1/2020,14.83
+42,pennsylvania,4/1/2020,15.61
+44,rhode island,4/1/2020,17.87
+45,south carolina,4/1/2020,12.19
+46,south dakota,4/1/2020,10.98
+47,tennessee,4/1/2020,15
+48,texas,4/1/2020,13.08
+49,utah,4/1/2020,10.37
+50,vermont,4/1/2020,16.79
+51,virginia,4/1/2020,10.78
+53,washington,4/1/2020,16.07
+54,west virginia,4/1/2020,15.78
+55,wisconsin,4/1/2020,13.59
+56,wyoming,4/1/2020,9.61
+72,puerto rico,4/1/2020,
+1,alabama,5/1/2020,9.17
+2,alaska,5/1/2020,12.56
+4,arizona,5/1/2020,8.77
+5,arkansas,5/1/2020,9.42
+6,california,5/1/2020,16.01
+8,colorado,5/1/2020,10.05
+9,connecticut,5/1/2020,9.44
+10,delaware,5/1/2020,15.5
+11,district of columbia,5/1/2020,8.45
+12,florida,5/1/2020,13.51
+13,georgia,5/1/2020,9.19
+15,hawaii,5/1/2020,23.39
+16,idaho,5/1/2020,8.62
+17,illinois,5/1/2020,14.83
+18,indiana,5/1/2020,11.89
+19,iowa,5/1/2020,9.93
+20,kansas,5/1/2020,9.88
+21,kentucky,5/1/2020,10.7
+22,louisiana,5/1/2020,13.94
+23,maine,5/1/2020,9.44
+24,maryland,5/1/2020,9.74
+25,massachusetts,5/1/2020,16.53
+26,michigan,5/1/2020,20.81
+27,minnesota,5/1/2020,9.38
+28,mississippi,5/1/2020,10.39
+29,missouri,5/1/2020,9.81
+30,montana,5/1/2020,8.51
+31,nebraska,5/1/2020,5.17
+32,nevada,5/1/2020,25.11
+33,new hampshire,5/1/2020,15.32
+34,new jersey,5/1/2020,15.08
+35,new mexico,5/1/2020,8.73
+36,new york,5/1/2020,14.18
+37,north carolina,5/1/2020,12.67
+38,north dakota,5/1/2020,8.67
+39,ohio,5/1/2020,13.5
+40,oklahoma,5/1/2020,12.62
+41,oregon,5/1/2020,13.93
+42,pennsylvania,5/1/2020,13.23
+44,rhode island,5/1/2020,16.15
+45,south carolina,5/1/2020,12.02
+46,south dakota,5/1/2020,9.19
+47,tennessee,5/1/2020,10.68
+48,texas,5/1/2020,12.71
+49,utah,5/1/2020,8.48
+50,vermont,5/1/2020,12.7
+51,virginia,5/1/2020,8.89
+53,washington,5/1/2020,14.8
+54,west virginia,5/1/2020,12.52
+55,wisconsin,5/1/2020,11.88
+56,wyoming,5/1/2020,8.68
+72,puerto rico,5/1/2020,9.55
+1,alabama,6/1/2020,7.94
+2,alaska,6/1/2020,12.32
+4,arizona,6/1/2020,10.3
+5,arkansas,6/1/2020,8.34
+6,california,6/1/2020,15.07
+8,colorado,6/1/2020,10.75
+9,connecticut,6/1/2020,10.17
+10,delaware,6/1/2020,12.88
+11,district of columbia,6/1/2020,9.08
+12,florida,6/1/2020,10.52
+13,georgia,6/1/2020,7.95
+15,hawaii,6/1/2020,13.93
+16,idaho,6/1/2020,5.47
+17,illinois,6/1/2020,14.58
+18,indiana,6/1/2020,11.09
+19,iowa,6/1/2020,8.29
+20,kansas,6/1/2020,7.6
+21,kentucky,6/1/2020,4.95
+22,louisiana,6/1/2020,10.36
+23,maine,6/1/2020,6.52
+24,maryland,6/1/2020,8.47
+25,massachusetts,6/1/2020,17.83
+26,michigan,6/1/2020,15
+27,minnesota,6/1/2020,8.56
+28,mississippi,6/1/2020,9.79
+29,missouri,6/1/2020,7.93
+30,montana,6/1/2020,7.05
+31,nebraska,6/1/2020,5.73
+32,nevada,6/1/2020,15.33
+33,new hampshire,6/1/2020,9.09
+34,new jersey,6/1/2020,16.62
+35,new mexico,6/1/2020,9.09
+36,new york,6/1/2020,15.48
+37,north carolina,6/1/2020,7.72
+38,north dakota,6/1/2020,7.52
+39,ohio,6/1/2020,11.11
+40,oklahoma,6/1/2020,6.69
+41,oregon,6/1/2020,11.68
+42,pennsylvania,6/1/2020,13.33
+44,rhode island,6/1/2020,12.3
+45,south carolina,6/1/2020,8.92
+46,south dakota,6/1/2020,7.06
+47,tennessee,6/1/2020,10.08
+48,texas,6/1/2020,8.68
+49,utah,6/1/2020,5.69
+50,vermont,6/1/2020,9.51
+51,virginia,6/1/2020,8.25
+53,washington,6/1/2020,9.89
+54,west virginia,6/1/2020,10.54
+55,wisconsin,6/1/2020,8.86
+56,wyoming,6/1/2020,7.61
+72,puerto rico,6/1/2020,8.48
+1,alabama,7/1/2020,8.15
+2,alaska,7/1/2020,10.83
+4,arizona,7/1/2020,10.93
+5,arkansas,7/1/2020,7.48
+6,california,7/1/2020,13.72
+8,colorado,7/1/2020,7.38
+9,connecticut,7/1/2020,10.29
+10,delaware,7/1/2020,10.6
+11,district of columbia,7/1/2020,8.86
+12,florida,7/1/2020,11.54
+13,georgia,7/1/2020,7.97
+15,hawaii,7/1/2020,13.05
+16,idaho,7/1/2020,4.69
+17,illinois,7/1/2020,11.33
+18,indiana,7/1/2020,7.91
+19,iowa,7/1/2020,6.46
+20,kansas,7/1/2020,7.65
+21,kentucky,7/1/2020,6.21
+22,louisiana,7/1/2020,9.93
+23,maine,7/1/2020,9.45
+24,maryland,7/1/2020,7.74
+25,massachusetts,7/1/2020,16.17
+26,michigan,7/1/2020,9.51
+27,minnesota,7/1/2020,7.45
+28,mississippi,7/1/2020,11.46
+29,missouri,7/1/2020,7.21
+30,montana,7/1/2020,6
+31,nebraska,7/1/2020,5.01
+32,nevada,7/1/2020,14.15
+33,new hampshire,7/1/2020,7.93
+34,new jersey,7/1/2020,13.99
+35,new mexico,7/1/2020,13.32
+36,new york,7/1/2020,15.98
+37,north carolina,7/1/2020,8.89
+38,north dakota,7/1/2020,6.35
+39,ohio,7/1/2020,9.1
+40,oklahoma,7/1/2020,7.11
+41,oregon,7/1/2020,10.56
+42,pennsylvania,7/1/2020,14.07
+44,rhode island,7/1/2020,11.41
+45,south carolina,7/1/2020,8.84
+46,south dakota,7/1/2020,6.01
+47,tennessee,7/1/2020,9.93
+48,texas,7/1/2020,8.23
+49,utah,7/1/2020,4.6
+50,vermont,7/1/2020,8.17
+51,virginia,7/1/2020,8.05
+53,washington,7/1/2020,10.15
+54,west virginia,7/1/2020,9.71
+55,wisconsin,7/1/2020,7.01
+56,wyoming,7/1/2020,6.76
+72,puerto rico,7/1/2020,7.27
