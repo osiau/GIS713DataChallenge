@@ -47,59 +47,52 @@ co_pres16[, percent_rep := 1 - percent_dem]
 co_pres16[, dem_win := ifelse(percent_dem > .50, 1, 0)]
 co_pres16[, winning_party := ifelse(percent_dem > .50, "Democrat", "Republican")]
 
-#Merge county votes DT with SPDF
-pres_2016_co_map <- merge(sp2, co_pres16, by.x="GEOID", by.y="countyFIPS", all.x = T)
+#Subset vote DT to drop AK
+co_pres16_no_ak <- co_pres16[state != "Alaska",]
 
+#Subset vote DT to AK
+only_ak_vote <- co_pres16[state == "Alaska",]
+
+#Shapefile drop AK
+sp2_no_ak <- sp2[sp2$STATEFP != "02",]
+
+#Merge county votes DT with SPDF
+pres_2016_map_no_ak <- merge(sp2_no_ak, co_pres16_no_ak, by.x="GEOID", by.y="countyFIPS", all.x = T)
 
 #Import Alaska map of voting districts, which are not the same as counties when it comes to vote counts. "---"is a local directory 
 #for me, but this file will be added to Google or Github soone.
-alp1 <- readOGR("Datasources", "2013ProclamationPlan")
-
-mepg <- make_EPSG()
-
-#Select for Albers Equal Area for presentation
-alberse <- mepg[mepg$code == "5070","prj4"]
-
-#Subset to Alaska votes only
-ak_votes <- co_pres16[co_pres16$state=="Alaska",]
+ak_vote_shp <- readOGR("Datasources", "2013ProclamationPlan")
 
 #Edit for district numbers only
-ak_votes$district_no <- gsub("District ","", ak_votes$county)
+only_ak_vote$county <- gsub("District ","", only_ak_vote$county)
 
-#Transform
-pres_2016_co_map <- spTransform(pres_2016_co_map, alberse)
-
-#Transform
-ak_vote_map <- spTransform(alp1, alberse)
-
-#Merge vote information with SPDF
-ak_map_votes <- merge(ak_vote_map, ak_votes, by.x="District_N", by.y="district_no", all.x=T)
-
-#Drop Alaska from SPDF
-pres_2016_co_map_ma <- pres_2016_co_map[pres_2016_co_map$STATEFP != "02",]
+#Merge vote information with AK SPDF
+ak_map_votes <- merge(ak_vote_map, only_ak_vote, by.x="District_N", by.y="county", all.x=T)
 
 #Combine U.S. minus AK map with AK map
-vote_counts_by_county_2016 <- bind(pres_2016_co_map_ma, ak_vote_map)
+vote_counts_by_county_2016 <- bind(pres_2016_map_no_ak, ak_map_votes)
+
+#vote_counts_by_county_2016_ll <- spTransform(vote_counts_by_county_2016, latlon)
 
 #overlay parties
-red <- subset(vote_counts_by_county_2016_ll, winning_party == "Republican")
-blue <- subset(vote_counts_by_county_2016_ll, winning_party == "Democrat")
+red <- subset(vote_counts_by_county_2016, winning_party == "Republican")
+blue <- subset(vote_counts_by_county_2016, winning_party == "Democrat")
 
 #party colors
 collist <- c('red','blue')
-controlpal <- colorFactor(collist, vote_counts_by_county_2016_ll$winning_party)
+controlpal <- colorFactor(collist, vote_counts_by_county_2016$winning_party)
 
 
 labels <- sprintf(
   "<strong>%s</strong><br/> Party: %s",
-  vote_counts_by_county_2016_ll$state, vote_counts_by_county_2016_ll$winning_party
+  vote_counts_by_county_2016$state, vote_counts_by_county_2016$winning_party
 ) %>% lapply(htmltools::HTML)
 
 
 # server <- function(input, output, session) {
 
   # output$mymap <- renderLeaflet({
-m <- leaflet(vote_counts_by_county_2016_ll) %>% #begin leaflet map
+m <- leaflet(vote_counts_by_county_2016) %>% #begin leaflet map
 #all states
 addPolygons(stroke = FALSE, smoothFactor = 0.2, fillOpacity = 1, 
     fillColor = ~controlpal(winning_party), color = "white", opacity = 1, dashArray = "2", group = "all", 
