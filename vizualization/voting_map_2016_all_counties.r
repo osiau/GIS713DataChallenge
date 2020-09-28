@@ -82,24 +82,24 @@ pres_2016_co_map_ma <- pres_2016_co_map[pres_2016_co_map$STATEFP != "02",]
 vote_counts_by_county_2016 <- bind(pres_2016_co_map_ma, ak_vote_map)
 
 #overlay parties
-red <- subset(vote_counts_by_county_2016, winning_party == "Republican")
-blue <- subset(vote_counts_by_county_2016, winning_party == "Democrat")
+red <- subset(vote_counts_by_county_2016_ll, winning_party == "Republican")
+blue <- subset(vote_counts_by_county_2016_ll, winning_party == "Democrat")
 
 #party colors
 collist <- c('red','blue')
-controlpal <- colorFactor(collist, vote_counts_by_county_2016$winning_party)
+controlpal <- colorFactor(collist, vote_counts_by_county_2016_ll$winning_party)
 
 
 labels <- sprintf(
   "<strong>%s</strong><br/> Party: %s",
-  vote_counts_by_county_2016$state, vote_counts_by_county_2016$winning_party
+  vote_counts_by_county_2016_ll$state, vote_counts_by_county_2016_ll$winning_party
 ) %>% lapply(htmltools::HTML)
 
 
 # server <- function(input, output, session) {
 
   # output$mymap <- renderLeaflet({
-m <- leaflet(vote_counts_by_county_2016) %>% #begin leaflet map
+m <- leaflet(vote_counts_by_county_2016_ll) %>% #begin leaflet map
 #all states
 addPolygons(stroke = FALSE, smoothFactor = 0.2, fillOpacity = 1, 
     fillColor = ~controlpal(winning_party), color = "white", opacity = 1, dashArray = "2", group = "all", 
