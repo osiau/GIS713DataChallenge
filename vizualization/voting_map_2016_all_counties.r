@@ -69,10 +69,15 @@ only_ak_vote$county <- gsub("District ","", only_ak_vote$county)
 #Merge vote information with AK SPDF
 ak_map_votes <- merge(ak_vote_shp, only_ak_vote, by.x="District_N", by.y="county", all.x=T)
 
+#Transform the ak_map_votes projection to longlat
+mepg <- make_EPSG()
+
+longlat <- mepg[mepg$code == "4326", "prj4"]
+
+ak_map_votes <- spTransform(ak_map_votes, longlat)
+
 #Combine U.S. minus AK map with AK map
 vote_counts_by_county_2016 <- bind(pres_2016_map_no_ak, ak_map_votes)
-
-#vote_counts_by_county_2016_ll <- spTransform(vote_counts_by_county_2016, latlon)
 
 #overlay parties
 red <- subset(vote_counts_by_county_2016, winning_party == "Republican")
