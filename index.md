@@ -5,18 +5,17 @@
 A brief description of our findings.
 
 ##### Centoids
+Caption by Muyiwa
 ![github](https://pages.github.ncsu.edu/chaedri/Data-Challenge-GIS713/images/centroids.png)
 
 ##### Unemployment
+Caption by Uchenna
 {% include streamgraphBasic.html %}
 
 
 ##### Legislative Map
-
+Caption by Uchenna
 {% include map/index.html %}
-
-Check back later for more slick figures.
-
 
 ##### Find our analysis, data and methods on github: 
 ![github](https://pages.github.ncsu.edu/chaedri/Data-Challenge-GIS713/images/octocat.svg) [GitHub](https://github.ncsu.edu/chaedri/Data-Challenge-GIS713)
