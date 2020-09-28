@@ -116,7 +116,7 @@ addLegend("bottomright", pal = controlpal, values = ~winning_party,
 addTiles(group = "OSM") %>%
 addLayersControl(baseGroups = c("OSM"), 
                 overlayGroups = c("red","blue")) #endleaflet
-leafletSizingPolicy(width = "1000px", height= "300px", view.fill = FALSE, browser.fill = FALSE)
+#leafletSizingPolicy(width = "1000px", height= "300px", view.fill = FALSE, browser.fill = FALSE)
 
 
 mapshot(m, url = paste0(getwd(), "/general_election_2016.html")) #for exporting
