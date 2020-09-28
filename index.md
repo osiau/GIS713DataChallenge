@@ -10,7 +10,7 @@ A brief description of our findings.
 
 ## Legislative Map
 
-{% include map/ %}
+{% include map %}
 
 Check back later for more slick figures.
 
