@@ -79,46 +79,51 @@ red <-subset(control, StateControl == "Rep")
 blue <-subset(control, StateControl == "Dem")
 divide <-subset(control, StateControl == "Divided")
 other <- subset(control, StateControl == "NPP")
+
+red <- subset(vote_counts_by_county_2016, dem_win == "0")
+blue <- subset(vote_counts_by_county_2016, dem_win == "1")
+
 #party colors
-collist <- c('blue','yellow','green','red')
-controlpal <- colorFactor(collist, control$StateControl)
+collist <- c('blue','red')
+vote_pal <- colorFactor(collist, vote_counts_by_county_2016$dem_win)
 
 
 labels <- sprintf(
-  "<strong>%s</strong><br/> Governor: %s",
-  control$NAME, control$Gov.Party
+  "<strong>%s</strong><br/> Party: %s",
+  vote_counts_by_county_2016$party
 ) %>% lapply(htmltools::HTML)
+
 
 # server <- function(input, output, session) {
 
   # output$mymap <- renderLeaflet({
-m <- leaflet(control) %>% #begin leaflet map
+m <- leaflet(vote_counts_by_county_2016) %>% #begin leaflet map
 #all states
 addPolygons(stroke = FALSE, smoothFactor = 0.2, fillOpacity = 1, 
-    fillColor = ~controlpal(StateControl), color = "white", opacity = 1, dashArray = "3", group = "all", 
+    fillColor = ~vote_pal(dem_win), color = "white", opacity = 1, dashArray = "3", group = "all", 
 highlight = highlightOptions( weight = 5, color = "#666", dashArray = "3", fillOpacity = 0.7, bringToFront = TRUE),
 label = labels,
 labelOptions = labelOptions(style = list("font-weight" = "normal", padding = "3px 8px"),textsize = "15px",direction = "auto")) %>%
 #red states
 addPolygons(data = red, stroke = FALSE, smoothFactor = 0.2, fillOpacity = 1, 
-    color = ~controlpal(StateControl), group = "red") %>%
+    color = ~vote_pal(dem_win), group = "red") %>%
 #blue states
 addPolygons(data = blue, stroke = FALSE, smoothFactor = 0.2, fillOpacity = 1,
-    color = ~controlpal(StateControl), group = "blue") %>%
+    color = ~vote_pal(dem_win), group = "blue") %>%
 #divided
 addPolygons(data = divide, stroke = FALSE, smoothFactor = 0.2, fillOpacity = 1,
-    color = ~controlpal(StateControl),  group = "divided") %>%
+    color = ~vote_pal(dem_win),  group = "divided") %>%
 #other
 addPolygons(data = other, stroke = FALSE, smoothFactor = 0.2, fillOpacity = 1,
-    color = ~controlpal(StateControl),  group = "other") %>%
+    color = ~vote_pal(dem_win),  group = "other") %>%
 
-addLegend("bottomright", pal = controlpal, values = ~StateControl, 
-    title = "Party Control") %>%
+addLegend("bottomright", pal = vote_pal, values = ~dem_win, 
+    title = "Winning Party") %>%
 addTiles(group = "OSM") %>%
 addLayersControl(baseGroups = c("OSM"), 
                 overlayGroups = c("all","red","blue","divided","other")) #endleaflet
 leafletSizingPolicy(width = "1000px", height= "300px", view.fill = FALSE, browser.fill = FALSE)
 
 
-mapshot(m, url = paste0(getwd(), "/legislative_widget.html")) #for exporting
+mapshot(m, url = paste0(getwd(), "/general_election_2016.html")) #for exporting
 
