@@ -12,6 +12,8 @@ library(dplyr)
 library(corrplot)
 library(car)
 library(leaps)
+library(bestglm)
+library(data.table)
 
 data_dir <- "/Users/ihinks/Documents/GIS713/DataChallenge"
 setwd(data_dir)
@@ -45,6 +47,7 @@ hospitals <- merge(hospitals, data_states, by="stateFIPS", all.x=TRUE)
 
 ```
 
+# Get community resilience data
 ```{r}
 county_resilience <- fread(file.path(wd, "Datasources/communityresilience_county.csv"), stringsAsFactors=TRUE, header=TRUE)
 
@@ -79,6 +82,7 @@ county_resilience <- county_resilience[,.(geoID,state,county=county.y,
 # ready to go!
 ```
 
+# Get air quality data
 ```{r}
 air_qual2019 <- read.csv(file.path(wd,"Datasources/air_quaity_annual_aqi_by_county_2019.csv"),stringsAsFactors=TRUE, header=TRUE)
 air_qual2020 <- read.csv(file.path(wd,"Datasources/air_quality_annual_aqi_by_county_2020.csv"),stringsAsFactors=TRUE, header=TRUE)
@@ -119,13 +123,14 @@ all_county_data <- all_county_data[, c("stateFIPS.x", "state.x", "county.x", "st
 county_data <- as.data.table(lapply(all_county_data, function(x) as.numeric(x)))
 ```
 
+# Simple linear regression 
 ```{r}
 # County data with deaths
 all_county_d <- county_data[,-c("geoID", "total_cases_pc")]
 # County data with cases
 all_county_c <- county_data[,-c("geoID", "total_deaths_pc")]
 
-# Basic model to consider all possible inputs
+# Basic models to consider all possible predictors
 basic_cases_v1=lm(total_cases_pc~., data=all_county_c)
 summary(basic_cases_v1)
 
@@ -136,22 +141,24 @@ summary(basic_deaths_v1)
 county_c_rem <- all_county_c[, c("total_cases_pc", "vote_pct", "beds_county", "beds_state", "hospitals_state")]
 county_d_rem <- all_county_d[, c("total_deaths_pc", "unemploy", "beds_county", "beds_state", "hospitals_state")]
 
-# Running v2 of the models with insignificant predictors removed 
+# Running second version of the models with insignificant predictors removed 
 basic_cases_v2=lm(total_cases_pc~., data=county_c_rem)
 summary(basic_cases_v2)
 
 basic_deaths_v2=lm(total_deaths_pc~., data=county_d_rem)
 summary(basic_deaths_v2)
 
+# Looking at VIFs and MSEs
 vif(basic_cases_v2)
 vif(basic_deaths_v2)
 
 MSE_cases=(summary(basic_cases_v2)$sigma)^2
 MSE_deaths=(summary(basic_deaths_v2)$sigma)^2
 
+# Exploring forward stepwise as an approach
 # Starting with a model with no predictors 
-none_cases <- lm(total_cases_pc~1, data=county_c_rem)
-none_deaths <- lm(total_deaths_pc~1, data=county_d_rem)
+#none_cases <- lm(total_cases_pc~1, data=county_c_rem)
+#none_deaths <- lm(total_deaths_pc~1, data=county_d_rem)
 
 # Forward stepwise
 #step_cases=step(none,scope=list(upper=basic_cases_v2), scale=MSE_cases, trace=F)
@@ -160,22 +167,30 @@ none_deaths <- lm(total_deaths_pc~1, data=county_d_rem)
 #step_deaths=step(none,scope=list(upper=basic_deaths_v2), scale=MSE_deaths, trace=F)
 #summary(step_deaths)
 ```
+We began by creating linear models that consider all numeric and categorical variables in the data set to predict covid cases and deaths per capita, respectively. We removed all of the numeric predictors that were not significant at the 5% level. 
 
-# Finding best lm to predict covid cases 
+# Finding best lm to predict covid cases per capita
 ```{r}
-cases_v3 <- lm(formula = total_cases_pc ~ (vote_pct) + (beds_county) + (beds_state), data=county_c_rem)
-summary(cases_v3) # adj R^2 0.04092
+cases_v3 <- lm(formula = total_cases_pc ~ (vote_pct) + (beds_county) + (beds_state) + (hospitals_state), data=county_c_rem)
+summary(cases_v3) # adj R^2 0.1099
 plot(cases_v3$residuals~cases_v3$fitted.values)
 abline(0,0)
 qqPlot(cases_v3$resid)
 hist(cases_v3$resid, breaks=14) 
 
-cases_v4 <- lm(formula = total_cases_pc ~ sqrt(vote_pct) + 1/(beds_county) + sqrt(beds_state), data=county_c_rem)
-summary(cases_v4) # adj R^2 0.1267
+cases_v4 <- lm(formula = total_cases_pc ~ sqrt(vote_pct) + 1/(beds_county) + sqrt(beds_state) + (hospitals_state), data=county_c_rem)
+summary(cases_v4) # adj R^2 0.1688
 plot(cases_v4$residuals~cases_v4$fitted.values)
 abline(0,0)
 qqPlot(cases_v4$resid)
 hist(cases_v4$resid, breaks=14)
+
+cases_v5 <- lm(formula = sqrt(total_cases_pc) ~ sqrt(vote_pct) + (beds_county)^2 + (beds_state) + sqrt(hospitals_state), data=county_c_rem)
+summary(cases_v5) # adj R^2 0.2264
+plot(cases_v5$residuals~cases_v5$fitted.values)
+abline(0,0)
+qqPlot(cases_v5$resid)
+hist(cases_v5$resid, breaks=14)
 ```
 
 # Finding best lm to predict covid deaths
@@ -188,6 +203,11 @@ abline(0,0)
 qqPlot(deaths_v3$resid)
 hist(deaths_v3$resid, breaks=14)
 ```
+We transformed individual predictor variables by exploring typical transformations for each variable, i.e. log(variable), sqrt(variable), (variable^2), (1/variable), etc. After trying each transformation for a given predictor, the transformation that most significantly improved the fit of the model (if any) was kept in the model. We determined an improvement of fit based on the plots (qqplot, histogram, residuals vs. fits, etc.) as well as the significance of each variable and adjusted R^2 value. This process was applied to all of the predictor variables and the response variable. Our best model to predict covid cases, with an adjusted R^2 of 0.2264, was: 
+
+
+cases_v5 <- lm(formula = sqrt(total_cases_pc) ~ sqrt(vote_pct) + (beds_county)^2 + (beds_state) + sqrt(hospitals_state), data=county_c_rem)
+
 
 # Other models 
 ```{r}
@@ -212,6 +232,9 @@ summary(cases_bin)
 #summary(cases_beta_loglog)
 ```
 
+Also tried binary logistic, quasi-binomial, beta logistic, and beta loglog regressions 
+
+# Exploring whether a county's color (blue vs non-blue, determined by % of votes) can be predicted based on unemployment rate and per-capita covid cases and deaths
 ```{r}
 # Can we predict blue/non blue candidate winner based on deaths, cases, unemployment rate?
 demMod1 <- glm(democrat~total_deaths_pc+total_cases_pc+unemploy, data=county_variables, family = binomial)
@@ -238,5 +261,6 @@ summary(dem_no_unemp)
 dem_unemployment <- glm(democrat~unemploy, data=county_variables, family = binomial)
 summary(dem_unemployment)
 
-#bestglm(county_variables, family=binomial)
+bestglm(county_variables, family=binomial)
 ```
+
