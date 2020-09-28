@@ -4,6 +4,9 @@
 
 A brief description of our findings.
 
+##### Centoids
+![github](https://pages.github.ncsu.edu/chaedri/Data-Challenge-GIS713/images/centroids.png)
+
 ##### Unemployment
 {% include streamgraphBasic.html %}
 
