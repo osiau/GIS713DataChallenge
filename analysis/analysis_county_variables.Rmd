@@ -1,0 +1,179 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+
+```{r}
+library(readr)
+library(mosaic)
+library(Stat2Data)
+library(dplyr)
+library(corrplot)
+library(car)
+library(leaps)
+
+data_dir <- "/Users/ihinks/Documents/GIS713/DataChallenge"
+setwd(data_dir)
+county_covid_votes <- fread(file.path(data_dir, "county_dem_votes_and_cases.csv"))
+county_variables <- readRDS("county_dependent_vars.RDS")
+#county_covid_votes$GEOID <- sprintf("%05d", county_covid_votes$countyFIPS)
+```
+```{r}
+hospitals <- fread(file.path(data_dir, "total_hospital.csv"))
+data_states <- fread(file.path(data_dir,"all_names_FIPS.csv"))
+data_states <- data_states[,.(stateFIPS = as.factor(formatC(stateFIPS,width=2,flag="0")), 
+                              countyFIPS=as.factor(formatC(countyFIPS,width=3,flag="0")), 
+                              geoID=as.factor(formatC(geoID,width=5,flag="0")),county,state)]
+
+setnames(hospitals,"T_CO_Hos(total no. of hospitals in the county)","hospitals_county")
+setnames(hospitals,"T_ST_HOS(Total no. of hospitals in the States)","hospitals_state")
+
+# removing a lot of unneeded columns
+
+data_states <- unique(data_states[,.(stateFIPS = as.factor(stateFIPS),state)])
+hospitals <- hospitals[,.(geoID=as.factor(formatC(GEOID,width=5,flag="0")), stateFIPS=as.factor(formatC(STATEFP,width=2,flag="0")), 
+                countyFIPS = COUNTYF, county = tolower(NAME), beds_county = Sum_BEDS, beds_state = Sum_BEDS_1, hospitals_county, 
+                hospitals_state)]
+
+hospitals <- merge(hospitals, data_states, by="stateFIPS", all.x=TRUE)
+
+```
+
+```{r}
+county_resilience <- fread(file.path(data_dir, "communityresilience_county.csv"), stringsAsFactors=TRUE, header=TRUE)
+
+data_states <- read.csv(file.path(data_dir,"all_names_FIPS.csv"),stringsAsFactors=TRUE)
+data_states <- as.data.table(data_states)
+data_states <- data_states[,.(stateFIPS = as.factor(formatC(stateFIPS,width=2,flag="0")), 
+                              countyFIPS=as.factor(formatC(countyFIPS,width=3,flag="0")), 
+                              geoID=as.factor(formatC(geoID,width=5,flag="0")),county,state)]
+
+county_resilience <- county_resilience[-1,] # removing a second inner header
+
+# naming standards
+
+names <- names(county_resilience)
+newnames <- c("couty_state","county","geoID","nation","stateFIPS","countyFIPS","census_tract",
+              "population","popn_low_risk","popn_med_risk","popn_high_risk")
+names(county_resilience) <- c(newnames,names[12:21])
+
+# column reduction
+
+county_resilience <- as.data.table(county_resilience)
+county_resilience <- county_resilience[,.(couty_state,county,geoID = as.factor(geoID),
+                        stateFIPS,countyFIPS,population,popn_low_risk,popn_med_risk,popn_high_risk)]
+
+# adding standardized county, state, and code names
+
+county_resilience <- merge(county_resilience,data_states,by=("geoID"),all.x=TRUE)
+county_resilience <- county_resilience[,.(geoID,state,county=county.y,
+                                stateFIPS=stateFIPS.x,countyFIPS=countyFIPS.x,
+                                population, popn_low_risk,popn_med_risk,popn_high_risk)]
+
+# ready to go!
+```
+
+```{r}
+air_qual2019 <- read.csv(file.path(data_dir,"air_quaity_annual_aqi_by_county_2019.csv"),stringsAsFactors=TRUE, header=TRUE)
+air_qual2020 <- read.csv(file.path(data_dir,"air_quality_annual_aqi_by_county_2020.csv"),stringsAsFactors=TRUE, header=TRUE)
+data_states <- read.csv(file.path(data_dir,"all_names_FIPS.csv"),stringsAsFactors=TRUE)
+data_states <- as.data.table(data_states)
+data_states <- data_states[,.(stateFIPS = as.factor(formatC(stateFIPS,width=2,flag="0")), countyFIPS=as.factor(formatC(countyFIPS,width=3,flag="0")), geoID=as.factor(formatC(geoID,width=5,flag="0")),county,state)]
+
+# convert to data.table
+
+air_qual2019 <- as.data.table(air_qual2019)
+air_qual2020 <- as.data.table(air_qual2020)
+
+# lowercase names
+
+names(air_qual2019) <- tolower(names(air_qual2019))
+names(air_qual2020) <- tolower(names(air_qual2020))
+
+summary(data_states)
+
+# adding codes to air quality
+
+air_qual2019$state <- tolower(air_qual2019$state)
+air_qual2019$county <- tolower(air_qual2019$county)
+air_qual2019 <- merge(air_qual2019,data_states,by=c("state","county"))
+
+air_qual2020$state <- tolower(air_qual2020$state)
+air_qual2020$county <- tolower(air_qual2020$county)
+air_qual2020 <- merge(air_qual2020,data_states,by=c("state","county"))
+```
+
+# Merge all data
+```{r}
+all_county_data <- merge(county_variables, county_resilience, by="geoID")
+all_county_data <- merge(all_county_data, hospitals, by="geoID")
+all_county_data <- merge(all_county_data, air_qual2019[, -"stateFIPS"], by="geoID")
+all_county_data <- merge(all_county_data, air_qual2020[, c("stateFIPS", "state", "county", "countyFIPS") := NULL], by="geoID")
+all_county_data <- all_county_data[, c("stateFIPS.x", "state.x", "county.x", "stateFIPS.y", "countyFIPS.x", "stateFIPS", "countyFIPS.y", "county.y", "state.y", "state", "county", "x90th.percentile.aqi.x", "countyFIPS") := NULL]
+county_data <- as.data.table(lapply(all_county_data, function(x) as.numeric(x)))
+```
+
+```{r}
+# County data with deaths
+all_county_d <- county_data[,-c("geoID", "total_cases_pc")]
+# County data with cases
+all_county_c <- county_data[,-c("geoID", "total_deaths_pc")]
+
+# Basic model to consider all possible inputs
+basic_cases_v1=lm(total_cases_pc~., data=all_county_c)
+summary(basic_cases_v1)
+
+basic_deaths_v1=lm(total_deaths_pc~., data=all_county_d)
+summary(basic_deaths_v1)
+
+# Removing predictors that aren't significant at the 5% level
+county_c_rem <- all_county_c[, c("total_cases_pc", "vote_pct", "beds_county", "beds_state", "hospitals_state")]
+county_d_rem <- all_county_d[, c("total_deaths_pc", "unemploy", "beds_county", "beds_state", "hospitals_state")]
+
+# Running v2 of the models with insignificant predictors removed 
+basic_cases_v2=lm(total_cases_pc~., data=county_c_rem)
+summary(basic_cases_v2)
+
+basic_deaths_v2=lm(total_deaths_pc~., data=county_d_rem)
+summary(basic_deaths_v2)
+
+vif(basic_cases_v2)
+vif(basic_deaths_v2)
+
+MSE_cases=(summary(basic_cases_v2)$sigma)^2
+MSE_deaths=(summary(basic_deaths_v2)$sigma)^2
+
+# Starting with a model with no predictors 
+none_cases <- lm(total_cases_pc~1, data=county_c_rem)
+none_deaths <- lm(total_deaths_pc~1, data=county_d_rem)
+
+# Forward stepwise
+#step_cases=step(none,scope=list(upper=basic_cases_v2), scale=MSE_cases, trace=F)
+#summary(step_cases)
+
+#step_deaths=step(none,scope=list(upper=basic_deaths_v2), scale=MSE_deaths, trace=F)
+#summary(step_deaths)
+```
+
+# Finding best model to predict covid cases 
+```{r}
+cases_v3 <- lm(formula = total_cases_pc ~ (vote_pct) + (beds_county) + (beds_state), data=county_c_rem)
+summary(cases_v3)
+plot(cases_v3$residuals~cases_v3$fitted.values)
+abline(0,0)
+qqPlot(cases_v3$resid)
+hist(cases_v3$resid, breaks=14)
+```
+
+# Finding best model to predict covid deaths
+```{r}
+deaths_v3 <- lm(formula = total_deaths_pc ~ (unemploy) + (beds_county) + (beds_state), data=county_d_rem)
+summary(deaths_v3)
+plot(deaths_v3$residuals~deaths_v3$fitted.values)
+abline(0,0)
+qqPlot(deaths_v3$resid)
+hist(deaths_v3$resid, breaks=14)
+```
+
+
