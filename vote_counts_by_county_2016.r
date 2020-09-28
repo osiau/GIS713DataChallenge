@@ -4,6 +4,13 @@ library(rgdal)
 library(tidyr)
 library(tmap) #for viewing only
 library(rgeos)
+library(raster)
+library(maptools)
+library(sp)
+library(tidycensus)
+library(leaflet)
+library(RColorBrewer)
+library(mapview)
 
 wd <- getwd()
 
