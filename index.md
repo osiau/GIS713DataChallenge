@@ -1,12 +1,14 @@
 
 # Have places that voted for Trump in 2016 had better COVID-19 outcomes than those that voted for Clinton?
 
-1. World Map: yes or no on the question
+Yes. We found that blue states has worse health outcomes than red states.
+
 A brief description of our findings; the twitter map and one sentence conclusion
 twitter-worthy map; Caption by Muyiwa
 ![github](https://pages.github.ncsu.edu/chaedri/Data-Challenge-GIS713/images/centroids.png)
 
-#### Well, how sure are we?
+#### But could that be correlation, not causality?
+There could be some other co-variate that causes this pattern. Furthermore, is this difference even statistically significant?
 
 Basic box plots
 
