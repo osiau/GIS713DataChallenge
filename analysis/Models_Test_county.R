@@ -230,7 +230,7 @@ setnames(acs_final, "geoid", "geoID")
 # Merge
 county_var_AQS_Resilience_Hospital_Census <- merge(county_var_AQS_Resilience_Hospital, acs_final, by="geoID")
 
-
+write.csv(county_var_AQS_Resilience_Hospital_Census,"county_var_AQS_Resilience_Hospital_Census.csv")
 
 #####################################################################
 
@@ -239,8 +239,7 @@ county_var_AQS_Resilience_Hospital_Census <- merge(county_var_AQS_Resilience_Hos
 county_var_AQS_Resilience_Hospital_Census$popn_low_risk <- as.numeric(county_var_AQS_Resilience_Hospital_Census$popn_low_risk)
 county_var_AQS_Resilience_Hospital_Census$popn_med_risk <- as.numeric(county_var_AQS_Resilience_Hospital_Census$popn_med_risk)
 county_var_AQS_Resilience_Hospital_Census$popn_high_risk <- as.numeric(county_var_AQS_Resilience_Hospital_Census$popn_high_risk)
-#county_var_AQS_Resilience_Hospital2 <- county_var_AQS_Resilience_Hospital[, .(vote_pct, total_cases_pc, unemploy, max.aqi,
- #popn_high_risk, beds_county)]
+
 
 # All variables
 
@@ -347,7 +346,7 @@ ncvTest(lm_model_covid_cases_v3)
 # plot studentized residuals vs. fitted values
 spreadLevelPlot(lm_model_covid_cases_v3)
 
-# NOTE: Suggested power transformation:  0.5334094 
+# NOTE: Suggested power transformation:  0.3887514 
 
 # (4) Evaluate Independence of errors
 durbinWatsonTest(lm_model_covid_cases_v3)
@@ -400,7 +399,9 @@ county_shp$geoID <- county_shp$GEOID
 
 county_covid_sp <- merge(county_shp, county_var_AQS_Resilience_Hospital_Census, by="geoID")
 
-county_covid_sp@data <- na.omit(county_covid_sp@data)
+county_covid_sp <- county_covid_sp[!is.na(county_covid_sp$dem_vote_pct), ]
+
+
 
 # Run spatial autocorrelation function
 
@@ -481,39 +482,162 @@ summary(lm_model_covid_deaths_v3)
 
 plot(lm_model_covid_deaths_v3)
 
+#Remove some potential cofounding effect
+
+lm_model_covid_deaths_v4 <- lm(total_deaths_pc ~ dem_vote_pct + max.aqi + med_income + 
+                                 frac_asian + frac_pacislander + frac_under18 + frac_pubtransport, 
+                               data= county_var_AQS_Resilience_Hospital_Census)
+
+summary(lm_model_covid_deaths_v4)
+
+plot(lm_model_covid_deaths_v4)
 
 # Diagnostic
 # (1) Influenctal Observations
 
-avPlots(lm_model_covid_deaths_v3)
-cutoff = 4/((nrow(county_var_AQS_Resilience_Hospital_Census)-length(lm_model_covid_deaths_v3$coefficients)-2))
-plot(lm_model_covid_deaths_v3,which=4,cook.levels = cutoff)
-influencePlot(lm_model_covid_deaths_v3,main="Influence Plot",sub="circle size proportional to Cook's Distance")
+avPlots(lm_model_covid_deaths_v4)
+cutoff = 4/((nrow(county_var_AQS_Resilience_Hospital_Census)-length(lm_model_covid_deaths_v4$coefficients)-2))
+plot(lm_model_covid_deaths_v4,which=4,cook.levels = cutoff)
+influencePlot(lm_model_covid_deaths_v4,main="Influence Plot",sub="circle size proportional to Cook's Distance")
 
-outlierTest(lm_model_covid_deaths_v3)
-leveragePlots(lm_model_covid_deaths_v3)
-influence.measures(lm_model_covid_deaths_v3)
+outlierTest(lm_model_covid_deaths_v4)
+leveragePlots(lm_model_covid_deaths_v4)
+influence.measures(lm_model_covid_deaths_v4)
 
-# NOTE: Cook's Dostance reveals 6 influencial observations: 39, 166, 78, 205, 366. 
+# NOTE: Cook's Dostance reveals 5 influencial observations: 39, 166, 78, 205, 366. 
 #  39, 366 and 547 are the most extreme values. We can try to remove them
 
 # (2) Evaluate Normality
 # qq plot for studentized residuals
-qqPlot(lm_model_covid_deaths_v3,main="QQ Plot")
+qqPlot(lm_model_covid_deaths_v4,main="QQ Plot")
 
 
-sresid_deaths = studres(lm_model_covid_deaths_v3)
+sresid_deaths = studres(lm_model_covid_deaths_v4)
 hist(sresid_deaths, freq=FALSE, main="Distribution of Studentized Residuals")
 xfit_deaths = seq(min(sresid_deaths),max(sresid_deaths),length=40)
 yfit_deaths = dnorm(xfit_deaths)
 lines(xfit_deaths, yfit_deaths)
 
 # (3) Evaluate homoscedasticity
-ncvTest(lm_model_covid_deaths_v3)  
+ncvTest(lm_model_covid_deaths_v4)  
 # plot studentized residuals vs. fitted values
-spreadLevelPlot(lm_model_covid_deaths_v3)
+spreadLevelPlot(lm_model_covid_deaths_v4)
+
+# NOTE: Suggested power transformation:  0.3453126 
+
+# (4) Evaluate Independence of errors
+durbinWatsonTest(lm_model_covid_deaths_v4)
+
+
+########
+
+# Spatial autocorrelation for death
+
+autoCorrelation(county_covid_sp, county_covid_sp$total_deaths_pc, lm_model_covid_deaths_v4)
+
+
+
+########################################################################################
+########################################################################################
+
+
+######## 3- Unemployment
+
+lm_model_covid_unemploy <- lm(unemploy ~ dem_vote_pct + max.aqi + median.aqi+ popn_low_risk+ popn_med_risk+ 
+                              popn_high_risk+ beds_county+ hospitals_county+ median_age+ med_income+ frac_white+ frac_black+ 
+                              frac_asian+ frac_pacislander+ frac_otherrace+ frac_under18+ frac_over65+ frac_insured+ 
+                              frac_pubtransport, data=county_var_AQS_Resilience_Hospital_Census)
+summary(lm_model_covid_unemploy) 
+
+
+# VIF test for multicollinearity
+# Evaluate Collinearity
+
+vif(lm_model_covid_unemploy)  # variance inflation factors
+sqrt(vif(lm_model_covid_unemploy)) > 2  # problem?
+
+# SAME RESULT: median_age, frac_white, frac_black and frac_over65 >5
+
+# Model 2 without median_age, frac_white, frac_black and frac_over65
+lm_model_covid_unemploy_v2 <- lm(unemploy ~ dem_vote_pct + max.aqi + median.aqi+ popn_low_risk+ popn_med_risk+ 
+                                 popn_high_risk+ beds_county+ hospitals_county+ med_income+   
+                                 frac_asian+ frac_pacislander+ frac_otherrace+ frac_under18+ frac_insured+ 
+                                 frac_pubtransport, data=county_var_AQS_Resilience_Hospital_Census)
+summary(lm_model_covid_unemploy_v2) 
+
+
+
+
+# AIC test
+
+
+model_all_var_unemploy<-regsubsets(unemploy ~ dem_vote_pct + max.aqi + median.aqi+ popn_low_risk+ popn_med_risk+ 
+                                   popn_high_risk+ beds_county+ hospitals_county+ med_income+   
+                                   frac_asian+ frac_pacislander+ frac_otherrace+ frac_under18+ frac_insured+ 
+                                   frac_pubtransport, data=county_var_AQS_Resilience_Hospital_Census, nbest=10, really.big=T, intercept=F)
+all.mods_unemploy <- summary(model_all_var_unemploy)[[1]]
+all.mods_unemploy <- lapply(1:nrow(all.mods_unemploy), function(x) as.formula(paste("unemploy~", paste(names(which(all.mods_unemploy[x,])), collapse="+"))))
+all.mods_unemploy
+
+# AIC analysis:
+all.lm_unemploy <-lapply(all.mods_unemploy, lm, county_var_AQS_Resilience_Hospital_Census)
+sapply(all.lm_unemploy, extractAIC)[2,]
+
+# Model with lower AIC -62-: 
+#unemploy ~ med_income + frac_asian + frac_pacislander + frac_otherrace + frac_under18 + frac_insured + frac_pubtransport
+
+# Test new model
+lm_model_covid_unemploy_v3 <- lm(unemploy ~ med_income + frac_asian + frac_pacislander + frac_otherrace + 
+                                 frac_under18 + frac_insured + frac_pubtransport, 
+                               data= county_var_AQS_Resilience_Hospital_Census)
+
+summary(lm_model_covid_unemploy_v3)
+
+plot(lm_model_covid_unemploy_v3)
+
+
+
+# Diagnostic
+# (1) Influenctal Observations
+
+avPlots(lm_model_covid_unemploy_v3)
+cutoff = 4/((nrow(county_var_AQS_Resilience_Hospital_Census)-length(lm_model_covid_unemploy_v3$coefficients)-2))
+plot(lm_model_covid_unemploy_v3,which=4,cook.levels = cutoff)
+influencePlot(lm_model_covid_unemploy_v3,main="Influence Plot",sub="circle size proportional to Cook's Distance")
+
+outlierTest(lm_model_covid_unemploy_v3)
+leveragePlots(lm_model_covid_unemploy_v3)
+influence.measures(lm_model_covid_unemploy_v3)
+
+# NOTE: Outliers test reveals 5 influencial observations: 205, 208, 207, 30, 55.  
+#  205 and 208 are the most extreme values. We could try to remove them
+
+# (2) Evaluate Normality
+# qq plot for studentized residuals
+qqPlot(lm_model_covid_unemploy_v3,main="QQ Plot")
+
+
+sresid_unemploy = studres(lm_model_covid_unemploy_v3)
+hist(sresid_unemploy, freq=FALSE, main="Distribution of Studentized Residuals")
+xfit_unemploy = seq(min(sresid_unemploy),max(sresid_unemploy),length=40)
+yfit_unemploy = dnorm(xfit_unemploy)
+lines(xfit_unemploy, yfit_unemploy)
+
+# (3) Evaluate homoscedasticity
+ncvTest(lm_model_covid_unemploy_v3)  
+# plot studentized residuals vs. fitted values
+spreadLevelPlot(lm_model_covid_unemploy_v3)
 
 # NOTE: Suggested power transformation:  0.5334094 
 
 # (4) Evaluate Independence of errors
-durbinWatsonTest(lm_model_covid_deaths_v3)
+durbinWatsonTest(lm_model_covid_unemploy_v3)
+
+
+########
+
+# Spatial autocorrelation for unemployment
+
+autoCorrelation(county_covid_sp, county_covid_sp$unemploy, lm_model_covid_unemploy_v3)
+
+
