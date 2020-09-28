@@ -1,7 +1,7 @@
 
 # Have places that voted for Trump in 2016 had better COVID-19 outcomes than those that voted for Clinton?
 
-Yes. We found that blue states has worse health outcomes than red states.
+No. We found that blue states did not have worse health outcomes than red states.
 
 A brief description of our findings; the twitter map and one sentence conclusion
 twitter-worthy map; Caption by Muyiwa
