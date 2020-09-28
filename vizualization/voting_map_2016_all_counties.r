@@ -84,7 +84,7 @@ red <- subset(vote_counts_by_county_2016, winning_party == "Republican")
 blue <- subset(vote_counts_by_county_2016, winning_party == "Democrat")
 
 #party colors
-collist <- c('red','blue')
+collist <- c('blue','red')
 controlpal <- colorFactor(collist, vote_counts_by_county_2016$winning_party)
 
 
@@ -97,7 +97,8 @@ labels <- sprintf(
 # server <- function(input, output, session) {
 
   # output$mymap <- renderLeaflet({
-m <- leaflet(vote_counts_by_county_2016) %>% #begin leaflet map
+#m <- 
+leaflet(vote_counts_by_county_2016) %>% #begin leaflet map
 #all states
 addPolygons(stroke = FALSE, smoothFactor = 0.2, fillOpacity = 1, 
     fillColor = ~controlpal(winning_party), color = "white", opacity = 1, dashArray = "2", group = "all", 
