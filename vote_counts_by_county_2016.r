@@ -5,14 +5,16 @@ library(tidyr)
 library(tmap) #for viewing only
 library(rgeos)
 
+wd <- 
+
 #Import shapefile. "..." is the shortcut on my computer via Googel Stream Drive or whatever it's called.
-sp1 <- readOGR(".../datachallenge/Datasources/cb_2015_us_county_20m", "cb_2015_us_county_20m")
+sp1 <- readOGR(file.path(wd, "cb_2015_us_county_20m", "cb_2015_us_county_20m"))
 
 #Drop Puerto Rico
 sp2 <- sp1[sp1$STATEFP!="72",]
 
 #Read in county vote counts
-co_pres16 <- fread("https://github.ncsu.edu/chaedri/Data-Challenge-GIS713/blob/master/cleandata/county_pres_2016.csv")
+co_pres16 <- fread(file.path(wd, "/cleandata/county_pres_2016.csv"))
 
 #Fix FIPS part I
 co_pres$FIPS <- as.character(co_pres$FIPS)
