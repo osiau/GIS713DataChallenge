@@ -212,3 +212,31 @@ summary(cases_bin)
 #summary(cases_beta_loglog)
 ```
 
+```{r}
+# Can we predict blue/non blue candidate winner based on deaths, cases, unemployment rate?
+demMod1 <- glm(democrat~total_deaths_pc+total_cases_pc+unemploy, data=county_variables, family = binomial)
+summary(demMod1)
+# G stat for effectiveness 
+G.1 = summary(demMod1)$null.deviance - summary(demMod1)$deviance
+1-pchisq(G.1,3)
+
+dem_no_deaths <- glm(democrat~total_cases_pc+unemploy, data=county_variables, family = binomial)
+summary(dem_no_deaths)
+
+dem_no_cases <- glm(democrat~total_deaths_pc+unemploy, data=county_variables, family = binomial)
+summary(dem_no_cases)
+
+dem_no_unemp <- glm(democrat~total_deaths_pc+total_cases_pc, data=county_variables, family = binomial)
+summary(dem_no_unemp)
+
+# Testing effectiveness of each predictor in model
+# P values < 0.5 suggest that predictor improves the model
+1 - pchisq(summary(dem_no_deaths)$deviance - summary(demMod1)$deviance, 1) # 0
+1 - pchisq(summary(dem_no_cases)$deviance - summary(demMod1)$deviance, 1) # 0.1208495
+1 - pchisq(summary(dem_no_unemp)$deviance - summary(demMod1)$deviance, 1) # 0.6038084
+
+dem_unemployment <- glm(democrat~unemploy, data=county_variables, family = binomial)
+summary(dem_unemployment)
+
+#bestglm(county_variables, family=binomial)
+```
