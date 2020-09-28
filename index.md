@@ -8,7 +8,7 @@ A brief description of our findings.
 ---
 
 
-{% include /map/index.html %}
+{% include map/ %}
 
 Check back later for more slick figures.
 
