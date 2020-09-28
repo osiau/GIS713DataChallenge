@@ -2,11 +2,20 @@
 # Have places that voted for Trump in 2016 had better COVID-19 outcomes than those that voted for Clinton?
 
 
-A brief description of our findings.
+A brief description of our findings; the twitter map and one sentence conclusion
 
-##### Centoids
-Caption by Muyiwa
+twitter-worthy map; Caption by Muyiwa
 ![github](https://pages.github.ncsu.edu/chaedri/Data-Challenge-GIS713/images/centroids.png)
+
+## Models
+
+##### Nicks Model
+
+##### Martine's Model
+
+##### Brit's Covariance Plot and analysis
+
+## Input Data Maps and Figures
 
 ##### Unemployment
 Caption by Uchenna
