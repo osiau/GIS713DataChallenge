@@ -65,7 +65,7 @@ states <- states[states$NAME != "Aleutians West",]
 
 states <- states[states$STATEFP != "72",]
 
-states$STATEFP <- droplevels(states$STATEFP)
+#states$STATEFP <- droplevels(states$STATEFP)
 
 states$STATEFP <- as.character(states$STATEFP)
 
