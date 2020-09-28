@@ -7,17 +7,23 @@ library(raster)
 #The Viz crew rocks!!!
 
 #Set this master
-wd <- 
+wd <- getwd()
 
 states <- readOGR(file.path(wd,"Datasources/cb_2015_us_county_20m"), stringsAsFactors=TRUE)
 
 data_states <- read.csv(file.path("cleandata/all_names_FIPS.csv"),stringsAsFactors=TRUE)
 
 #From response_measures_clean.R
-covid_measures <- fread("d:/jwindoc/NCSU_classes/Datamining/DC/COVID19_non-pharmaceutical-interventions_version2_utf8.csv", header=T, stringsAsFactors = T)
+covid_measures <- fread(file.path(wd,"Datasources/COVID19_non-pharmaceutical-interventions_version2_utf8.csv"), header=T, stringsAsFactors = T)
 
+data_states <- as.data.table(data_states)
+data_states <- data_states[,.(stateFIPS = as.factor(formatC(stateFIPS,width=2,flag="0")), countyFIPS=as.factor(formatC(countyFIPS,width=3,flag="0")), geoID=as.factor(formatC(geoID,width=5,flag="0")),county,state)]
+
+# select columns
+data_states <-unique(data_states[,.(state,stateFIPS)])
 covid_measures <- covid_measures[,.(state=as.factor(tolower(State)),date=Date,Measure_L1,Measure_L2,Measure_L3,Measure_L4)]
-covid_measures <- merge(covid_measures,data_states,by="state", all.x=TRUE)
+
+covid_measures<- merge(covid_measures,data_states,by="state", all.x=TRUE)
 covid_measures$date <- as.Date(covid_measures$date, format="%m/%d/%y")
 measures <- c("Measure_L1","Measure_L2","Measure_L3","Measure_L4")
 covid_measures_long <- as.data.table(tidyr::gather(data=covid_measures,key="number", value="measure",measures,factor_key=TRUE))
@@ -30,9 +36,7 @@ key_measures <- covid_measures_long[measure %in% c("Mass gathering cancellation"
   "Complete closure of kindergartens","Quarantine","National lockdown","Individual movement restrictions","Stay-at-home Order",
   "Mandatory home office","Face masks"),]
 
-covid_measures_long[, week := strftime(week, format= %V)]
-
-covid_measures_long[, week := week(ymd(week))]
+covid_measures_long[, week := strftime(date, format= "%V")]
 
 #Move from long to wide starting here
 covid_measures_long[, measures_per_week := .N , by = c("state", "week")]
