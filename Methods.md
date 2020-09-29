@@ -5,7 +5,7 @@
 
 ## Is there truth to Trump's statement? 
 
-We began our exploration by visualizing 2016 general election votes and covid data provided by our professor, Dr. Josh Gray. Boxplots and scatterplots were used to gauge, at a very surface level, if there is discrepancy in COVID-19 cases and deaths per capita among regions of the U.S. in which Trump or Clinton won the vote.
+We began our exploration by visualizing 2016 general election votes and COVID-19 data provided by our professor, Dr. Josh Gray. Boxplots and scatterplots were used to gauge, at a very surface level, if there is discrepancy in COVID-19 cases and deaths per capita among regions of the U.S. in which Trump or Clinton won the vote.
 
 Though the differences are marginal, these plots suggest that blue counties and states may be faring worse than red counties and states. However, correlation does not imply causation; COVID-19 poses a complex issue, and the visualizations only tell part of the whole story. 
 
