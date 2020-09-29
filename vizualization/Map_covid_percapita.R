@@ -27,7 +27,7 @@ fips = fips[,c(12,13)]
 
 
 
-countyshp@data = merge(countyshp@data,fips, by.x = "GEOID", by.y = "countyFIPS", all.x = TRUE)
+countyshp = merge(countyshp,fips, by.x = "GEOID", by.y = "countyFIPS", all.x = TRUE)
 
 # layout(matrix(1,1,2,2), nrow=1)
 centroids <- getSpPPolygonsLabptSlots(countyshp)
