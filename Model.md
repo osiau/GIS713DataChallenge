@@ -6,7 +6,7 @@ Regression model outcomes yielded significant correlations (but not causations) 
 
 ![residuals_vs_fitted](https://github.ncsu.edu/chaedri/Data-Challenge-GIS713/blob/gh-pages/images/resid_vs_fitted.png)
 
-*The multilinear model with the best regression fit uses the percents of a given state's population who are black, under 18, over 65, and insured, respectively, to predict per-capita COVID-19 cases by state.*
+*The multilinear model with the best regression fit uses the percents of a given state's population who are black, under 18, over 65, and insured, respectively, to predict per-capita COVID-19 cases by state. % insured is the only predictor that was shown to have a negative relationship with COVID-19 cases.*
 
 State-Level Models: 
 * **Cases per capita** = log(% black population) + (% population under 18) + sqrt(% population over 65) - log(% insured); **Adjusted R-squared: 0.5972, p-value: 1.877e-09**
