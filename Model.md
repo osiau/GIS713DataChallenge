@@ -12,10 +12,8 @@ State-Level Models:
 County-Level Models: 
 
 * Log(Cases per capita ) = (number of government measures in response to COVID-19) + (hospitals per state) + (median income) +  (% Pacific Islander population) + (% “other races” in population) +  (% population under 18) + + log(% insured) + (% dependent on public transport); **Multiple R-squared:  0.3184,	Adjusted R-squared:  0.3074** 
-
-* Log(deaths per capita) = (number of government measures in response to COVID-19) + (max AQ index) + (median income) + (% Asian population) + (% Pacific Islander population) + (% “other races” in population) +  (% population under 18) + + log(% insured) + (% dependent on public transport); **Multiple R-squared:  0.2774,	Adjusted R-squared:  0.2723**
-                               
-* Log(unemployment) = (median income) + (% Asian population) + (% Pacific Islander population) + (% “other races” in population) +  (% population under 18) + + log(% insured) + (% dependent on public transport); **Multiple R-squared:  0.2107,	Adjusted R-squared:  0.2052**
+* Log(deaths per capita) = (number of government measures in response to COVID-19) + (max AQ index) + (median income) + (% Asian population) + (% Pacific Islander population) + (% “other races” in population) +  (% population under 18) + log(% insured) + (% dependent on public transport); **Multiple R-squared:  0.2774,	Adjusted R-squared:  0.2723**                              
+* Log(unemployment) = (median income) + (% Asian population) + (% Pacific Islander population) + (% “other races” in population) +  (% population under 18) + log(% insured) + (% dependent on public transport); **Multiple R-squared:  0.2107,	Adjusted R-squared:  0.2052**
 
 Preliminary findings from these models were used to inform the final random forest model which predictor variables may be important in predicting outcome variables. We can visualize these correlations with state and county level correlelograms.
 
