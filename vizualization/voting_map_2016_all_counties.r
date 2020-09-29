@@ -120,5 +120,5 @@ addLayersControl(baseGroups = c("OSM"),
 #leafletSizingPolicy(width = "1000px", height= "300px", view.fill = FALSE, browser.fill = FALSE)
 
 
-mapshot(m, url = file.path(wd, "vizualization/general_election_2016.html")) #for exporting
+mapshot(m, url = file.path(wd, "vizualization/general_election_2016.png")) #for exporting
 
