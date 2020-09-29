@@ -33,10 +33,10 @@ The features were finally selected using outside of bag errors.
 ![random](https://pages.github.ncsu.edu/chaedri/Data-Challenge-GIS713/images/randomforest.png)
 
 ### Limitations
-* The test and validation errors were high, possibly due to the use of Median Absolute Error opposed to Mean Squared Error.
-* The test COD was low, but the validation COD was strong
-* Temporal effect was not considered
-* Interpreting node purity is not straightforward, but does show republican and democrat vote percentages have the same impact measure on the models
+* The test and validation errors were high,
+* the coefficient of determination was low,
+* temporal effects wer not considered,
+* interpreting node purity is not straightforward
 
 Visit [our conclusions](https://pages.github.ncsu.edu/chaedri/Data-Challenge-GIS713/the-end) to understand the broader significance of these explorations and how they relate to President Trump's statement.
 
