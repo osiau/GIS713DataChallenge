@@ -5,6 +5,7 @@
 Regression model outcomes yielded significant correlations (but not causations) between outcome variables (confirmed cases, deaths, and unemployment), and predictor variables. The best models for each combination of predictors and spatial scales are: 
 
 ![residuals_vs_fitted](https://github.ncsu.edu/chaedri/Data-Challenge-GIS713/blob/gh-pages/images/resid_vs_fitted.png)
+
 *The multilinear model with the best regression fit uses the percents of a given state's population who are black, under 18, over 65, and insured, respectively, to predict per-capita COVID-19 cases by state.*
 
 State-Level Models: 
