@@ -17,12 +17,14 @@ Pairwise linear regression model outcomes yielded significant correlations (but 
 ![boxplot](https://pages.github.ncsu.edu/chaedri/Data-Challenge-GIS713/images/statelevelcorr.png)
 *State-Level Correlellograms between possible COVID-19 outcome covariates.*
 
-## Making decisions with Random Forest
+### Making decisions with Random Forest
 
 Random Forest Regression was used to identify features that contribute most to COVID-19 cases, deaths, and changes in unemployment rates at the county scale.  All predictors and response variables were normalized per capita. Random Forest is a robust ensemble model that is able to handle large dimensions of data. Initial analyses included Moran's I spatial autocorrelation; spatial autocorrelation was significant in all three cases (COVID-19 cases, deaths, and changes in unemployment). The model was trained using a 70/30 training/testing split, and validated with the full data set. The coefficients of determination (CODs) were 0.64,0.66, and 0.67, respectively. Median absolute error (MAE) values of  0.26, 0.26, and 0.31 suggest high levels of error. However, all three models accounted for spatial relationships as follows:
 * Counts: significant relationship to not significant relationship with p-value of almost 0 to 0.63
 * Deaths: significant relationship to borderline significant relationship (depends on level of significance chosen) with p-value of almost 0 to 0.046. A better model should account for more of the spatial variance, but a spatial model might be needed.  Regardless, the 0.05 significance value is highly debated due to false discovery rate and many corrections lower this to 0.01.
 * Unemployment: significant relationship to borderline significant relationship (depends on level of significance chosen) with p-value of almost 0 to 0.18
+
+![random](https://pages.github.ncsu.edu/chaedri/Data-Challenge-GIS713/images/randomforest.PNG)
 
 Limitations:
 * The test and validation errors were high, possibly due to the use of Median Absolute Error opposed to Mean Squared Error.
@@ -30,13 +32,7 @@ Limitations:
 * Temporal effect was not considered
 * Interpreting node purity is not straightforward, but does show republican and democrat vote percentages have the same impact measure on the models
 
-
-![random](https://pages.github.ncsu.edu/chaedri/Data-Challenge-GIS713/images/randomforest.PNG)
-
-## Broader significance and relation to President Trump's statement
-
-## Suggestions for improvement 
-
+Visit our Conclusions page to understand the broader significance of this work and how it relates to President Trump's statement.
 
 
 ##### Find our analysis, data and methods on github: 
