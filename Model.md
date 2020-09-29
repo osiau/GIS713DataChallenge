@@ -28,10 +28,13 @@ Preliminary findings from these models were used to inform the final random fore
 
 ### Making decisions with Random Forest
 
-Random Forest Regression was used to identify features that contribute most to COVID-19 cases, deaths, and changes in unemployment rates at the county scale.  All predictors and response variables were normalized per capita. Random Forest is a robust ensemble model that is able to handle large dimensions of data. Initial analyses included Moran's I spatial autocorrelation; spatial autocorrelation was significant in all three cases (COVID-19 cases, deaths, and changes in unemployment). The model was trained using a 70/30 training/testing split, and validated with the full data set. The coefficients of determination (CODs) were 0.64,0.66, and 0.67, respectively. Median absolute error (MAE) values of  0.26, 0.26, and 0.31 suggest high levels of error. However, all three models accounted for spatial relationships as follows:
+Random Forest Regression was used to identify features that contribute most to COVID-19 cases, deaths, and changes in unemployment rates at the county scale.  All predictors and response variables were normalized per capita. Random Forest is a robust ensemble model that is able to handle large dimensions of data. Initial analyses included Moran's I spatial autocorrelation; spatial autocorrelation was significant in all three cases (COVID-19 cases, deaths, and changes in unemployment). The model was trained using a 70/30 training/testing split, and validated with the full data set. The coefficients of determination (CODs) were < 0.10 which means the model did not account for much variability. Median absolute error (MAE) values of 0.26, 0.26, and 0.31 suggest high levels of error. However, all three models accounted for spatial relationships as follows: 
+
 * Counts: significant relationship to not significant relationship with p-value of almost 0 to 0.63
-* Deaths: significant relationship to borderline significant relationship (depends on level of significance chosen) with p-value of almost 0 to 0.046. A better model should account for more of the spatial variance, but a spatial model might be needed.  Regardless, the 0.05 significance value is highly debated due to false discovery rate and many corrections lower this to 0.01.
+* Deaths: significant relationship to borderline significant relationship (depends on level of significance chosen) with p-value of almost 0 to 0.046. A better model should account for more of the spatial variance, but a spatial model might be needed. Regardless, the 0.05 significance value is highly debated due to false discovery rate and many corrections lower this to 0.01.
 * Unemployment: significant relationship to borderline significant relationship (depends on level of significance chosen) with p-value of almost 0 to 0.18
+The features were finally selected using outside of bag errors.
+
 
 ![random](https://pages.github.ncsu.edu/chaedri/Data-Challenge-GIS713/images/randomforest.png)
 
