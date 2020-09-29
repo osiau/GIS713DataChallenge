@@ -17,9 +17,9 @@ Insignificant predictors and those with multicollinearity were removed from the 
 *The multilinear model with the best regression fit uses the percents of a given state's population who are black, under 18, over 65, and insured, respectively, to predict per-capita COVID-19 cases by state. % insured is the only predictor that was shown to have a negative relationship with COVID-19 cases.*
 
 #### State-Level Models: 
-* **Cases per capita** = log(% black population) + (% population under 18) + sqrt(% population over 65) - log(% insured); **Adjusted R-squared: 0.5972, p-value: 1.877e-09**
-* Log(**deaths per capita**) = sqrt(% “other races” in population); **Adjusted R-squared: 0.1236, p-value: 0.006601**
-* Log(**unemployment**) = (hospitals per state) - (number of government measures in response to COVID-19) - (median income) + log(% black population) + (% Pacific Islander population) - (% “other races” in population) + log(% insured) + (% dependent on public transport); **Adjusted R-squared: 0.3985, p-value: 0.03579**
+* **Cases per capita** = 0.0037 log(% black population) + 0.1783 (% population under 18) + 0.0492 sqrt(% population over 65) - 0.1650 log(% insured) - 0.0327; **Adjusted R-squared: 0.5972, p-value: 1.877e-09**
+* Log(**deaths per capita**) = 5.046 sqrt(% “other races” in population) - 8.572; **Adjusted R-squared: 0.1236, p-value: 0.006601**
+* Log(**unemployment**) = 1.904e-03 (hospitals per state) - 3.539e-03 (number of government measures in response to COVID-19) - 3.379e-05 (median income) + 5.893e-02 log(% black population) + 9.058 (% Pacific Islander population) - 8.006 (% “other races” in population) + 14.02 log(% insured) + 13.26 (% dependent on public transport) + 3.545; **Adjusted R-squared: 0.3985, p-value: 0.03579**
 
 #### County-Level Models: 
 * Log(**cases per capita**) = number of government measures in response to COVID-19) + (hospitals per state) + (median income) +  (% Pacific Islander population) + (% “other races” in population) +  (% population under 18) + (% insured) + (% dependent on public transport); **Quadratic model : Multiple R-squared:   0.32,	Adjusted R-squared:  0.309, p-value: < 2.2e-16** 
