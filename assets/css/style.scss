@@ -6,3 +6,7 @@
 .inner {
   max-width: 80%;
 }
+
+@include breakpoint($x-large) {
+  max-width: $max-width;
+}
