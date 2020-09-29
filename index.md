@@ -25,8 +25,7 @@ We did this at both the state and county level.
 #### Correlation And Causality:
 Correlations between these three outcomes (unemployment, death rate and positive cases) and voting data may be attributed to other covariates.  For example, states that voted for Trump tended to be more rural than those that voted for Hilary. Therefore, we collected a dataset of covariates that might cause this pattern They included
 * Air Quality Index
-* Percent of population at high, medium and low risk (CITATION)
-* 
+* Percent of population at high, medium and low risk (from Community Resilience Data)
 * Fraction of the population that is white, black, asian, pacific islander, or other
 * Fraction of the population over 65
 * Fraction of the population that is insured

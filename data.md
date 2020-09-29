@@ -8,3 +8,13 @@ We explored several additional datasources that were ultimately not incorporated
 - Non pharmaceutical interventions ([Nature](https://www.nature.com/articles/s41597-020-00609-9#Abs1))
 - COVID-19 sentiment analysis from Twitter data ([ArcGIS](https://www.arcgis.com/home/item.html?id=feb6280d42de4e91b47cf37344a91eae))
 - Commercial flight statistics ([FlightRadar24](https://www.flightradar24.com/data/statistics))
+
+
+#### Covariate Data
+
+##### Unemployment
+Caption by Uchenna
+{% include streamgraphBasic.html %}
+
+##### Map of Results of Voting by County
+![picture](https://pages.github.ncsu.edu/chaedri/Data-Challenge-GIS713/images/Votes_county.png)
