@@ -24,10 +24,9 @@ These are all the covariates we considered. Along with some images of these data
 Caption by Uchenna
 {% include streamgraphBasic.html %}
 
-
-
 ##### Map of Results of Voting by County
 ![pic](https://raw.github.ncsu.edu/chaedri/Data-Challenge-GIS713/gh-pages/images/Votes_county.png?token=AAAEZKD7BOZAKLHKNTZUNTS7PPIC6)
+
 
 #### Random Forest
 We tried several different autocorrelation models and found Random Forest worked best.
