@@ -91,7 +91,7 @@ shp_jan = countyshp
 df_jan =  df[month(df$dates) == 1,1:8]
 df_jan = as.data.table(df_jan)
 df_jan$countyFIPS = df_jan[, as.factor(formatC(df_jan$countyFIPS,width=5,flag="0"))]
-shp_jan@data = merge(shp_jan@data,df_jan, by.x = "GEOID", by.y = "countyFIPS", all.x = TRUE)
+shp_jan = merge(shp_jan,df_jan, by.x = "GEOID", by.y = "countyFIPS", all.x = TRUE)
 shp_jan@data$covid_per_cap = shp_jan@data$clm_d_confirmed/shp_jan@data$population
 range(shp_jan@data$covid_per_cap)
 x=shp_jan@data$covid_per_cap
@@ -110,7 +110,7 @@ shp_feb = countyshp
 df_feb =  df[month(df$dates) == 2,1:8]
 df_feb = as.data.table(df_feb)
 df_feb$countyFIPS = df_feb[, as.factor(formatC(df_feb$countyFIPS,width=5,flag="0"))]
-shp_feb@data = merge(shp_feb@data,df_feb, by.x = "GEOID", by.y = "countyFIPS", all.x = TRUE)
+shp_feb = merge(shp_feb,df_feb, by.x = "GEOID", by.y = "countyFIPS", all.x = TRUE)
 shp_feb@data$covid_per_cap = shp_feb@data$clm_d_confirmed/shp_feb@data$population
 range(shp_feb@data$covid_per_cap)
 x=shp_feb@data$covid_per_cap
@@ -130,7 +130,7 @@ shp_mar = countyshp
 df_mar =  df[month(df$dates) == 3,1:8]
 df_mar = as.data.table(df_mar)
 df_mar$countyFIPS = df_mar[, as.factor(formatC(df_mar$countyFIPS,width=5,flag="0"))]
-shp_mar@data = merge(shp_mar@data,df_mar, by.x = "GEOID", by.y = "countyFIPS", all.x = TRUE)
+shp_mar = merge(shp_mar,df_mar, by.x = "GEOID", by.y = "countyFIPS", all.x = TRUE)
 shp_mar@data$covid_per_cap = shp_mar@data$clm_d_confirmed/shp_mar@data$population
 range(shp_mar@data$covid_per_cap)
 x=shp_mar@data$covid_per_cap
@@ -154,7 +154,7 @@ shp_apr = countyshp
 df_apr =  df[month(df$dates) == 4,1:8]
 df_apr = as.data.table(df_apr)
 df_apr$countyFIPS = df_apr[, as.factor(formatC(df_apr$countyFIPS,width=5,flag="0"))]
-shp_apr@data = merge(shp_apr@data,df_apr, by.x = "GEOID", by.y = "countyFIPS", all.x = TRUE)
+shp_apra = merge(shp_apr,df_apr, by.x = "GEOID", by.y = "countyFIPS", all.x = TRUE)
 shp_apr@data$covid_per_cap = shp_apr@data$clm_d_confirmed/shp_apr@data$population
 range(shp_apr@data$covid_per_cap)
 x=shp_apr@data$covid_per_cap
@@ -174,7 +174,7 @@ shp_may = countyshp
 df_may =  df[month(df$dates) == 5,1:8]
 df_may = as.data.table(df_may)
 df_may$countyFIPS = df_may[, as.factor(formatC(df_may$countyFIPS,width=5,flag="0"))]
-shp_may@data = merge(shp_may@data,df_may, by.x = "GEOID", by.y = "countyFIPS", all.x = TRUE)
+shp_may = merge(shp_may,df_may, by.x = "GEOID", by.y = "countyFIPS", all.x = TRUE)
 shp_may@data$covid_per_cap = shp_may@data$clm_d_confirmed/shp_may@data$population
 range(shp_may@data$covid_per_cap)
 x=shp_may@data$covid_per_cap
@@ -196,7 +196,7 @@ shp_jun = countyshp
 df_jun =  df[month(df$dates) == 6,1:8]
 df_jun = as.data.table(df_jun)
 df_jun$countyFIPS = df_jun[, as.factor(formatC(df_jun$countyFIPS,width=5,flag="0"))]
-shp_jun@data = merge(shp_jun@data,df_jun, by.x = "GEOID", by.y = "countyFIPS", all.x = TRUE)
+shp_jun = merge(shp_jun,df_jun, by.x = "GEOID", by.y = "countyFIPS", all.x = TRUE)
 shp_jun@data$covid_per_cap = shp_jun@data$clm_d_confirmed/shp_jun@data$population
 range(shp_jun@data$covid_per_cap)
 x=shp_jun@data$covid_per_cap
@@ -224,7 +224,7 @@ shp_jul = countyshp
 df_jul =  df[month(df$dates) == 7,1:8]
 df_jul = as.data.table(df_jul)
 df_jul$countyFIPS = df_jul[, as.factor(formatC(df_jul$countyFIPS,width=5,flag="0"))]
-shp_jul@data = merge(shp_jul@data,df_jul, by.x = "GEOID", by.y = "countyFIPS", all.x = TRUE)
+shp_jul = merge(shp_jul,df_jul, by.x = "GEOID", by.y = "countyFIPS", all.x = TRUE)
 shp_jul@data$covid_per_cap = shp_jul@data$clm_d_confirmed/shp_jul@data$population
 range(shp_jul@data$covid_per_cap)
 x=shp_jul@data$covid_per_cap
@@ -245,7 +245,7 @@ shp_aug = countyshp
 df_aug =  df[month(df$dates) == 8,1:8]
 df_aug = as.data.table(df_aug)
 df_aug$countyFIPS = df_aug[, as.factor(formatC(df_aug$countyFIPS,width=5,flag="0"))]
-shp_aug@data = merge(shp_aug@data,df_aug, by.x = "GEOID", by.y = "countyFIPS", all.x = TRUE)
+shp_aug = merge(shp_aug,df_aug, by.x = "GEOID", by.y = "countyFIPS", all.x = TRUE)
 shp_aug@data$covid_per_cap = shp_aug@data$clm_d_confirmed/shp_aug@data$population
 range(shp_aug@data$covid_per_cap)
 x=shp_aug@data$covid_per_cap
@@ -265,7 +265,7 @@ shp_sep = countyshp
 df_sep =  df[month(df$dates) == 9,1:8]
 df_sep = as.data.table(df_sep)
 df_sep$countyFIPS = df_sep[, as.factor(formatC(df_sep$countyFIPS,width=5,flag="0"))]
-shp_sep@data = merge(shp_sep@data,df_sep, by.x = "GEOID", by.y = "countyFIPS", all.x = TRUE)
+shp_sep = merge(shp_sep,df_sep, by.x = "GEOID", by.y = "countyFIPS", all.x = TRUE)
 shp_sep@data$covid_per_cap = shp_sep@data$clm_d_confirmed/shp_sep@data$population
 range(shp_sep@data$covid_per_cap)
 x=shp_sep@data$covid_per_cap
