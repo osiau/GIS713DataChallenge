@@ -1,5 +1,5 @@
 
-# COVID-19 Outcomes and Political Affiliation
+# COVID-19 and Politics
 *Have places that voted for Trump in 2016 had better COVID-19 outcomes than those that voted for Clinton?*
 
 No. We found that blue states did not have worse outcomes than red states.
