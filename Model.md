@@ -31,7 +31,7 @@ Random Forest Regression was used to identify features that contribute most to C
 
 ![random](https://pages.github.ncsu.edu/chaedri/Data-Challenge-GIS713/images/randomforest.png)
 
-Limitations:
+### Limitations
 * The test and validation errors were high, possibly due to the use of Median Absolute Error opposed to Mean Squared Error.
 * The test COD was low, but the validation COD was strong
 * Temporal effect was not considered
