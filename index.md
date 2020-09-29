@@ -25,7 +25,7 @@ Caption by Uchenna
 {% include streamgraphBasic.html %}
 
 ##### Map of Results of Voting by County
-![pic](https://raw.github.ncsu.edu/chaedri/Data-Challenge-GIS713/gh-pages/images/Votes_county.png?token=AAAEZKD7BOZAKLHKNTZUNTS7PPIC6)
+![picture](https://pages.github.ncsu.edu/chaedri/Data-Challenge-GIS713/images/covar.png)
 
 
 #### Random Forest
