@@ -32,7 +32,7 @@ Limitations:
 * Temporal effect was not considered
 * Interpreting node purity is not straightforward, but does show republican and democrat vote percentages have the same impact measure on the models
 
-Visit our Conclusions page to understand the broader significance of this work and how it relates to President Trump's statement.
+Visit our Conclusions page to understand the broader significance of these explorations and how they relate to President Trump's statement.
 
 
 ##### Find our analysis, data and methods on github: 
