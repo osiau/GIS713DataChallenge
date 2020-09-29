@@ -33,6 +33,12 @@ Correlations between these three outcomes (unemployment, death rate and positive
 
 To analyze this, we examined a few approaches: Regression Analyses, Random Forest, and Spatial Autocorrelation
 
+![boxplot](https://pages.github.ncsu.edu/chaedri/Data-Challenge-GIS713/images/countylevelcorr.png)
+*County-Level Correlellograms between possible COVID-19 outcome covariates.*
+
+![boxplot](https://pages.github.ncsu.edu/chaedri/Data-Challenge-GIS713/images/statelevelcorr.png)
+*State-Level Correlellograms between possible COVID-19 outcome covariates.*
+
 ##### Find our analysis, data and methods on github: 
 ![github](https://pages.github.ncsu.edu/chaedri/Data-Challenge-GIS713/images/octocat.svg) [GitHub](https://github.ncsu.edu/chaedri/Data-Challenge-GIS713)
 
