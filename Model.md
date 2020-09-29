@@ -42,4 +42,4 @@ Visit [our conclusions](https://pages.github.ncsu.edu/chaedri/Data-Challenge-GIS
 
 
 ##### Find our analysis, data and methods on github: 
-![github](https://pages.github.ncsu.edu/chaedri/Data-Challenge-GIS713/images/octocat.svg) [GitHub](https://github.ncsu.edu/chaedri/Data-Challenge-GIS713)s
+![github](https://pages.github.ncsu.edu/chaedri/Data-Challenge-GIS713/images/octocat.svg) [GitHub](https://github.ncsu.edu/chaedri/Data-Challenge-GIS713)
