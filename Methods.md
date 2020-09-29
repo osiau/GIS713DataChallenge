@@ -17,8 +17,6 @@ We hypothesized several other factors that may be affecting COVID-19 cases and d
 
 After acquiring [these data](https://pages.github.ncsu.edu/chaedri/Data-Challenge-GIS713/data) from several reliable sources, corrplots were developed to compare the relative correlations that the factors have with COVID-19 cases and mortalities. Linear, quasi-binomial, binary, and quadratic regression models were conducted and optimized to explore the relationships that these “predictors” may have on COVID-19 cases and deaths per capita. These models, despite being significant, suggested weak relationships between the predictor variables and COVID-19 cases, deaths, and unemployment per capita. 
 
-
-
 ### Preliminary Analysis
 To better visualize differences between Red and Blue areas, we can look at box and scatter plots of their outcomes.
 We did this at both the state and county level.
