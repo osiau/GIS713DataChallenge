@@ -17,6 +17,9 @@ We hypothesized several other factors that may be affecting COVID-19 cases and d
 
 After acquiring these data from several reliable sources, corrplots were developed to compare the relative correlations that the factors have with COVID-19 cases and mortalities. Linear, quasi-binomial, binary, and quadratic regression models were conducted and optimized to explore the relationships that these “predictors” may have on COVID-19 cases and deaths per capita. These models, despite being significant, suggested weak relationships between the predictor variables and COVID-19 cases, deaths, and unemployment per capita. 
 
+## Making decisions with Random Forest
+
+Random Forest Regression was used to identify features that contribute most to COVID-19 cases and deaths at the county scale. Random Forest is an ensemble model that is robust and able to handle large dimensions of data. Initial analyses included Moran’s I spatial autocorrelation analysis. Spatial autocorrelation was found to be significant in predicting cases, deaths, and unemployment rates. The model was trained using a 70/30 split between training and testing data, and validated with the full data set.  
 
 
 ##### Find our analysis, data and methods on github: 
