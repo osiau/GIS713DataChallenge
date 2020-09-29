@@ -13,3 +13,8 @@
 
 #### Visualizing the work process
 ![picture](https://pages.github.ncsu.edu/chaedri/Data-Challenge-GIS713/images/whiteboard.png)
+
+#### The team!
+
+![picture](https://pages.github.ncsu.edu/chaedri/Data-Challenge-GIS713/images/team1.png)
+![picture](https://pages.github.ncsu.edu/chaedri/Data-Challenge-GIS713/images/team2.png)
