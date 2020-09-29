@@ -1,7 +1,7 @@
 library(data.table)
 library(corrplot)
 
-data_dir <- "~/Desktop/corrplots/data"
+data_dir <- "~/Desktop/dc/Data-Challenge-GIS713/analysis/prelim_analysis/data/"
 setwd(data_dir)
 
 #Counties
@@ -12,14 +12,14 @@ county_data$vote_pct <- ifelse(county_data$vote_pct<0,
                                (1-(county_data$vote_pct*-1)),county_data$vote_pct)
 
 #boxplots counties####
-png(filename="cntylvlcovid_sumplots", width = 6, height = 8, units = "in", 
+png(filename="cntylvlcovid_sumplots.png", width = 6, height = 8, units = "in", 
     res = 600)
 par(mfrow=c(3,2))
 boxplot(county_data$total_cases_pc~county_data$democrat, 
         xlab="", ylab="Total cases per capita", 
         main="", col=c("#a50026","#313695"), names=c("Voted Trump","Voted Clinton"))
 plot(county_data$total_cases_pc~county_data$vote_pct, 
-        xlab="% Votes Clinton", ylab="Total cases per capita", 
+        xlab="Prop. Votes Clinton", ylab="Total cases per capita", 
         main="")
 title("County-Level Outcomes vs. Political Affliation", line = -3, outer = TRUE)
 m1<-lm(county_data$total_cases_pc~county_data$vote_pct)
@@ -31,7 +31,7 @@ boxplot(county_data$total_deaths_pc~county_data$democrat,
         xlab="", ylab="Total deaths per capita", 
         main="", col=c("#a50026","#313695"), names=c("Voted Trump","Voted Clinton"))
 plot(county_data$total_deaths_pc~county_data$vote_pct, 
-     xlab="% Votes Clinton", ylab="Total deaths per capita", 
+     xlab="Prop. Votes Clinton", ylab="Total deaths per capita", 
      main="")
 m2<-lm(county_data$total_deaths_pc~county_data$vote_pct)
 abline(m2, col=c("#fee090"), lwd=1.5)
@@ -43,7 +43,7 @@ boxplot(county_data$unemploy~county_data$democrat,
         xlab="", ylab="Unemployment Rate", 
         main="", col=c("#a50026","#313695"), names=c("Voted Trump","Voted Clinton"))
 plot(county_data$unemploy~county_data$vote_pct, 
-     xlab="% Votes Clinton", ylab="Unemployment Rate", 
+     xlab="Prop. Votes Clinton", ylab="Unemployment Rate", 
      main="")
 m3<-lm(county_data$unemploy~county_data$vote_pct)
 abline(m3, col=c("#fee090"), lwd=1.5)
@@ -66,7 +66,7 @@ county_data_c<-county_data[,.(total_cases_pc, total_deaths_pc, unemploy,
 names(county_data_c)[1]<-"cases"
 names(county_data_c)[2]<-"deaths"
 names(county_data_c)[3]<-"unemployment"
-names(county_data_c)[4]<-"%_dem_vote"
+names(county_data_c)[4]<-"Prop._dem_vote"
 county_data_cor<-(cor(county_data_c, use="na.or.complete"))
 
 
@@ -87,14 +87,14 @@ state_data$votes_dem <- ifelse(state_data$vote_pct<0,
                                (1-state_data$vote_pct*-1),state_data$vote_pct)
 
 #boxplots counties####
-png(filename="statelvlcovid_sumplots", width = 6, height = 8, units = "in", 
+png(filename="statelvlcovid_sumplots.png", width = 6, height = 8, units = "in", 
     res = 600)
 par(mfrow=c(3,2))
 boxplot(state_data$total_cases_pc~state_data$democrat, 
         xlab="", ylab="Total cases per capita", 
         main="", col=c("#a50026","#313695"), names=c("Voted Trump","Voted Clinton"))
 plot(state_data$total_cases_pc~state_data$votes_dem, 
-     xlab="% Votes Clinton", ylab="Total cases per capita", 
+     xlab="Prop. Votes Clinton", ylab="Total cases per capita", 
      main="")
 title("State-Level Outcomes vs. Political Affliation", line = -3, outer = TRUE)
 m4<-lm(state_data$total_cases_pc~state_data$votes_dem)
@@ -106,7 +106,7 @@ boxplot(state_data$total_deaths_pc~state_data$democrat,
         xlab="", ylab="Total deaths per capita", 
         main="", col=c("#a50026","#313695"), names=c("Voted Trump","Voted Clinton"))
 plot(state_data$total_deaths_pc~state_data$votes_dem, 
-     xlab="% Votes Clinton", ylab="Total deaths per capita", 
+     xlab="Prop. Votes Clinton", ylab="Total deaths per capita", 
      main="")
 m5<-lm(state_data$total_deaths_pc~state_data$votes_dem)
 abline(m5, col=c("#fee090"), lwd=1.5)
@@ -118,7 +118,7 @@ boxplot(state_data$unemploy~state_data$democrat,
         xlab="", ylab="Unemployment Rate", 
         main="", col=c("#a50026","#313695"), names=c("Voted Trump","Voted Clinton"))
 plot(state_data$unemploy~state_data$votes_dem, 
-     xlab="% Votes Clinton", ylab="Unemployment Rate", 
+     xlab="Prop. Votes Clinton", ylab="Unemployment Rate", 
      main="")
 m6<-lm(state_data$unemploy~state_data$votes_dem)
 abline(m6, col=c("#fee090"), lwd=1.5)
@@ -143,7 +143,7 @@ state_data_c<-state_data[,.(total_cases_pc,
 names(state_data_c)[1]<-"cases"
 names(state_data_c)[2]<-"deaths"
 names(state_data_c)[3]<-"unemployment"
-names(state_data_c)[4]<-"%_dem_vote"
+names(state_data_c)[4]<-"Prop._dem_vote"
 state_data_cor<-(cor(state_data_c, use="na.or.complete"))
 
 
