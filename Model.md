@@ -10,7 +10,7 @@ State-level:
 County-level: 
 > Proportion of total votes earned by Hillary, max AQI, median AQI, proportions of the population that are low, medium, and high risk, number of hospitals, number of hospital beds, median age, median income, and the proportions of the population that are white, black, American Indian, Asian, Pacific Islander, “other” races, under 18, over 65, insured, and reliant on public transport. 
 
-Insignificant predictors and those with multicollinearity were removed from the initial linear models, and AIC tests were used to identify the optimal predictors for each response variable. Transformations were applied to normalize the distributions of response variables, and to predictor variables. Quas-binomial, beta, and quadratic regressions were also explored to determine the optimal model for each combination of predictors and spatial scales. The optimal models are as follows:
+Insignificant predictors and those with multicollinearity were removed from the initial linear models, and AIC tests were used to identify the best sets of predictors for each response variable. Transformations were applied to normalize the distributions of response variables, and to predictor variables. Quas-binomial, beta, and quadratic regressions were also explored to determine the optimal model for each combination of predictors and spatial scales. The optimal models are as follows:
 
 ![residuals_vs_fitted](https://pages.github.ncsu.edu/chaedri/Data-Challenge-GIS713/images/resid_vs_fitted.png)
 
