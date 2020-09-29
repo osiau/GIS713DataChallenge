@@ -16,5 +16,5 @@
 
 #### The team!
 
-![picture](https://pages.github.ncsu.edu/chaedri/Data-Challenge-GIS713/images/group1.png)
-![picture](https://pages.github.ncsu.edu/chaedri/Data-Challenge-GIS713/images/group2.png)
+![picture](https://pages.github.ncsu.edu/chaedri/Data-Challenge-GIS713/images/group1.PNG)
+![picture](https://pages.github.ncsu.edu/chaedri/Data-Challenge-GIS713/images/group2.PNG)
