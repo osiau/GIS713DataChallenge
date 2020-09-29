@@ -27,8 +27,8 @@ Random Forest Regression was used to identify features that contribute most to C
 * Counts: significant relationship to not significant relationship with p-value of almost 0 to 0.63
 * Deaths: significant relationship to borderline significant relationship (depends on level of significance chosen) with p-value of almost 0 to 0.046. A better model should account for more of the spatial variance, but a spatial model might be needed. Regardless, the 0.05 significance value is highly debated due to false discovery rate and many corrections lower this to 0.01.
 * Unemployment: significant relationship to borderline significant relationship (depends on level of significance chosen) with p-value of almost 0 to 0.18
-The features were finally selected using outside of bag errors.
 
+The features were finally selected using outside of bag errors.
 
 ![random](https://pages.github.ncsu.edu/chaedri/Data-Challenge-GIS713/images/randomforest.png)
 
