@@ -1,4 +1,3 @@
-
 #### Correlation And Causality
 Correlations between these three outcomes (unemployment, death rate and positive cases) and voting data may be attributed to other covariates.  For example, states that voted for Trump tended to be more rural than those that voted for Hillary. Therefore, we collected a dataset of covariates that might cause this pattern. They included:
 * Air Quality Index
@@ -7,7 +6,6 @@ Correlations between these three outcomes (unemployment, death rate and positive
 * Fraction of the population over 65
 * Fraction of the population that is insured
 * Fraction residents who depend on public transport
-
 
 Pairwise linear regression model outcomes yielded significant correlations (but not causations) between outcome variables (confirmed cases, deaths, and unemployment), and predictor variables. Preliminary findings from these models were used to inform the final random forest model which predictor variables may be important in predicting outcome variables. We can visualize these correlations with state and county level correlelograms.
 
