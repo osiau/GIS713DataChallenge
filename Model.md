@@ -6,7 +6,7 @@ Correlations between these three outcomes (unemployment, death rate and positive
 * Fraction of the population that is white, black, asian, pacific islander, or other
 * Fraction of the population over 65
 * Fraction of the population that is insured
-* Fraction pubtransport <- WHAT DOES THIS MEAN?
+* Fraction residents who depend on public transport
 
 
 A pairwise linear regression model outcomes yielded significant correlations (but not causations) between outcome variables (confirmed cases, deaths, and unemployment), and predictor variables. Preliminary findings from these models were used to inform the final random forest model which predictor variables may be important in predicting outcome variables. We can visualize these correlations with state and county level correlelograms.
