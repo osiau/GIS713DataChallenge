@@ -10,9 +10,9 @@ County-Level Models:
 * Unemployment: 
 
 State-Level Models: 
-* Cases per capita = log(% black population) + (% population under 18) + sqrt(% population over 65) + log(% insured); adj R^2: 0.5972, p-value: 1.877e-09
-* Log(deaths per capita) = sqrt(% “other races” in population); adj R^2: 0.1236, p-value: 0.006601
-* Log(unemployment) = (hospitals per state) + (number of government measures in response to COVID-19) + (median income) + log(% black population) + (% Pacific Islander population) + (% “other races” in population) + log(% insured) + (% dependent on public transport); adj R^2: 0.3985, p-value: 0.03579
+* Cases per capita = log(% black population) + (% population under 18) + sqrt(% population over 65) + log(% insured); **adj R^2: 0.5972, p-value: 1.877e-09**
+* Log(deaths per capita) = sqrt(% “other races” in population); **adj R^2: 0.1236, p-value: 0.006601**
+* Log(unemployment) = (hospitals per state) + (number of government measures in response to COVID-19) + (median income) + log(% black population) + (% Pacific Islander population) + (% “other races” in population) + log(% insured) + (% dependent on public transport); **adj R^2: 0.3985, p-value: 0.03579**
 
 Preliminary findings from these models were used to inform the final random forest model which predictor variables may be important in predicting outcome variables. We can visualize these correlations with state and county level correlelograms.
 
