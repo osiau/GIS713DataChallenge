@@ -27,8 +27,7 @@ Caption by Uchenna
 
 
 ##### Map of Results of Voting by County
-![voting_map_results](https://pages.github.ncsu.edu/chaedri/Data-Challenge-GIS713/images/Votes_county.png)
-
+![pic](https://pages.github.ncsu.edu/chaedri/Data-Challenge-GIS713/images/Votes_county.png)
 
 
 #### Random Forest
