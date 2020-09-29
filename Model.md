@@ -17,11 +17,19 @@ Pairwise linear regression model outcomes yielded significant correlations (but 
 ![boxplot](https://pages.github.ncsu.edu/chaedri/Data-Challenge-GIS713/images/statelevelcorr.png)
 *State-Level Correlellograms between possible COVID-19 outcome covariates.*
 
-Random Forest Regression was used to identify features that contribute most to COVID-19 cases and deaths at the county scale. Random Forest is an ensemble model that is robust and able to handle large dimensions of data. Initial analyses included Moran’s I spatial autocorrelation analysis. Spatial autocorrelation was found to be significant in predicting cases, deaths, and unemployment rates. The model was trained using a 70/30 split between training and testing data, and validated with the full data set. Accuracy and error were assessed using coefficients of determination (COD) and mean absolute error (MAE). The model's high error of 0.26 and CODs within 0.55-0.63 suggest that a low percentage of the variance in the data can be explained by this approach. To learn more, visit our page on [the model](https://pages.github.ncsu.edu/chaedri/Data-Challenge-GIS713/Model), in which we outline the meaning of the error in terms of our results, the broader significance regarding President Trump's statement, and our suggestions for improvement. 
-
 ## Making decisions with Random Forest
 
-Random Forest Regression was used to identify features that contribute most to COVID-19 cases and deaths at the county scale. Random Forest is an ensemble model that is robust and able to handle large dimensions of data. Initial analyses included Moran’s I spatial autocorrelation analysis. Spatial autocorrelation was found to be significant in predicting cases, deaths, and unemployment rates. The model was trained using a 70/30 split between training and testing data, and validated with the full data set. Accuracy and error were assessed using coefficients of determination (COD) and mean absolute error (MAE). The model's high error of 0.26 and CODs within 0.55-0.63 suggest that a low percentage of the variance in the data can be explained by this approach. 
+Random Forest Regression was used to identify features that contribute most to COVID-19 cases, deaths, and changes in unemployment rates at the county scale.  All predictors and response variables were normalized per capita the county scale. Random Forest is an ensemble model that is robust and able to handle large dimensions of data. Initial analyses included Moran's I spatial autocorrelation; spatial autocorrelation was significant in all three cases (COVID-19 cases, deaths, and changes in unemployment). The model was trained using a 70/30 training/testing split, and validated with the full data set. The coefficients of determination (CODs) were 0.64,0.66, and 0.67, respectively. Median absolute error (MAE) values of  0.26, 0.26, and 0.31 suggest high levels of error. However, all three models accounted for spatial relationships as follows:
+* Counts: significant relationship to not significant relationship with p-value of almost 0 to 0.63
+* Deaths: significant relationship to borderline significant relationship (depends on level of significance chosen) with p-value of almost 0 to 0.046. A better model should account for more of the spatial variance, but a spatial model might be needed.  Regardless, the 0.05 significance value is highly debated due to false discovery rate and many corrections lower this to 0.01.
+* Unemployment: significant relationship to borderline significant relationship (depends on level of significance chosen) with p-value of almost 0 to 0.18
+
+Limitations:
+* The test and validation errors were high, possibly due to the use of Median Absolute Error opposed to Mean Squared Error.
+* The test COD was low, but the validation COD was strong
+* Temporal effect was not considered
+* Interpreting node purity is not straightforward, but does show republican and democrat vote percentages have the same impact measure on the models
+
 
 ![random](https://pages.github.ncsu.edu/chaedri/Data-Challenge-GIS713/images/randomforest.PNG)
 
