@@ -97,8 +97,7 @@ labels <- sprintf(
 # server <- function(input, output, session) {
 
   # output$mymap <- renderLeaflet({
-#m <- 
-leaflet(vote_counts_by_county_2016) %>% #begin leaflet map
+m<- leaflet(vote_counts_by_county_2016) %>% #begin leaflet map
 #all states
 addPolygons(stroke = FALSE, smoothFactor = 0.2, fillOpacity = 1, 
     fillColor = ~controlpal(winning_party), color = "white", opacity = 1, dashArray = "2", group = "all", 
@@ -120,5 +119,5 @@ addLayersControl(baseGroups = c("OSM"),
 #leafletSizingPolicy(width = "1000px", height= "300px", view.fill = FALSE, browser.fill = FALSE)
 
 
-mapshot(m, url = file.path(wd, "vizualization/general_election_2016.png")) #for exporting
+mapshot(m, file = file.path(wd, "vizualization/general_election_2016.png")) #for exporting
 
