@@ -5,9 +5,9 @@
 Regression model outcomes yielded significant correlations (but not causations) between outcome variables (confirmed cases, deaths, and unemployment), and predictor variables. The best models for each combination of predictors and spatial scales are: 
 
 State-Level Models: 
-* Cases per capita = log(% black population) + (% population under 18) + sqrt(% population over 65) + log(% insured); **Adjusted R-squared: 0.5972, p-value: 1.877e-09**
+* Cases per capita = log(% black population) + (% population under 18) + sqrt(% population over 65) - log(% insured); **Adjusted R-squared: 0.5972, p-value: 1.877e-09**
 * Log(deaths per capita) = sqrt(% “other races” in population); **Adjusted R-squared: 0.1236, p-value: 0.006601**
-* Log(unemployment) = (hospitals per state) + (number of government measures in response to COVID-19) + (median income) + log(% black population) + (% Pacific Islander population) + (% “other races” in population) + log(% insured) + (% dependent on public transport); **Adjusted R-squared: 0.3985, p-value: 0.03579**
+* Log(unemployment) = (hospitals per state) - (number of government measures in response to COVID-19) - (median income) + log(% black population) + (% Pacific Islander population) - (% “other races” in population) + log(% insured) + (% dependent on public transport); **Adjusted R-squared: 0.3985, p-value: 0.03579**
 
 County-Level Models: 
 * Log(Cases per capita ) = (number of government measures in response to COVID-19) + (hospitals per state) + (median income) +  (% Pacific Islander population) + (% “other races” in population) +  (% population under 18) + + log(% insured) + (% dependent on public transport); **Multiple R-squared:  0.3184,	Adjusted R-squared:  0.3074** 
