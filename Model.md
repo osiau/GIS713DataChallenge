@@ -2,7 +2,15 @@
 
 ### Finding the best regression fit
 
-Regression model outcomes yielded significant correlations (but not causations) between outcome variables (confirmed cases, deaths, and unemployment), and predictor variables. The best models for each combination of predictors and spatial scales are: 
+Regression model outcomes yielded significant correlations (but not causations) between outcome variables (confirmed cases, deaths, and unemployment), and predictor variables. The predictor variables initially considered in the state- and county-level models include: 
+
+State-level: 
+Proportion of total votes earned by Hillary, number of hospital beds, number of hospitals, number of arriving commercial flights, number of governmental measures in response to COVID-19, median age, median income, and the proportions of the population that are white, black, American Indian, Asian, Pacific Islander, “other” races, under 18, over 65, and insured.
+
+County-level: 
+Proportion of total votes earned by Hillary, max AQI, median AQI, proportions of the population that are low, medium, and high risk, number of hospitals, number of hospital beds, median age, median income, and the proportions of the population that are white, black, American Indian, Asian, Pacific Islander, “other” races, under 18, over 65, insured, and reliant on public transport. 
+
+The best models for each combination of predictors and spatial scales are: 
 
 ![residuals_vs_fitted](https://pages.github.ncsu.edu/chaedri/Data-Challenge-GIS713/images/resid_vs_fitted.png)
 
