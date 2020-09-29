@@ -27,8 +27,7 @@ Caption by Uchenna
 
 
 ##### Map of Results of Voting by County
-![pic](https://pages.github.ncsu.edu/chaedri/Data-Challenge-GIS713/images/Votes_county.png)
-
+![pic](https://raw.github.ncsu.edu/chaedri/Data-Challenge-GIS713/gh-pages/images/Votes_county.png?token=AAAEZKD7BOZAKLHKNTZUNTS7PPIC6)
 
 #### Random Forest
 We tried several different autocorrelation models and found Random Forest worked best.
