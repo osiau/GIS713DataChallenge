@@ -12,14 +12,14 @@ Correlations between these three outcomes (unemployment, death rate and positive
 Pairwise linear regression model outcomes yielded significant correlations (but not causations) between outcome variables (confirmed cases, deaths, and unemployment), and predictor variables. The best models for each combination of predictors and spatial scales are: 
 
 County-Level Models: 
-Cases: 
-Deaths: 
-Unemployment: 
+* Cases: 
+* Deaths: 
+* Unemployment: 
 
 State-Level Models: 
-Cases per capita = log(% black population) + (% population under 18) + sqrt(% population over 65) + log(% insured)
-Log(deaths per capita) = sqrt(% “other races” in population)
-Log(unemployment) = (hospitals per state) + (number of government measures in response to COVID-19) + (median income) + log(% black population) + (% Pacific Islander population) + (% “other races” in population) + log(% insured) + (% dependent on public transport)
+* Cases per capita = log(% black population) + (% population under 18) + sqrt(% population over 65) + log(% insured)
+* Log(deaths per capita) = sqrt(% “other races” in population)
+* Log(unemployment) = (hospitals per state) + (number of government measures in response to COVID-19) + (median income) + log(% black population) + (% Pacific Islander population) + (% “other races” in population) + log(% insured) + (% dependent on public transport)
 
 
 Preliminary findings from these models were used to inform the final random forest model which predictor variables may be important in predicting outcome variables. We can visualize these correlations with state and county level correlelograms.
