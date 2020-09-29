@@ -1,0 +1,10 @@
+name: comorbidity_app
+title:
+username:
+account: lrallen3
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 2905920
+bundleId: 3680958
+url: https://lrallen3.shinyapps.io/comorbidity_app/
+when: 1601334232.03915
