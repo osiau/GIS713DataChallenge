@@ -31,7 +31,7 @@ Correlations between these three outcomes (unemployment, death rate and positive
 * Fraction of the population that is insured
 * Fraction residents who depend on public transport
 
-To analyze this, we examined a few approaches: Regression Analyses, Random Forest, and Spatial Autocorrelation
+To analyze this, we examined a few approaches: Regression Analyses, Random Forest, and Spatial Autocorrelation.
 
 ![boxplot](https://pages.github.ncsu.edu/chaedri/Data-Challenge-GIS713/images/countylevelcorr.png)
 *County-Level Correlellograms between possible COVID-19 outcome covariates.*
