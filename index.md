@@ -6,7 +6,7 @@ No. We found that blue states did not have worse health outcomes than red states
 A brief description of our findings; the twitter map and one sentence conclusion
 twitter-worthy map; Caption by Muyiwa
 
-![centroid_gif](https://pages.github.ncsu.edu/chaedri/Data-Challenge-GIS713/images/covid_percapita_gif.gif){ width=1000px }
+![centroid_gif](https://pages.github.ncsu.edu/chaedri/Data-Challenge-GIS713/images/covid_percapita_gif.gif){ width=100% }
 
 ![centroid](https://pages.github.ncsu.edu/chaedri/Data-Challenge-GIS713/images/centroids.png)
 
