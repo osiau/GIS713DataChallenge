@@ -4,11 +4,6 @@
 
 Pairwise linear regression model outcomes yielded significant correlations (but not causations) between outcome variables (confirmed cases, deaths, and unemployment), and predictor variables. The best models for each combination of predictors and spatial scales are: 
 
-County-Level Models: 
-* Cases: 
-* Deaths: 
-* Unemployment: 
-
 State-Level Models: 
 * Cases per capita = log(% black population) + (% population under 18) + sqrt(% population over 65) + log(% insured); **adj R^2: 0.5972, p-value: 1.877e-09**
 * Log(deaths per capita) = sqrt(% “other races” in population); **adj R^2: 0.1236, p-value: 0.006601**
