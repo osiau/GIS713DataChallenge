@@ -5,8 +5,7 @@ states, they were blue states and blue-state-managed."
 
 library(data.table)
 
-path_to_data<-"~/Desktop/dc/Data-Challenge-GIS713/"
-setwd("~/Desktop/dc/Data-Challenge-GIS713/")
+path_to_data <-getwd()
 state_data <- fread(file.path(path_to_data, "regression supplies/state_votes_and_covid.csv"))
 worldstats_covid19 <- fread(file.path(path_to_data, "Datasources/WHO-COVID-19-global-data.csv"))
 worldpop19 <- fread(file.path(path_to_data, "Datasources/WPP2019_TotalPopulation.csv"))
@@ -49,4 +48,5 @@ worldcasespop<-as.data.table(worldcasespop)
 worldcasespop[,Cml_cases_pc:=(Cumulative_cases/(PopTotal*1000))]
 worldcasespop[,Cml_deaths_pc:=(Cumulative_deaths/(PopTotal*1000))]
 
-     
+write.csv(worldcasespop,paste0(getwd(), "/worldcovidcases.csv"), row.names = FALSE)
+
