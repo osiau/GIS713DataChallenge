@@ -14,7 +14,7 @@ Insignificant predictors and those with multicollinearity were removed from the 
 
 ![residuals_vs_fitted](https://pages.github.ncsu.edu/chaedri/Data-Challenge-GIS713/images/resid_vs_fitted.png)
 
-*The multilinear model with the best regression fit uses the percents of a given state's population who are black, under 18, over 65, and insured, respectively, to predict per-capita COVID-19 cases by state. % insured is the only predictor that was shown to have a negative relationship with COVID-19 cases.*
+*The multilinear model with the best regression fit uses the percents of a given state's population who are black, under 18, over 65, and insured, respectively, to predict per-capita COVID-19 cases by state. Of these, % insured is the only predictor that was shown to have a negative relationship with COVID-19 cases.*
 
 #### State-Level Models: 
 * **Cases per capita** = 0.0037 log(% black population) + 0.1783 (% population under 18) + 0.0492 sqrt(% population over 65) - 0.1650 log(% insured) - 0.0327; **Adjusted R-squared: 0.5972, p-value: 1.877e-09**
