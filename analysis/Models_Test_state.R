@@ -1,3 +1,5 @@
+# Script to find the best regression fits for state-level per-capita cases, deaths, and unemployment
+
 library(data.table)
 library(RCurl)
 library(httr)
@@ -17,6 +19,10 @@ library(sf)
 library(MASS)
 library(raster)
 library(spdep)
+library(rgdal)
+library(maptools)
+library(gridExtra)
+library(rgeos)
 
 data_dir <- "/Users/ihinks/Documents/GIS713/DataChallenge"
 setwd(data_dir)
@@ -24,6 +30,9 @@ wd <- getwd()
 
 # Read data
 
+# Get shapefile
+county_shp <- shapefile(file.path(wd, "Datasources/cb_2015_us_county_20m", "cb_2015_us_county_20m.shp"))
+states <- aggregate(county_shp, by="STATEFP")
 # 1- county-level COVID19
 state_dem_data <- fread(file.path(wd,"regression supplies/state_dem_votes_and_covid.csv"))
 state_covid_votes <- fread(file.path(wd,"regression supplies/state_votes_and_covid.csv"))
@@ -502,8 +511,6 @@ durbinWatsonTest(lm_model_covid_deaths_v5)
 durbinWatsonTest(lm_model_covid_unemploy_v5) 
 
 # Check quadratic model :
-
-
 quadratic_covid_cases_v5 <- lm((total_cases_pc) ~ (frac_black)^2 + (frac_under18)^2 + (frac_over65)^2 + (frac_insured)^2, data=state_var_all)
 summary(quadratic_covid_cases_v5) # adj R^2: 0.5437; p-value: 3.061e-08
 
@@ -544,4 +551,10 @@ autoCorrelation <- function(shapeFile, indVariable, model)
   print(moran.test(residuals.glm(model), mat2listw(w)))
 }
 
+states_relevantVars <- all_state_data[, .(stateFIPS, total_cases_pc, total_deaths_pc, unemploy, frac_black, frac_under18, frac_over65, frac_insured, frac_otherrace, hospitals_state, num_measures, med_income, frac_pacislander, frac_pubtransport)]
+states_noNA <- na.omit(states_relevantVars)
+states_subset <- subset(states, states@data$STATEFP %in% as.character(states_noNA$stateFIPS))
 
+autoCorrelation(states_subset, states_noNA$total_cases_pc, lm_model_covid_cases_v5)
+autoCorrelation(states_subset, states_noNA$total_deaths_pc, lm_model_covid_cases_v5)
+autoCorrelation(states_subset, states_noNA$unemploy, lm_model_covid_cases_v5)
