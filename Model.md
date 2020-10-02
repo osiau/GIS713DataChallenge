@@ -30,6 +30,7 @@ Monte Carlo simulations of Moran’s I were computed to measure the presence or 
 
 ![morans_i](https://pages.github.ncsu.edu/chaedri/Data-Challenge-GIS713/images/state_deaths_moransi.png)
 ![density_plot](https://pages.github.ncsu.edu/chaedri/Data-Challenge-GIS713/images/state_deaths_densityplot.png)
+
 *Moran’s I and density plots for per-capita deaths by state. Visit our Github to see these results for all models.*
 
 Preliminary findings from these models were used to inform the final random forest model which predictor variables may be important in predicting outcome variables. We can visualize these correlations with state and county level correlelograms.
