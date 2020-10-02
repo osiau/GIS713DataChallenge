@@ -26,6 +26,12 @@ Insignificant predictors and those with multicollinearity were removed from the 
 * Log(**deaths per capita**) = 1.253e-04 + 1.875e-04 (number of government measures in response to COVID-19) -2.087e-07 (max AQ index) -1.287e-08 (median income) -5.600e-04 (% Asian population) -6.308e-03 (% Pacific Islander population) + 3.060e-03 (% population under 18) + 8.037e-03 (% dependent on public transport); **Adjusted R-squared:  0.2723, p-value: < 2.2e-16**                   
 * Log(**unemployment**) = -3.531e+00 + 8.356e-05 (median income) + 4.863e+00 (% Asian population) + 1.111e+02 (% Pacific Islander population) -1.255e+01 (% “other races” in population) +  6.662e+00 (% population under 18) + 4.222e+00 (% insured) -9.136e+00 (% dependent on public transport); **Adjusted R-squared:  0.2052, p-value: < 2.2e-16**
 
+Monte Carlo simulations of Moran’s I were computed to measure the presence or absence of spatial autocorrelation in each model. Of all state-level models, only the model to predict per-capita deaths failed to reject the null hypothesis; this model suggested clustering, with a Moran’s I statistic of 0.2057 and p-value: 0.01. The results for Monte Carlo simulations of Moran’s I for cases and unemployment had Moran’s I statistics of 0.039 and -0.062, and p-values of 0.09 and 0.62, respectively. Further spatial analyses are not needed for state-level per-capita cases and increases in unemployment. Because the simulations of Moran's I at the county-level suggested spatial autocorrelation, we decided to explore this further.
+
+![morans_i](https://pages.github.ncsu.edu/chaedri/Data-Challenge-GIS713/images/state_deaths_moransi.png)
+![density_plot](https://pages.github.ncsu.edu/chaedri/Data-Challenge-GIS713/images/state_deaths_densityplot.png)
+*Moran’s I and density plots for per-capita deaths by state. Visit our Github to see these results for all models.*
+
 Preliminary findings from these models were used to inform the final random forest model which predictor variables may be important in predicting outcome variables. We can visualize these correlations with state and county level correlelograms.
 
 ### Making decisions with Random Forest
