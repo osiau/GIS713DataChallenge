@@ -49,6 +49,8 @@ data_dir <- "/home/nick/Downloads"
 county_shp <- shapefile(file.path(data_dir, "cb_2015_us_county_20m", "cb_2015_us_county_20m.shp"))
 county_variables <- readRDS("county_independent_vars.RDS")
 Y <- readRDS("county_dependent_vars.RDS")
+
+# For the counts at re-open dates
 reopens <- fread("reOpeningCounts.csv")
 
 # Set sociodemographic data as data table and remove last 6 counties (Puerto Rico)
@@ -56,18 +58,64 @@ df <- as.data.table(county_variables)
 df <- df[1:3214, ]
 
 # Choose dependent variable
-Y <- Y$total_cases_pc
-#Observed <- Y$total_deaths_pc
-#Observed <- Y$unemploy
-#Observed <- Y$vote_pct
 geoID <- Y$geoID
+#Y <- Y$total_cases_pc
+Y <- Y$total_deaths_pc
+#Y <- Y$unemploy
+#Y <- Y$vote_pct
+
 Y <- data.frame(geoID, Y)
 df <- merge(df, Y, by="geoID")
-df
 
 # In sociodemographic data - remove columns that are not needed, set all values that are NA to 0 and all column data types to numeric
 df[, county := NULL]
-df <- df %>% mutate_all(funs(ifelse(is.na(.), 0, .)))
+
+# Impute all NA values to various options (0, knn, or mean)
+#df <- df %>% mutate_all(funs(ifelse(is.na(.), 0, .))) ##### <- For Martine to explore -> I would check out the caret impute function but you can also use mean values by column
+#set.seed(007)
+#preProcess(df, "knnImpute")
+
+for(i in 1:length(df$aqi_2019))
+{
+  count <- 0.0
+  m <- 0.0
+  
+  countTwo <- 0.0
+  mTwo <- 0.0
+  
+  if(!is.na(df$aqi_2019[i]))
+  {
+    count <- count + 1
+    m <- m + df$aqi_2019[i] 
+  }
+  
+  if(!is.na(df$frac_pubtransport[i]))
+  {
+    countTwo <- countTwo + 1
+    mTwo <- mTwo + df$frac_pubtransport[i] 
+  }
+  
+  m <- m / count
+  mTwo <- mTwo/countTwo
+  
+}
+
+for(i in 1:length(df$aqi_2019))
+{
+  if(is.na(df$aqi_2019[i]))
+  {
+    df$aqi_2019[i] <- m 
+  }
+  
+  if(is.na(df$frac_pubtransport[i]))
+  {
+    df$frac_pubtransport[i] <- mTwo
+  }
+}
+
+
+
+# Prepare data set column data types and create df_x for linear regression
 geoID <- df$geoID
 df <- sapply(df, as.numeric )
 df <- as.data.frame(df)
@@ -89,11 +137,6 @@ voteDF$id <- as.character(voteDF$id)
 df <- merge(df, voteDF, by.x="geoID", by.y="id") 
 county_shp <- merge(county_shp, df, by.x="GEOID", by.y="geoID")
 
-# Replace NAs with 0 or remove NAs in dem and rep data
-# county_shp[is.na(dem), ] <- 0.0
-# county_shp[is.na(rep), ] <- 0.0
-#df[is.na(df$Y), ] <- 0.0
-
 # Cut down shapefile
 nonContiguous <- c(60, 66, 69, 72, 78)
 for(i in 1:length(nonContiguous))
@@ -101,7 +144,6 @@ for(i in 1:length(nonContiguous))
   county_shp <- subset(county_shp, STATEFP != nonContiguous[i])
 }
 county_shp@data[is.na(county_shp@data)] <- 0.0
-#county_shp <- sp.na.omit(county_shp)
 df <- data.frame(county_shp[10:length(names(county_shp))])
 
 # Impute 0.0 values to 0.01 for log transformation
@@ -119,7 +161,7 @@ lm_df <- df
 lm_Y <- df$Y
 lm_x <- df[-c(18, 20)]
 
-# Correlation matrix
+# Correlation matrix <- nothing fancy
 cor(lm_x)
 ####################################################################################################################################################
 # Linear Model
@@ -128,6 +170,7 @@ cor(lm_x)
 setwd("/home/nick/Downloads")
 colinearity <- dget('rfeVIF.R')
 
+# Run best VIF score 5 times
 for(i in 1:5)
 {
   v <- colinearity(lm_x, lm_Y)
@@ -155,7 +198,7 @@ county_shp$var <- local[,3]
 county_shp$p <- local[,5]
 county_shp$I <- local[,1]
 
-# Creat LISA cluster plot
+# Create LISA cluster plot
 qualification <- county_shp$Y - mean(county_shp$Y)
 I <- local[,1] - mean(local[,1])
 
@@ -178,6 +221,8 @@ y_axis <- extent(county_shp)[3] + 20.00
 x_axis <- -179.7739 + 5.00
 legend(x=x_axis, y=y_axis, legend = c("Insignificant","low-low","low-high","high-low","high-high"),
        fill=colors,bty="n", cex=0.6)
+####################################################################################################################################################
+# Not Necessary
 ####################################################################################################################################################
 # Split data
 set.seed(007)
@@ -227,16 +272,16 @@ rf <- randomForest(Y ~ .,
 #                    importance = TRUE)
 
 ###### Tested
-rf <- randomForest(x = training[, !names(training) %in% c('Y', 'Observed', 'GEOID')],
-                   y = training$Y,
-                   xtest = testing[, !names(testing) %in% c('Observed', 'GEOID', 'Y')],
-                   ytest = testing$Y,
-                   data = training,
-                   mtry = floor((ncol(training)-3)/3),
-                   ntrees = 375,
-                   importance = TRUE)
+# rf <- randomForest(x = training[, !names(training) %in% c('Y', 'Observed', 'GEOID')],
+#                    y = training$Y,
+#                    xtest = testing[, !names(testing) %in% c('Observed', 'GEOID', 'Y')],
+#                    ytest = testing$Y,
+#                    data = training,
+#                    mtry = floor((ncol(training)-3)/3),
+#                    ntrees = 375,
+#                    importance = TRUE)
 ###################################################################################################################################################
-# Check Errors - trained, tested, and validated ### OOB Model is better than trained model
+# Check Errors - trained, tested, and validated ### OOB Model is better than trained model 
 ####################################################################################################################################################
 # Extract Validation Errors
 err <- sqrt(rf$mse)
@@ -268,6 +313,8 @@ county_shp$Y <- df$Y
 set.seed(007)
 local <- autoCorrelation(county_shp, county_shp$Y, county_shp$res)
 
+
+# Plot LISA Cluster Maps
 county_shp$var <- local[,3]
 county_shp$p <- local[,5]
 county_shp$I <- local[,1]
