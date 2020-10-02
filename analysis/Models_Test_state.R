@@ -543,6 +543,7 @@ summary(deaths_beta) # dem_vote_pct and beds_state are significant
 plot(deaths_beta)
 
 ###### Spatial autocorrelation ######
+# Null hypothesis: no spatial autocorrelation 
 autoCorrelation <- function(shapeFile, indVariable, model)
 {
   w <- 1/ as.matrix(dist(coordinates(shapeFile)))
@@ -550,11 +551,35 @@ autoCorrelation <- function(shapeFile, indVariable, model)
   print(moran.test(indVariable, mat2listw(w)))
   print(moran.test(residuals.glm(model), mat2listw(w)))
 }
+# Monte Carlo approach
+autoCorrelation_MC <- function(shapeFile, indVariable, model, varName)
+{
+  set.seed(42)
+  w <- 1/ as.matrix(dist(coordinates(shapeFile)))
+  diag(w) <- 0
+  MC <- moran.mc(indVariable, mat2listw(w), nsim=99)
+  print(MC)
+  moran.plot(indVariable, mat2listw(w), main=paste0("Moran's I Plot for Per-Capita ", varName, " by State"), xlab=varName, ylab=paste0("Spatially Lagged ", varName))
+  return(MC)
+}
 
 states_relevantVars <- all_state_data[, .(stateFIPS, total_cases_pc, total_deaths_pc, unemploy, frac_black, frac_under18, frac_over65, frac_insured, frac_otherrace, hospitals_state, num_measures, med_income, frac_pacislander, frac_pubtransport)]
 states_noNA <- na.omit(states_relevantVars)
 states_subset <- subset(states, states@data$STATEFP %in% as.character(states_noNA$stateFIPS))
 
-autoCorrelation(states_subset, states_noNA$total_cases_pc, lm_model_covid_cases_v5)
-autoCorrelation(states_subset, states_noNA$total_deaths_pc, lm_model_covid_cases_v5)
-autoCorrelation(states_subset, states_noNA$unemploy, lm_model_covid_cases_v5)
+# Plots show the distribution of Moran's I values, had the incomes been randomly distributed across states
+# Vertical line = observed statistic
+# State-level cases: fail to reject null hypothesis
+# Moran's I = 0.039401, p-value = 0.09
+state_cases_MC <- autoCorrelation_MC(states_subset, states_noNA$total_cases_pc, lm_model_covid_cases_v5, varName="Cases")
+plot(state_cases_MC, main="Density Plot of State-Level Per-Capita Cases Outcomes", xlab="Cases per Capita")
+
+# State-level deaths: reject null hypothesis
+# Moran's I = 0.2057, p-value = 0.01
+state_deaths_MC <- autoCorrelation_MC(states_subset, states_noNA$total_deaths_pc, lm_model_covid_deaths_v5, varName="Deaths")
+plot(state_cases_MC, main="Density Plot of State-Level Per-Capita Deaths Outcomes", xlab="Deaths per Capita")
+
+# State-level unemployment: fail to reject null hypothesis
+# Moran's I = 0.062197, p-value = 0.62
+state_unemploy_MC <- autoCorrelation_MC(states_subset, states_noNA$unemploy, lm_model_covid_unemploy_v5, varName="Unemployment")
+plot(state_cases_MC, main="Density Plot of State-Level Increase in Unemployment Outcomes", xlab="Unemployment")
