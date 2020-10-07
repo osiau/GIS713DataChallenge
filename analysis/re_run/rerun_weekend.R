@@ -273,7 +273,7 @@ AICtab(all.lm, weights=T, logLik=T) #model 78 has the most support (weight = 0.7
 
 names(all.lm[[73]]$coefficients)[-1]
 
-lm_model_unemploy_v3 <- lm(total_deaths_pc ~ frac_black + med_income + 
+lm_model_unemploy_v3 <- lm(unemploy ~ frac_black + med_income + 
                                  frac_over65  + frac_pacislander + frac_otherrace +
                                  frac_pubtransport + frac_insured + frac_under18, data= full_data)
 
