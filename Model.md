@@ -12,7 +12,7 @@ Proportion of total votes earned by Hillary, max AQI, median AQI, proportions of
 
 Insignificant predictors and those with multicollinearity were removed from the initial linear models, and AIC tests were used to identify the best sets of predictors for each response variable. Transformations were applied to normalize the distributions of response variables, and to predictor variables. Quas-binomial, beta, and quadratic regressions were also explored to determine the optimal model for each combination of predictors and spatial scales. The models with the best fits are as follows:
 
-![residuals_vs_fitted](https://pages.github.ncsu.edu/chaedri/Data-Challenge-GIS713/images/resid_vs_fitted.png)
+<img src="images/resid_vs_fitted.png" alt="hi" class="inline"/>
 
 *The multilinear model with the best regression fit uses the percents of a given state's population who are black, under 18, over 65, and insured, respectively, to predict per-capita COVID-19 cases by state. Of these, % insured is the only predictor that was shown to have a negative relationship with COVID-19 cases.*
 
@@ -28,8 +28,8 @@ Insignificant predictors and those with multicollinearity were removed from the 
 
 Monte Carlo simulations of Moran’s I were computed to measure the presence or absence of spatial autocorrelation in each model. Of all state-level models, only the model to predict per-capita deaths failed to reject the null hypothesis; this model suggested clustering, with a Moran’s I statistic of 0.2057 and p-value: 0.01. The results for Monte Carlo simulations of Moran’s I for cases and unemployment had Moran’s I statistics of 0.039 and -0.062, and p-values of 0.09 and 0.62, respectively. Further spatial analyses are not needed for state-level per-capita cases and increases in unemployment. Because the simulations of Moran's I at the county-level suggested spatial autocorrelation, we decided to explore this further.
 
-![morans_i](https://pages.github.ncsu.edu/chaedri/Data-Challenge-GIS713/images/state_deaths_moransi.png)
-![density_plot](https://pages.github.ncsu.edu/chaedri/Data-Challenge-GIS713/images/state_deaths_densityplot.png)
+<img src="images/state_deaths_moransi.png" alt="hi" class="inline"/>
+<img src="images/state_deaths_densityplot.png" alt="hi" class="inline"/>
 
 *Moran’s I and density plots for per-capita deaths by state. Visit our Github to see these results for all models.*
 
@@ -45,7 +45,8 @@ Random Forest Regression was used to identify features that contribute most to C
 
 The features were finally selected using outside of bag errors.
 
-![random](https://pages.github.ncsu.edu/chaedri/Data-Challenge-GIS713/images/randomforest.png)
+<img src="images/randomforest.png" alt="hi" class="inline"/>
+
 
 ### Limitations
 * The test and validation errors were high,
@@ -53,8 +54,8 @@ The features were finally selected using outside of bag errors.
 * temporal effects wer not considered,
 * interpreting node purity is not straightforward
 
-Visit [our conclusions](https://pages.github.ncsu.edu/chaedri/Data-Challenge-GIS713/the-end) to understand the broader significance of these explorations and how they relate to President Trump's statement.
+Visit [our conclusions](https://osiau.github.io/GIS713DataChallenge/the-end) to understand the broader significance of these explorations and how they relate to President Trump's statement.
 
 
 ##### Find our analysis, data and methods on github: 
-![github](https://pages.github.ncsu.edu/chaedri/Data-Challenge-GIS713/images/octocat.svg) [GitHub](https://github.ncsu.edu/chaedri/Data-Challenge-GIS713)
+<img src="images/octocat.svg" alt="hi" class="inline"/> [GitHub](https://github.ncsu.edu/chaedri/Data-Challenge-GIS713)
