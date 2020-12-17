@@ -47,7 +47,6 @@ The features were finally selected using outside of bag errors.
 
 <img src="images/randomforest.png" alt="hi" class="inline"/>
 
-
 ### Limitations
 * The test and validation errors were high,
 * the coefficient of determination was low,
