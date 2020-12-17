@@ -12,7 +12,7 @@ We started our analysis by seeing if there was an obvious pattern between COVID1
 
 No strong relationships between party affiliation and COVID19 outcomes were found. In some cases, “blue” counties or states showed a significant difference. However, given the weak pattern (<12% of the variation in COVID19 outcomes explained), it is unlikely that party affiliation plays a significant role in determining COVID-19 outcomes.
 
-<img src="images/cntylvlcovid_sumplots.png" class="img-responsive" alt=""> </div> 
+<img src="images/cntylvlcovid_sumplots.png" class="img-responsive" alt=""> </div>
 *County-Level Boxplots comparing COVID-19 outcomes and polical affiliation.*
 
 The impacts of COVID-19 span much farther than those who have been infected; millions of people in the United States are feeling the adverse economic impacts of the disease. Corrplots and regression models were used to analyze associations between health, demographic, environmental, and social factors and COVID-19. Unemployment rates in each county and state were also assessed to quantify the negative economic impacts of the virus, given the unique social, demographic, spatial, and environmental factors in each county and state.
