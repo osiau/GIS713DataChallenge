@@ -13,7 +13,6 @@
 
 #### Visualizing the work process
 <img src="images/whiteboard.png" alt="hi" class="inline"/>
-![picture](https://pages.github.ncsu.edu/chaedri/Data-Challenge-GIS713/images/whiteboard.png)
 
 #### The team!
 
