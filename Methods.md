@@ -7,7 +7,7 @@
 
 We started our analysis by seeing if there was an obvious pattern between COVID19 outcomes and party affiliation. Here, we defined party affiliation as a binary category (majority voted for Trump vs. majority voted for Clinton) and by the proportion of Clinton voters during the 2016 election. We created boxplots and scatterplots to visualize this pattern and ran a regression to see if there were any significant patterns at the county and state levels. These preliminary analyses were used to gauge, at a very surface level, if there is discrepancy in COVID-19 cases and deaths per capita among regions of the U.S. in which Trump or Clinton won the vote.
 
-<img src="images/statelvlcovid_sumplots.png" class="img-responsive" alt=""> </div>
+<img src="images/statelvlcovid_sumplots.png" class="img-responsive" alt=""> <div>
 *State-Level Boxplots comparing COVID-19 outcomes and polical affiliation.*
 
 No strong relationships between party affiliation and COVID19 outcomes were found. In some cases, “blue” counties or states showed a significant difference. However, given the weak pattern (<12% of the variation in COVID19 outcomes explained), it is unlikely that party affiliation plays a significant role in determining COVID-19 outcomes.
