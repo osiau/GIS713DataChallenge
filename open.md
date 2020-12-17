@@ -1,6 +1,6 @@
 # Open data, open science 
 
-![open](https://github.com/osiau/GIS713DataChallenge/blob/gh-pages/images/open.jpg)
+<img src="images/open.png" alt="hi" class="inline"/> <div>
 
 ## What is "open science" & "open data"?
 Open science describes the practice of carrying out scientific research in a completely transparent manner, and making the results of that research available to everyone. There are six commonly accepted pillars of open science: open data, open access, open methodology, open source, open peer review and open education. Open data is the process of releasing both raw and processed data from your experiments, enabling others to analyse it without restriction. 
