@@ -32,4 +32,4 @@ After acquiring [these data](https://pages.github.ncsu.edu/chaedri/Data-Challeng
 To analyze which of these significant covariates best explained the variation of COVID19 outcomes at state and county levels, we used additional modeling approaches, includin regression analysis and model selection, random forest, and spatial autocorrelation.
 
 ##### Find our analysis, data and methods on github: 
-<img src="images/octocat.svg" alt="hi" class="inline"/> <div> [GitHub](https://github.ncsu.edu/chaedri/Data-Challenge-GIS713)
+<img src="images/octocat.svg" alt="hi" class="inline"/> [GitHub](https://github.ncsu.edu/chaedri/Data-Challenge-GIS713)
