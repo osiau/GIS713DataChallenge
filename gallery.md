@@ -3,7 +3,7 @@
 #### Covariate Data Visualizations
 
 ##### Unemployment Rate by State over Time (January to July 2020)
-<iframe src="https://schwartzadev.github.io/github-widget/?user=osiau&repo=GISDataChallenge/includes/streamgraphBasic.html" height="135" frameBorder="0"></iframe>
+<iframe src="https://schwartzadev.github.io/github-widget/?user=osiau&repo=GISDataChallenge/_includes/streamgraphBasic.html" height="135" frameBorder="0"></iframe>
 {% include streamgraphBasic.html %}
 
 ##### Map of Results of 2016 Presidential Election Voting by County
