@@ -2,7 +2,7 @@
 
 We used data from the following sources in our model and figures:
 
-<img src = "images/data.png" class="hi"/>
+<img src="images/data.png" alt="hi" class="inline"/>
 
 We explored several additional datasources that were ultimately not incorporated in our analysis:
 - Non pharmaceutical interventions ([Nature](https://www.nature.com/articles/s41597-020-00609-9#Abs1))
