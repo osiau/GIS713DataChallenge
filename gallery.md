@@ -16,5 +16,5 @@
 
 #### The team!
 
-<img src="images/group1.png" alt="hi" class="inline"/>
-<img src="images/group2.png" alt="hi" class="inline"/>
+<img src="images/group1.PNG" alt="hi" class="inline"/>
+<img src="images/group2.PNG" alt="hi" class="inline"/>
