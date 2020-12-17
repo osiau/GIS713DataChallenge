@@ -12,8 +12,7 @@ Proportion of total votes earned by Hillary, max AQI, median AQI, proportions of
 
 Insignificant predictors and those with multicollinearity were removed from the initial linear models, and AIC tests were used to identify the best sets of predictors for each response variable. Transformations were applied to normalize the distributions of response variables, and to predictor variables. Quas-binomial, beta, and quadratic regressions were also explored to determine the optimal model for each combination of predictors and spatial scales. The models with the best fits are as follows:
 
-<img src="images/resid_vs_fitted.png" alt="hi" class="inline"/>
-
+<img src="images/resid_vs_fitted.png" alt="hi" class="inline"/> 
 *The multilinear model with the best regression fit uses the percents of a given state's population who are black, under 18, over 65, and insured, respectively, to predict per-capita COVID-19 cases by state. Of these, % insured is the only predictor that was shown to have a negative relationship with COVID-19 cases.*
 
 #### State-Level Models: 
